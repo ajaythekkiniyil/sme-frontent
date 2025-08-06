@@ -2,6 +2,8 @@
 
 import { useGetEnquiries } from "@/app/hooks/getEnquiries"
 
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
+
 export default function AdminHomePage() {
     const { enquiries } = useGetEnquiries()
 
@@ -21,9 +23,18 @@ export default function AdminHomePage() {
                                 key={item.id}
                                 className="bg-white shadow rounded p-4 mb-4 border border-gray-200"
                             >
-                                <p className="font-semibold">Name: {item.firstName}</p>
+                                <p className="font-semibold">Name: {item.firstName} {item.lastName}</p>
                                 <p>Email: {item.businessEmail}</p>
+                                <p>Company: {item.company}</p>
+                                <p>Number: {item.businessNumber}</p>
+                                <p>Location: {item.location}</p>
+                                <p>Field: {item.field}</p>
                                 <p>Enquiry: {item.enquiry}</p>
+                                <p>Attachment:
+                                    <a href={STRAPI_URL + '' + item.attachment?.url} target="_blank">
+                                        {item.attachment?.name}
+                                    </a>
+                                </p>
                                 <p className="text-sm text-gray-500">
                                     Submitted on: {new Date(item.createdAt).toLocaleString()}
                                 </p>

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 
-const STRAPI_URL = process.env.STRAPI_URL;
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
 export async function GET(req: NextRequest) {  
   try {
@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized: No token found' }, { status: 401 });
     }
 
-    const strapiRes = await fetch(`${STRAPI_URL}/api/basic-enquiries`, {
+    const strapiRes = await fetch(`${STRAPI_URL}/api/basic-enquiries?populate=*`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,

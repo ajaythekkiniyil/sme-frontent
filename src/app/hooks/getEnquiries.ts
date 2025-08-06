@@ -14,6 +14,11 @@ type Enquiry = {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    attachment: {
+        url: string;
+        name: string;
+        mime: string;
+    } | null;
 };
 
 export const useGetEnquiries = () => {

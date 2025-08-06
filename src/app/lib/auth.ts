@@ -2,7 +2,7 @@
 import { cookies } from 'next/headers';
 import { cache } from 'react';
 
-const STRAPI_URL = process.env.STRAPI_URL;
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
 // Using React's cache function to memoize the user fetch for a single request
 export const getCurrentUser = cache(async () => {
