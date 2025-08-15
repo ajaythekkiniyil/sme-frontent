@@ -1,30 +1,30 @@
 import { useState } from "react"
 import { uploadFiles } from "../lib/uploadFiles"
 
-type Enquiry = {
-    firstName: string,
-    lastName: string,
-    company: string,
-    businessNumber: string,
-    businessEmail: string,
-    location: string,
-    field: string,
-    enquiry: string
+type smeApplication = {
+    fullName: string,
+    email: string,
+    phone: string,
+    linkedinUrl: string,
+    experience: string,
+    pastCompanies: string,
+    expertiseAreas: string,
+    languageSpoken: string
 }
 
-export const useSubmitEnquiry = () => {
+export const useSmeApplicationSubmit = () => {
     const [attachments, setAttachments] = useState<(File | Blob)[] | null>(null)
     const [message, setMessage] = useState("")
     const [loading, setLoading] = useState(false)
-    const [enquiry, setEnquiry] = useState<Enquiry>({
-        firstName: "",
-        lastName: "",
-        company: "",
-        businessNumber: "",
-        businessEmail: "",
-        location: "",
-        field: "",
-        enquiry: ""
+    const [smeApplication, setSmeApplication] = useState<smeApplication>({
+        fullName: "",
+        email: "",
+        phone: "",
+        linkedinUrl: "",
+        experience: "10-15",
+        pastCompanies: "",
+        expertiseAreas: "",
+        languageSpoken: ""
     })
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,20 +44,20 @@ export const useSubmitEnquiry = () => {
                 imageIds = await uploadFiles(attachments)
             }
 
-            const enquiryPayload = {
+            const smeApplicationPayload = {
                 data: {
-                    ...enquiry,
-                    attachments: imageIds, // attachments is the name used in strapi
+                    ...smeApplication,
+                    resume: imageIds, // resume is the name used in strapi
                 }
             };
 
             // publlic can apply new application, no authentication required
-            const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/basic-enquiries`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/sme-applications`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(enquiryPayload),
+                body: JSON.stringify(smeApplicationPayload),
             });
 
             if (!res.ok) {
@@ -66,15 +66,15 @@ export const useSubmitEnquiry = () => {
 
             setMessage('Enquiry submitted successfully!')
             setLoading(false)
-            setEnquiry({
-                firstName: "",
-                lastName: "",
-                company: "",
-                businessNumber: "",
-                businessEmail: "",
-                location: "",
-                field: "",
-                enquiry: ""
+            setSmeApplication({
+                fullName: "",
+                email: "",
+                phone: "",
+                linkedinUrl: "",
+                experience: "10-15",
+                pastCompanies: "",
+                expertiseAreas: "",
+                languageSpoken: ""
             })
         }
         catch (err) {
@@ -82,6 +82,6 @@ export const useSubmitEnquiry = () => {
         }
     };
 
-    return { enquiry, setEnquiry, message, loading, attachments, handleFileChange, handleSubmitEnquiry }
+    return { smeApplication, setSmeApplication, message, loading, attachments, handleFileChange, handleSubmitEnquiry }
 
 }

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import BasicEnquiryForm from './components/basicEnquiryForm'
+import SmeApplicatoinForm from './components/smeApplicationForm'
 
 export default function Home() {
     return (
@@ -20,6 +21,10 @@ export default function Home() {
       </section>
       <section>
         <BasicEnquiryForm />
+      </section>
+      <div className='my-14'></div>
+      <section>
+        <SmeApplicatoinForm />
       </section>
     </>
   )
