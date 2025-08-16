@@ -3,17 +3,19 @@ import { cookies } from 'next/headers';
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
-export async function GET(req: NextRequest) {
-    try {
-        const cookieStore = cookies();
+export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
 
-        const token = (await cookieStore).get('token')?.value;
+    try {
+        const { id } = params;
+
+        const cookieStore = cookies();
+        const token = (await cookieStore).get("token")?.value;
 
         if (!token) {
             return NextResponse.json({ error: 'Unauthorized: No token found' }, { status: 401 });
         }
 
-        const strapiRes = await fetch(`${STRAPI_URL}/api/sme-applications`, {
+        const strapiRes = await fetch(`${STRAPI_URL}/api/sme-applications/${id}?populate=*`, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${token}`,
