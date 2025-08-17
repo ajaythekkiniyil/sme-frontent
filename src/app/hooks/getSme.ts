@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { fetchSme, fetchSmeDetails } from "../lib/getSme";
+import { fetchSme, fetchSmeDetails } from "../lib/sme";
 
 // Hook for fetching all SMEs
 export function useSme() {
