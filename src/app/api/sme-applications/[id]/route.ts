@@ -3,10 +3,13 @@ import { cookies } from 'next/headers';
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
-export async function GET(req: NextRequest, { params }: { params: { id: number } }) {
+export async function GET(
+    req: NextRequest,
+    context: { params: Promise<{ id: string }> }
+) {
 
     try {
-        const { id } = await params;
+        const { id } = await context.params;
 
         const cookieStore = cookies();
         const token = (await cookieStore).get("token")?.value;
@@ -39,46 +42,50 @@ export async function GET(req: NextRequest, { params }: { params: { id: number }
     }
 }
 
-// export async function PUT(req: NextRequest, { params }: { params: { id: number } }) {
-
-    // const id = Number(params.id);
-    // const body = await req.json();
-
-    // console.log(body, "smeStatus");
+export async function PUT(
+    req: NextRequest,
+    context: { params: Promise<{ id: string }> }
+) {
     
+    try {
+        const { id } = await context.params;
+        const body = await req.json();
 
-    // try {
+        const cookieStore = cookies();
 
-    //     const cookieStore = cookies();
-    //     const token = (await cookieStore).get("token")?.value;
+        const token = (await cookieStore).get("token")?.value;
 
-    //     if (!token) {
-    //         return NextResponse.json({ error: 'Unauthorized: No token found' }, { status: 401 });
-    //     }
+        if (!token) {
+            return NextResponse.json({ error: 'Unauthorized: No token found' }, { status: 401 });
+        }
 
-    //     const strapiRes = await fetch(`${STRAPI_URL}/api/sme-applications/${id}`, {
-    //         method: 'PUT',
-    //         headers: {
-    //             Authorization: `Bearer ${token}`,
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body
-    //     });
+        const payload = {
+            "data": {
+                "smeStatus": body
+            }
+        }
 
-    //     const strapiData = await strapiRes.json();
+        const strapiRes = await fetch(`${STRAPI_URL}/api/sme-applications/${id}`, {
+            method: 'PUT',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        });
 
-    //     if (!strapiRes.ok) {
-    //         return NextResponse.json({ error: strapiData.error?.message || 'Error from Strapi' }, {
-    //             status: strapiRes.status,
-    //         });
-    //     }
+        const strapiData = await strapiRes.json();
 
-    //     return NextResponse.json(strapiData);
+        if (!strapiRes.ok) {
+            return NextResponse.json({ error: strapiData.error?.message || 'Error from Strapi' }, {
+                status: strapiRes.status,
+            });
+        }
 
-    // } catch (error) {
-    //     console.error('Error fetching from Strapi:', error);
-    //     return NextResponse.json({ error: 'An unexpected error occurred' }, { status: 500 });
-    // }
+        return NextResponse.json(strapiData);
 
-
-// }
+    } catch (error) {
+        console.error('Error fetching from Strapi:', error);
+        return NextResponse.json({ error: 'An unexpected error occurred' }, { status: 500 });
+    }
+}

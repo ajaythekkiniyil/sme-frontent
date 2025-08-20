@@ -8,7 +8,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
 import { useSmeDetails } from '@/app/hooks/getSme';
-// import { smeStatusType, useUpdateSmeStatus } from '@/app/hooks/updateSmeStatus';
 
 type getStepContentSMEType = {
     fullName: string,
@@ -27,14 +26,17 @@ type getStepContentSMEType = {
     documentId: number
 }
 
+enum smeStatusType {
+    rejected = "rejected",
+    active = "active",
+}
+
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 const steps = ['View details', 'Schedule interview', 'Approve/Reject'];
 
 export default function SmeDetails({ params }: { params: Promise<{ id: number }> }) {
     const { id } = React.use(params)
     const { data, isLoading, error } = useSmeDetails(id);
-
-    // const { mutate: updateStatus, isPending } = useUpdateSmeStatus();
 
     const [activeStep, setActiveStep] = useState(0);
 
@@ -161,12 +163,12 @@ function getStepContentSME(stepIndex: number, data: getStepContentSMEType) {
             return (
                 <>
                     <Button
-                    // onClick={() => updateStatus({ status: smeStatusType.rejected, id: data.documentId })}
+                        onClick={() => updateStatus(smeStatusType.rejected, data.documentId)}
                     >
                         Reject
                     </Button>
                     <Button
-                    // onClick={() => updateStatus({ status: smeStatusType.active, id: data.documentId })}
+                        onClick={() => updateStatus(smeStatusType.active, data.documentId)}
                     >
                         Approve
                     </Button>
@@ -175,4 +177,15 @@ function getStepContentSME(stepIndex: number, data: getStepContentSMEType) {
         default:
             return 'Unknown step';
     }
+}
+
+const updateStatus = async (status: smeStatusType, id: number) => {
+    await fetch(`/api/sme-applications/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(status)
+    })
+    // code refactor
 }
