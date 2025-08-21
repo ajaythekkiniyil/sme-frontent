@@ -15,7 +15,7 @@ export default function Home() {
             SME login
           </Link>
           <Link href="/user/login">
-            User login
+            User login 
           </Link>
         </div>
       </section>
