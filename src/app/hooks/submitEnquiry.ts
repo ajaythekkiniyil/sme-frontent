@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { uploadFiles } from "../lib/uploadFiles"
 
-type Enquiry = {
+export type Enquiry = {
     firstName: string,
     lastName: string,
     company: string,

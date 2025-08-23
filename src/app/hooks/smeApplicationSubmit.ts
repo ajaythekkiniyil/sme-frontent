@@ -1,16 +1,6 @@
 import { useState } from "react"
 import { uploadFiles } from "../lib/uploadFiles"
-
-type smeApplication = {
-    fullName: string,
-    email: string,
-    phone: string,
-    linkedinUrl: string,
-    experience: string,
-    pastCompanies: string,
-    expertiseAreas: string,
-    languageSpoken: string
-}
+import { smeApplication } from "../types/enquiry"
 
 export const useSmeApplicationSubmit = () => {
     const [attachments, setAttachments] = useState<(File | Blob)[] | null>(null)
