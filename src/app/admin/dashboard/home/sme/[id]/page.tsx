@@ -62,7 +62,7 @@ export default function SmeDetails({ params }: { params: Promise<{ id: number }>
                             // This part shows for each active step
                             <>
                                 <Box sx={{ minHeight: '120px', padding: '16px', border: '1px dashed grey', borderRadius: '4px' }}>
-                                    <GetStepContentSME stepIndex={activeStep} data={data.data} />
+                                    <GetStepContentSME stepIndex={activeStep} data={data.data} handleNext={handleNext} />
                                 </Box>
 
                                 {/* Navigation Buttons */}

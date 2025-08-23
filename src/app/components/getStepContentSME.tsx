@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
-export function GetStepContentSME({ stepIndex, data }: { stepIndex: number, data: getStepContentSMEType }) {
+export function GetStepContentSME({ stepIndex, data, handleNext }: { stepIndex: number, data: getStepContentSMEType, handleNext: Function }) {
     const queryClient = useQueryClient();
 
     const mutationSmeStatus = useMutation({
@@ -15,6 +15,7 @@ export function GetStepContentSME({ stepIndex, data }: { stepIndex: number, data
         onSuccess: (_, variables) => {
             queryClient.invalidateQueries({ queryKey: ["smeDetails", variables.id] });
             alert('success')
+            handleNext()
         },
         onError: () => {
             alert('error')
