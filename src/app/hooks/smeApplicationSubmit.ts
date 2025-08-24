@@ -54,7 +54,7 @@ export const useSmeApplicationSubmit = () => {
                 setMessage('Something went wrong while submitting your enquiry.')
             }
 
-            setMessage('Enquiry submitted successfully!')
+            setMessage('Application submitted successfully!')
             setLoading(false)
             setSmeApplication({
                 fullName: "",

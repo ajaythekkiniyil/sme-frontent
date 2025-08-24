@@ -83,6 +83,16 @@ export function GetStepContentSME({ stepIndex, data, handleNext }: { stepIndex: 
                     </Button>
                 </>
             )
+        case 3:
+            return (
+                <>
+                    <Button
+                        // onClick={createSmeAccount}
+                    >
+                        Create account
+                    </Button>
+                </>
+            )
         default:
             return 'Unknown step';
     }

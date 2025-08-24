@@ -31,7 +31,7 @@ export default function AdminHomePage() {
                                 <p>Field: {item.field}</p>
                                 <p>Enquiry: {item.enquiry}</p>
                                 {
-                                    item?.attachments && <p>Attachment:
+                                    item?.attachments && <div>Attachment:
                                         {
                                             item.attachments.map((image) => {
                                                 return (
@@ -43,7 +43,7 @@ export default function AdminHomePage() {
                                                 )
                                             })
                                         }
-                                    </p>
+                                    </div>
                                 }
                                 <p className="text-sm text-gray-500">
                                     Submitted on: {new Date(item.createdAt).toLocaleString()}

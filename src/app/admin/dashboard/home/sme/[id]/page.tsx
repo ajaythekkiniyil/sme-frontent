@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 import { useSmeDetails } from '@/app/hooks/getSme';
 import { GetStepContentSME } from '@/app/components/getStepContentSME';
 
-const steps = ['View details', 'Schedule interview', 'Approve/Reject'];
+const steps = ['View details', 'Schedule interview', 'Approve/Reject', 'Create SME account'];
 
 export default function SmeDetails({ params }: { params: Promise<{ id: number }> }) {
     const { id } = React.use(params)
