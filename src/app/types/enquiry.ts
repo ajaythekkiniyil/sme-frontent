@@ -12,11 +12,12 @@ export type Enquiry = {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
-    attachment: {
-        url: string;
-        name: string;
-        mime: string;
-    } | null;
+    attachments: [{
+        url: string,
+        name: string,
+        mime: string,
+        documentId: string
+    }]
 };
 
 export type smeApplication = {

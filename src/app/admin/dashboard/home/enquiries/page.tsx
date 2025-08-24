@@ -30,11 +30,21 @@ export default function AdminHomePage() {
                                 <p>Location: {item.location}</p>
                                 <p>Field: {item.field}</p>
                                 <p>Enquiry: {item.enquiry}</p>
-                                <p>Attachment:
-                                    <a href={STRAPI_URL + '' + item.attachment?.url} target="_blank">
-                                        {item.attachment?.name}
-                                    </a>
-                                </p>
+                                {
+                                    item?.attachments && <p>Attachment:
+                                        {
+                                            item.attachments.map((image) => {
+                                                return (
+                                                    <div key={image.documentId}>
+                                                        <a href={STRAPI_URL + '' + image.url} target="_blank">
+                                                            {image.name}
+                                                        </a>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </p>
+                                }
                                 <p className="text-sm text-gray-500">
                                     Submitted on: {new Date(item.createdAt).toLocaleString()}
                                 </p>
