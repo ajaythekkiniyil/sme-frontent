@@ -1,11 +1,19 @@
 import { getStepContentSMEType, smeStatusType } from '@/app/types/sme';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
-import { updateSmeStatus } from '@/app/lib/sme';
+import { createSmeAccount, updateSmeStatus } from '@/app/lib/sme';
 import { Button } from '@mui/material';
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
-export function GetStepContentSME({ stepIndex, data, handleNext }: { stepIndex: number, data: getStepContentSMEType, handleNext: Function }) {
+type GetStepContentSMETypes = {
+    stepIndex: number,
+    data: getStepContentSMEType,
+    handleNext: Function,
+    applicationPending: boolean,
+    setApplicationPending: Function
+}
+
+export function GetStepContentSME({ stepIndex, data, handleNext, applicationPending, setApplicationPending }: GetStepContentSMETypes) {
     const queryClient = useQueryClient();
 
     const mutationSmeStatus = useMutation({
@@ -14,13 +22,28 @@ export function GetStepContentSME({ stepIndex, data, handleNext }: { stepIndex: 
 
         onSuccess: (_, variables) => {
             queryClient.invalidateQueries({ queryKey: ["smeDetails", variables.id] });
-            alert('success')
+            if(variables.status === 'rejected'){
+                alert('application rejected')
+                setApplicationPending(true)
+                return
+            }
+            alert('application approved')
+            setApplicationPending(false)
             handleNext()
         },
         onError: () => {
             alert('error')
         }
     });
+
+    const handleCreate = async () => {
+        const res = await createSmeAccount({ fullName: data.fullName, email: data.email })
+        if (res.status === false) alert('error')
+        else {
+            alert('success')
+            handleNext()
+        }
+    }
 
     switch (stepIndex) {
         case 0:
@@ -86,8 +109,10 @@ export function GetStepContentSME({ stepIndex, data, handleNext }: { stepIndex: 
         case 3:
             return (
                 <>
+                    {applicationPending && <div>Please verify application</div>}
                     <Button
-                        // onClick={createSmeAccount}
+                        onClick={handleCreate}
+                        disabled={applicationPending}
                     >
                         Create account
                     </Button>

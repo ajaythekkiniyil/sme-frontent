@@ -66,6 +66,7 @@ export const useSmeApplicationSubmit = () => {
                 expertiseAreas: "",
                 languageSpoken: ""
             })
+            setAttachments(null)
         }
         catch (err) {
             setMessage('Something went wrong while submitting your enquiry.')

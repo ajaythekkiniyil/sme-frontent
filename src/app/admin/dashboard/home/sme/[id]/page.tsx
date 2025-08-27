@@ -16,6 +16,7 @@ export default function SmeDetails({ params }: { params: Promise<{ id: number }>
     const { data, isLoading, error } = useSmeDetails(id);
 
     const [activeStep, setActiveStep] = useState(0);
+    const [applicationPending, setApplicationPending] = useState(true);
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -62,7 +63,13 @@ export default function SmeDetails({ params }: { params: Promise<{ id: number }>
                             // This part shows for each active step
                             <>
                                 <Box sx={{ minHeight: '120px', padding: '16px', border: '1px dashed grey', borderRadius: '4px' }}>
-                                    <GetStepContentSME stepIndex={activeStep} data={data.data} handleNext={handleNext} />
+                                    <GetStepContentSME
+                                        stepIndex={activeStep}
+                                        data={data.data}
+                                        handleNext={handleNext}
+                                        applicationPending={applicationPending}
+                                        setApplicationPending={setApplicationPending}
+                                    />
                                 </Box>
 
                                 {/* Navigation Buttons */}

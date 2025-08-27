@@ -76,6 +76,7 @@ export const useSubmitEnquiry = () => {
                 field: "",
                 enquiry: ""
             })
+            setAttachments(null)
         }
         catch (err) {
             setMessage('Something went wrong while submitting your enquiry.')
