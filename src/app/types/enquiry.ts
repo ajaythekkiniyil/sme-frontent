@@ -1,4 +1,4 @@
-export type Enquiry = {
+export type Tickets = {
     id: number;
     documentId: string;
     firstName: string;

@@ -1,29 +1,29 @@
 import { useEffect, useState } from "react"
-import { Enquiry } from "../types/enquiry";
+import { Tickets } from "../types/enquiry";
 
-export const useGetEnquiries = () => {
-    const [enquiries, setEnquiries] = useState<Enquiry[]>([])
+export const useGetTickets = () => {
+    const [tickets, setTickets] = useState<Tickets[]>([])
 
     useEffect(() => {
-        const getEnquiry = async () => {
+        const getTickets = async () => {
             try {
-                const res = await fetch('/api/enquiries', {
+                const res = await fetch('/api/tickets', {
                     method: 'GET',
                 });
 
                 if (res.ok) {
                     const data = await res.json();
-                    setEnquiries(data.data);
+                    setTickets(data.data);
                 } else {
-                    console.error('Failed to fetch enquiries');
+                    console.error('Failed to fetch tickets');
                 }
             } catch (err) {
                 console.error('An unexpected error occurred.', err);
             }
         };
 
-        getEnquiry();
+        getTickets();
     }, []);
 
-    return { enquiries }
+    return { tickets }
 }

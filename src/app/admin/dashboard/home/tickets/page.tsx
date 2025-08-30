@@ -1,24 +1,24 @@
 "use client"
-
-import { useGetEnquiries } from "@/app/hooks/getEnquiries"
+import { useGetTickets } from "@/app/hooks/getEnquiries"
+import { Tickets } from "@/app/types/enquiry"
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
 
 export default function AdminHomePage() {
-    const { enquiries } = useGetEnquiries()
+    const { tickets } = useGetTickets()
 
     return (
         <div className="min-h-screen bg-gray-100 p-6">
-            <h1 className="text-2xl font-bold mb-4">Enquiries List</h1>
+            <h1 className="text-2xl font-bold mb-4">Tickets</h1>
             {
-                enquiries.length === 0
+                tickets.length === 0
                     ?
                     (
-                        <p>No enquiries found.</p>
+                        <p>No tickets found.</p>
                     )
                     :
                     (
-                        enquiries.map((item) => (
+                        tickets.map((item : Tickets) => (
                             <div
                                 key={item.id}
                                 className="bg-white shadow rounded p-4 mb-4 border border-gray-200"

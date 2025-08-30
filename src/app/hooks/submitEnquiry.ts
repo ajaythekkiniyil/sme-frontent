@@ -52,7 +52,7 @@ export const useSubmitEnquiry = () => {
             };
 
             // publlic can apply new application, no authentication required
-            const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/basic-enquiries`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/tickets`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

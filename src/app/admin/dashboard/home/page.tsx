@@ -9,8 +9,8 @@ export default function AdminHomePage() {
             <p><Link href="/admin/dashboard/home/client">
                 Client
             </Link></p>
-            <p><Link href="/admin/dashboard/home/enquiries">
-                Enquiries
+            <p><Link href="/admin/dashboard/home/tickets">
+                Tickets
             </Link></p>
         </div>
     )
