@@ -17,7 +17,8 @@ export type Tickets = {
         name: string,
         mime: string,
         documentId: string
-    }]
+    }],
+    adminVerified: boolean
 };
 
 export type smeApplication = {

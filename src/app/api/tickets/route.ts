@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized: No token found' }, { status: 401 });
     }
 
-    const strapiRes = await fetch(`${STRAPI_URL}/api/tickets?populate=*`, {
+    const strapiRes = await fetch(`${STRAPI_URL}/api/tickets`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
