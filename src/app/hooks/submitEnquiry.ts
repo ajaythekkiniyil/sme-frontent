@@ -13,7 +13,7 @@ export type Enquiry = {
 }
 
 export const useSubmitEnquiry = () => {
-    const [attachments, setAttachments] = useState<(File | Blob)[] | null>(null)
+    const [attachments, setAttachments] = useState<(File[])>([])
     const [message, setMessage] = useState("")
     const [loading, setLoading] = useState(false)
     const [enquiry, setEnquiry] = useState<Enquiry>({
@@ -29,7 +29,7 @@ export const useSubmitEnquiry = () => {
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
-            setAttachments(Array.from(e.target.files))
+            setAttachments(Array.from(e.target.files) as File[])
         }
     }
 
@@ -76,7 +76,7 @@ export const useSubmitEnquiry = () => {
                 field: "",
                 enquiry: ""
             })
-            setAttachments(null)
+            setAttachments([])
         }
         catch (err) {
             setMessage('Something went wrong while submitting your enquiry.')
