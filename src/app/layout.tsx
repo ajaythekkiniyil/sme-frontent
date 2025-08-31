@@ -8,7 +8,7 @@ const interTight = Inter_Tight({
   weight: ['400', '500', '600', '700'],
 })
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={interTight.className}>
@@ -17,5 +17,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </QueryProvider>
       </body>
     </html>
-  );
+  )
 }
