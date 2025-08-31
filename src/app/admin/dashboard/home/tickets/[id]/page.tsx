@@ -147,25 +147,32 @@ export default function TicketDetails({ params }: { params: Promise<{ id: number
                     {/* Action Buttons */}
                     <div className="mt-10 pt-6 border-t flex flex-col sm:flex-row-reverse gap-3">
                         <button
-                            onClick={handleCreateUser}
-                            disabled={!isVerified || !isPaid || isAccountCreated}
-                            className="w-full sm:w-auto px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 transition duration-150 disabled:bg-gray-300 disabled:cursor-not-allowed"
+                            onClick={handleVerify}
+                            disabled={isVerified}
+                            className="px-2 py-1 bg-green-600 text-white text-sm rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75 transition duration-150 disabled:bg-green-300 disabled:cursor-not-allowed"
                         >
-                            {isAccountCreated ? 'Account Created' : 'Create User Account'}
-                        </button>
-                        <button
-                            onClick={handlePayment}
-                            disabled={!isVerified || isPaid}
-                            className="w-full sm:w-auto px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-75 transition duration-150 disabled:bg-indigo-300 disabled:cursor-not-allowed"
-                        >
-                            {isPaid ? 'Paid' : 'Mark as Paid'}
+                            {isVerified ? 'Verified' : 'Mark as Verified'}
                         </button>
                         <button
                             onClick={handleVerify}
                             disabled={isVerified}
-                            className="w-full sm:w-auto px-6 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75 transition duration-150 disabled:bg-green-300 disabled:cursor-not-allowed"
+                            className="px-2 py-1 bg-orange-300 text-white text-sm rounded-lg shadow-md hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75 transition duration-150 disabled:bg-green-300 disabled:cursor-not-allowed"
                         >
-                            {isVerified ? 'Verified' : 'Mark as Verified'}
+                            Assign to sme
+                        </button>
+                        <button
+                            onClick={handlePayment}
+                            disabled={!isVerified || isPaid}
+                            className="px-2 py-1 bg-indigo-600 text-white text-sm rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-75 transition duration-150 disabled:bg-indigo-300 disabled:cursor-not-allowed"
+                        >
+                            {isPaid ? 'Paid' : 'Mark as Paid'}
+                        </button>
+                        <button
+                            onClick={handleCreateUser}
+                            disabled={!isVerified || !isPaid || isAccountCreated}
+                            className="px-2 py-1 bg-gray-600 text-white text-sm rounded-lg shadow-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 transition duration-150 disabled:bg-gray-300 disabled:cursor-not-allowed"
+                        >
+                            {isAccountCreated ? 'Account Created' : 'Create User Account'}
                         </button>
                     </div>
 
