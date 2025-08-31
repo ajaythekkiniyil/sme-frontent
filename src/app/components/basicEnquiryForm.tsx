@@ -7,14 +7,6 @@ export default function BasicEnquiryForm() {
 
     return (
         <>
-            <form onSubmit={handleSubmitEnquiry}>
-                <div>
-                    <button type="submit" className="p-2" style={{ background: 'blue', color: 'white' }}>
-                        {loading ? 'Submiting...' : 'Submit'}
-                    </button>
-                </div>
-                {message}
-            </form>
             <form className="space-y-4 sm:space-y-6 md:space-y-8" onSubmit={handleSubmitEnquiry}>
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2 sm:mb-3">First Name*</label>
