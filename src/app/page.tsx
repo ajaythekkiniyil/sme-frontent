@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import Image from 'next/image'
 import SmeLogo from '../../public/sme-logo.svg'
 import SmeBanner from '../../public/sme-banner.jpg'
+import ServiceGridImage from '../../public/project-one.jpg'
 import WhySme from '../../public/why-sme.png'
 import { Paperclip, Facebook, Github, Instagram, Youtube, Menu, X, Headphones } from "lucide-react";
 import BasicEnquiryForm from './components/basicEnquiryForm'
@@ -179,18 +180,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="bg-[#F5F9FF] py-16 sm:py-20 md:py-24">
-        <div className="container mx-auto text-center px-6">
-          <div className="mb-10">
-            <span className="text-sm font-medium text-gray-600">Services</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2">
-              Our <span className="text-[#2563EB]">Services</span>
-            </h2>
-            <p className="text-gray-500 max-w-2xl mx-auto mt-2 text-sm sm:text-base md:text-lg">
-              Helping you streamline operations, reduce costs, and achieve measurable success with proven methodologies.
-            </p>
-          </div>
+
+
+
+
+
+{/* Services Section */}
+<section className="bg-[#fff] py-16 sm:py-20 md:py-24">
+  <div className="container mx-auto text-center px-6">
+    <div className="mb-10">
+      <span className="text-sm font-medium text-gray-600">Services</span>
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2">
+        Our <span className="text-[#2563EB]">Services</span>
+      </h2>
+      <p className="text-gray-500 max-w-2xl mx-auto mt-2 text-sm sm:text-base md:text-lg">
+        Helping you streamline operations, reduce costs, and achieve measurable success with proven methodologies.
+      </p>
+    </div>
 
           {/* Slider */}
           <Slider {...serviceSettings}>
@@ -244,18 +250,41 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Right: Image */}
-          <div>
-            <Image
-              src={WhySme}
-              alt="Team working together"
-              width={600}
-              height={400}
-              className="w-full h-auto rounded-xl object-cover"
-            />
+    {/* Right: Image */}
+    <div>
+      <Image
+        src={WhySme}
+        alt="Team working together"
+        width={600}
+        height={400}
+        className="w-full h-auto rounded-xl object-cover"
+      />
+    </div>
+  </div>
+</section>
+
+<section className="bg-[#F6FAFF] py-16 sm:py-20 lg:py-24">
+  <div className="container mx-auto px-6 gap-8 md:gap-12 items-start">
+  <div className="text-left mb-8 lg:mb-18">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-thin text-gray-900 mb-4">Our Services</h2>
+      <p className="text-gray-600 max-w-xl text-sm sm:text-base md:text-lg">
+        Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development.
+      </p>
+    </div>
+    <div className="grid grid-cols-4">
+          <div className="relative">
+             <Image src={ServiceGridImage} alt="Services Grid" className="w-full h-full object-cover rounded-2xl sm:rounded-3xl md:rounded-4xl" />
+             <div className="absolute bottom-10 left-9 m">
+                <p className="text-xl text-white">Testing</p>
+             </div>
           </div>
-        </div>
-      </section>
+    </div>
+  </div>
+</section>
+
+
+
+
 
       {/* Contact Section */}
       <section className="py-16 sm:py-20 md:py-24">
@@ -358,29 +387,29 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Useful Links */}
-          <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Useful Links</h3>
-            <ul className="space-y-3 text-md text-gray-500">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Client</a></li>
-              <li><a href="#">SME</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Contact us</a></li>
-            </ul>
-          </div>
+        {/* Useful Links */}
+        <div>
+          <h3 className="font-thin text-lg text-gray-900 mb-4">Useful Links</h3>
+          <ul className="space-y-3 text-md text-gray-500">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Client</a></li>
+            <li><a href="#">SME</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact us</a></li>
+          </ul>
+        </div>
 
-          {/* How We Help */}
-          <div>
-            <h3 className="font-semibold text-gray-900 mb-4">How We Help</h3>
-            <ul className="space-y-3 text-md text-gray-500">
-              <li><a href="#">Help Center</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Term & Condition</a></li>
-              <li><a href="#">FAQs</a></li>
-            </ul>
-          </div>
+        {/* How We Help */}
+        <div>
+          <h3 className="font-thin text-lg text-gray-900 mb-4">How We Help</h3>
+          <ul className="space-y-3 text-md text-gray-500">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Term & Condition</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
 
           {/* Who We Are */}
           <div>
