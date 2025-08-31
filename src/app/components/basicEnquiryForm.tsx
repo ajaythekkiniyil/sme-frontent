@@ -149,6 +149,7 @@ export default function BasicEnquiryForm() {
                 >
                     {loading ? 'Submiting...' : 'Send Message'}
                 </button>
+                <p>{message}</p>
             </form>
         </>
     )
