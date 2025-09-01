@@ -8,6 +8,8 @@ export default function BasicEnquiryForm() {
     return (
         <>
             <form className="space-y-4 sm:space-y-6 md:space-y-8" onSubmit={handleSubmitEnquiry}>
+
+            <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2 sm:mb-3">First Name*</label>
                     <input
@@ -31,6 +33,11 @@ export default function BasicEnquiryForm() {
                         onChange={(e) => setEnquiry({ ...enquiry, lastName: e.target.value })}
                     />
                 </div>
+                
+
+                
+
+                
 
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2 sm:mb-3">Company</label>
@@ -44,7 +51,6 @@ export default function BasicEnquiryForm() {
                     />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2 sm:mb-3">Email Address*</label>
                         <input
