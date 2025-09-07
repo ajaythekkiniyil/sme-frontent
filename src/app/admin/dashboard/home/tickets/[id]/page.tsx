@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { useTicketDetails } from '@/app/hooks/tickets';
+import Link from 'next/link';
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
 
@@ -132,10 +133,10 @@ export default function TicketDetails({ params }: { params: Promise<{ id: number
                                     ticket.data.attachments.map((image: any) => {
                                         return (
                                             <div key={image.documentId}>
-                                                <a href={STRAPI_URL + '' + image.url} target="_blank" className="flex items-center p-3 bg-white border rounded-lg hover:bg-gray-50 transition duration-150">
+                                                <Link href={STRAPI_URL + '' + image.url} target="_blank" className="flex items-center p-3 bg-white border rounded-lg hover:bg-gray-50 transition duration-150">
                                                     <Icon type={image.mime} />
                                                     <span className="text-blue-600 font-medium">{image.name}</span>
-                                                </a>
+                                                </Link>
                                             </div>
                                         )
                                     })

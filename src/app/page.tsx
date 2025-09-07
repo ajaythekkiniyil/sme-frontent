@@ -2,19 +2,11 @@
 import Link from 'next/link'
 import Slider from "react-slick";
 import Image from 'next/image'
-import SmeLogo from '../../public/sme-logo.svg'
 import SmeBanner from '../../public/sme-banner.jpg'
 import SmeBannerTwo from '../../public/sme-banner-02.jpg'
 import ServiceGridImage from '../../public/project-one.jpg'
 import WhySme from '../../public/why-sme.png'
-import {
-  Facebook, Github,
-  Instagram, Youtube,
-  Menu, X,
-  Headphones, ChevronLeft,
-  ChevronRight, MessageSquare,
-  Users, FileCheck
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, MessageSquare, Users, FileCheck } from "lucide-react";
 import BasicEnquiryForm from './components/basicEnquiryForm'
 import { useState } from 'react';
 
@@ -44,8 +36,6 @@ function PrevArrow(props: any) {
 }
 
 export default function ServicesSlider() {
-  const [isOpen, setIsOpen] = useState(false);
-
   // ✅ Hero Slider Settings
   const heroSettings = {
     dots: true,
@@ -87,85 +77,6 @@ export default function ServicesSlider() {
 
   return (
     <>
-      <nav className="bg-white sticky top-0 z-50">
-        <div className="container flex items-center justify-between mx-auto px-6 py-6">
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image
-              src={SmeLogo}
-              alt="SME Logo"
-              width={180}
-              height={40}
-              priority
-            />
-          </Link>
-
-          {/* Desktop Navigation (≥1400px) */}
-          <ul className="above-1400 space-x-8 font-sans text-gray-600 text-base">
-            <li><Link href="/" className="text-[#32A2DC] font-normal">Home</Link></li>
-            <li><Link href="/about" className="hover:text-[#32A2DC]">About Us</Link></li>
-            <li><Link href="/services" className="hover:text-[#32A2DC]">How We Help</Link></li>
-            <li><Link href="/clients" className="hover:text-[#32A2DC]">Client</Link></li>
-            <li><Link href="/smes" className="hover:text-[#32A2DC]">SMEs</Link></li>
-            <li><Link href="/careers" className="hover:text-[#32A2DC]">Careers</Link></li>
-            <li><Link href="/contact" className="hover:text-[#32A2DC]">Contact Us</Link></li>
-          </ul>
-
-          {/* Desktop Buttons (≥1400px) */}
-          <div className="above-1400 items-center space-x-4">
-            <div className="flex items-center text-sm text-gray-600">
-              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 mr-2">
-                <span className="w-4 h-4 text-[#32A2DC]">☎</span>
-              </div>
-              <span>24/7 Support: (234) 109-666</span>
-            </div>
-
-            <button className="cursor-pointer px-5 py-2 border border-[#32A2DC] text-[#32A2DC] rounded-full text-sm hover:bg-[#32A2DC] hover:text-white transition">
-              Contact Us
-            </button>
-            <button className="cursor-pointer px-5 py-2 bg-[#32A2DC] text-white rounded-full text-sm hover:bg-[#1e86bb] transition">
-              Login
-            </button>
-          </div>
-
-          {/* Hamburger Toggle (<1400px) */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="below-1400 text-gray-700 focus:outline-none"
-          >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-
-        {/* Mobile/Tablet Menu (<1400px) */}
-        {isOpen && (
-          <div className="below-1400 bg-white border-t border-gray-200 shadow-md">
-            <ul className="flex flex-col space-y-4 px-6 py-6 text-gray-700 font-medium">
-              <li><Link href="/" onClick={() => setIsOpen(false)}>Home</Link></li>
-              <li><Link href="/about" onClick={() => setIsOpen(false)}>About Us</Link></li>
-              <li><Link href="/services" onClick={() => setIsOpen(false)}>How We Help</Link></li>
-              <li><Link href="/clients" onClick={() => setIsOpen(false)}>Client</Link></li>
-              <li><Link href="/smes" onClick={() => setIsOpen(false)}>SMEs</Link></li>
-              <li><Link href="/careers" onClick={() => setIsOpen(false)}>Careers</Link></li>
-              <li><Link href="/contact" onClick={() => setIsOpen(false)}>Contact Us</Link></li>
-            </ul>
-
-            <div className="flex flex-col space-y-3 px-6 pb-6">
-              <button className="cursor-pointer px-5 py-2 border border-[#32A2DC] text-[#32A2DC] rounded-full text-sm hover:bg-[#32A2DC] hover:text-white transition">
-                Contact Us
-              </button>
-              <button className="cursor-pointer px-5 py-2 bg-[#32A2DC] text-white rounded-full text-sm hover:bg-[#1e86bb] transition">
-                Login
-              </button>
-              <div className="flex items-center text-gray-600 text-sm pt-3">
-                <Headphones size={16} className="text-black mr-2" />
-                <span>24/7 Support: (234) 109-666</span>
-              </div>
-            </div>
-          </div>
-        )}
-      </nav>
-
       {/* ✅ HERO SLIDER */}
       <Slider {...heroSettings} className='overflow-hidden'>
         {/* Slide 1 */}
@@ -347,7 +258,7 @@ export default function ServicesSlider() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 sm:py-20 md:py-24">
+      <section className="py-16 sm:py-20 md:py-24" id='contact-us'>
         <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* Left: Text */}
           <div className="text-left mb-8 md:mb-0">
@@ -391,111 +302,6 @@ export default function ServicesSlider() {
           </div>
         </div>
       </section>
-
-      <footer className="bg-white">
-        <div className="container mx-auto px-6 py-32 grid grid-cols-1 md:grid-cols-4 gap-12">
-          {/* Logo & Contact */}
-          <div>
-            <Link href="/" className="">
-              <Image
-                src={SmeLogo}
-                alt="SME Logo"
-                width={200}
-                height={40}
-                className="w-70 mb-8"
-              />
-            </Link>
-            <ul className="mt-4 space-y-2 text-md text-gray-600">
-              <li>ipsum@gmail.com</li>
-              <li>152 Thatcher Road St, Mahattan, NY 10463, United States</li>
-              <li>(+068) 568 9696</li>
-            </ul>
-
-            {/* Social Links */}
-            <div className="flex items-center gap-3 mt-6">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:text-blue-600 hover:border-blue-600"
-              >
-                X
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:text-blue-600 hover:border-blue-600"
-              >
-                <Facebook size={18} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:text-blue-600 hover:border-blue-600"
-              >
-                <Github size={18} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:text-blue-600 hover:border-blue-600"
-              >
-                <Instagram size={18} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:text-blue-600 hover:border-blue-600"
-              >
-                <Youtube size={18} />
-              </a>
-            </div>
-          </div>
-
-          {/* Useful Links */}
-          <div>
-            <h3 className="font-thin text-lg text-gray-900 mb-4">Useful Links</h3>
-            <ul className="space-y-3 text-md text-gray-500">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Client</a></li>
-              <li><a href="#">SME</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Contact us</a></li>
-            </ul>
-          </div>
-
-          {/* How We Help */}
-          <div>
-            <h3 className="font-thin text-lg text-gray-900 mb-4">How We Help</h3>
-            <ul className="space-y-3 text-md text-gray-500">
-              <li><a href="#">Help Center</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Term & Condition</a></li>
-              <li><a href="#">FAQs</a></li>
-            </ul>
-          </div>
-
-          {/* Who We Are */}
-          <div>
-            <h3 className="font-thin text-lg text-gray-900 mb-4">Who We Are</h3>
-            <ul className="space-y-3 text-md text-gray-500">
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Contact us</a></li>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">FAQs</a></li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-200 py-6">
-          <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
-            <p>© 2025 SMEOnCall All rights reserved.</p>
-            <ul className="flex items-center gap-6 mt-4 md:mt-0">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">How We Help</a></li>
-              <li><a href="#">Client</a></li>
-              <li><a href="#">SME</a></li>
-            </ul>
-          </div>
-        </div>
-      </footer>
     </>
   )
 }
