@@ -2,6 +2,8 @@ import './globals.css'
 import QueryProvider from "./QueryProvider";
 import { Inter_Tight } from 'next/font/google'
 import type { ReactNode } from 'react'
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 const interTight = Inter_Tight({
   subsets: ['latin'],
@@ -12,9 +14,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={interTight.className}>
+        <Header />
         <QueryProvider>
           {children}
         </QueryProvider>
+        <Footer />
       </body>
     </html>
   )
