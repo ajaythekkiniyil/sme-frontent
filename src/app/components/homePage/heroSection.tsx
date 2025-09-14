@@ -19,7 +19,7 @@ const heroSettings = {
 export default function HeroSection({ HeroSection }: any) {
     return (
         <Slider {...heroSettings} className="pb-10 overflow-hidden" data-aos="fade-up">
-            {HeroSection.map((slide: any, index: number) => (
+            {HeroSection?.map((slide: any, index: number) => (
                 <div key={index}>
                     <section className="relative bg-[#F1F6FF] overflow-hidden">
                         <div className="container mx-auto px-6 py-20 lg:py-60 relative z-10">

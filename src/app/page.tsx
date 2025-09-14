@@ -15,6 +15,8 @@ import Testimonial from '../../public/item-testimonial.png'
 import HeroSection from "./components/homePage/heroSection";
 import { useHomePageContent } from "./hooks/useHomePageContent";
 import { defaultHeroData } from "./lib/homePage/defaultHeroData";
+import { defaultHowItWorksData } from "./lib/homePage/defaultHowItWorksData";
+import HowItWorksSection from "./components/homePage/howItWorksSection";
 
 // Custom Arrows
 function NextArrow(props: any) {
@@ -44,10 +46,15 @@ function PrevArrow(props: any) {
 export default function Page() {
   const { data: homePageData, isLoading, isError } = useHomePageContent();
   // If Backend is down or no data fallback to default landing content
-  const HeroSectionData = (isError || isLoading || homePageData?.data?.Hero_section.length === 0 ) 
-  ? defaultHeroData
-  : homePageData?.data?.Hero_section
-  
+  const HeroSectionData = (isError || isLoading || homePageData?.data?.Hero_section.length === 0)
+    ? defaultHeroData
+    : homePageData?.data?.Hero_section
+
+  const HowItWorksData = (isError || isLoading || homePageData?.data?.How_it_works.length === 0)
+    ? defaultHowItWorksData
+    : homePageData?.data?.How_it_works
+
+
   // ✅ Services Slider Settings
   const serviceSettings = {
     dots: true,
@@ -166,67 +173,8 @@ export default function Page() {
       {/* HERO SLIDER */}
       <HeroSection HeroSection={HeroSectionData} />
 
-
-      {/* Services Section */}
-      <section className="bg-[#fff] py-16 sm:py-20 lg:py-28" data-aos="fade-up">
-        <div className="container mx-auto px-6 items-center">
-          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 items-center mb-15 mx-auto'>
-            <div>
-              <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-0 sm:mb-0">Ask SMEs<br /> How it <span className='text-[#32a2dc]'>Works</span></h2>
-            </div>
-
-            <div>
-              <button className="cursor-pointer md:float-right md:text-right sm:float-right sm:text-right px-6 py-3 bg-[#32A2DC] text-white rounded-full text-base sm:text-lg hover:bg-[#1e86bb] transition">
-                Contact Now
-              </button>
-            </div>
-          </div>
-
-          <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
-            {/* Step 01 */}
-            <div className="border border-gray-300 p-10" data-aos="fade-up">
-              <h2 className="text-9xl text-gray-100">01</h2>
-              <MessageSquare className="w-10 h-10 my-8 text-[#32A2DC]" />
-              <h3 className="text-2xl text-black mb-3">Submit Your Questions</h3>
-              <p className="mb-8 text-gray-500 text-lg font-light">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-              </p>
-              <Link href="#" className="text-[#32A2DC] text-lg border-b border-b-[#32A2DC]">
-                Book a call
-              </Link>
-            </div>
-
-            {/* Step 02 */}
-            <div className="border border-gray-300 p-10" data-aos="fade-up">
-              <h2 className="text-9xl text-gray-100">02</h2>
-              <Users className="w-10 h-10 my-8 text-[#32A2DC]" />
-              <h3 className="text-2xl text-black mb-3">We Match You With an SME</h3>
-              <p className="mb-8 text-gray-500 text-lg font-light">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-              </p>
-              <Link href="#" className="text-[#32A2DC] text-lg border-b border-b-[#32A2DC]">
-                Book a call
-              </Link>
-            </div>
-
-            {/* Step 03 */}
-            <div className="border border-gray-300 p-10" data-aos="fade-up">
-              <h2 className="text-9xl text-gray-100">03</h2>
-              <FileCheck className="w-10 h-10 my-8 text-[#32A2DC]" />
-              <h3 className="text-2xl text-black mb-3">Receive a Tailored Response</h3>
-              <p className="mb-8 text-gray-500 text-lg font-light">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-              </p>
-              <Link href="#" className="text-[#32A2DC] text-lg border-b border-b-[#32A2DC]">
-                Book a call
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* How its works */}
+      <HowItWorksSection HowItWorksData={HowItWorksData} />
 
       {/* Why SME on Call */}
       <section className="py-16 sm:py-20 md:py-24" data-aos="fade-up">
