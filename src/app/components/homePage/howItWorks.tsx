@@ -1,9 +1,7 @@
 import { FileCheck, MessageSquare, Users } from "lucide-react";
 import Link from "next/link";
 
-export default function HowItWorksSection({ HowItWorksData }: any) {
-    console.log(HowItWorksData, "HowItWorksData");
-    
+export default function HowItWorksSection({ HowItWorksData }: any) {    
     return (
         <section className="bg-[#fff] py-16 sm:py-20 lg:py-28" data-aos="fade-up">
         <div className="container mx-auto px-6 items-center">
