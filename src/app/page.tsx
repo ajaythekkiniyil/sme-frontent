@@ -16,7 +16,9 @@ import HeroSection from "./components/homePage/heroSection";
 import { useHomePageContent } from "./hooks/useHomePageContent";
 import { defaultHeroData } from "./lib/homePage/defaultHeroData";
 import { defaultHowItWorksData } from "./lib/homePage/defaultHowItWorksData";
-import HowItWorksSection from "./components/homePage/howItWorksSection";
+import HowItWorksSection from "./components/homePage/howItWorks";
+import { defaultWhySmeOnCallData } from "./lib/homePage/defaultWhySmeOnCallData";
+import WhySmeOnCallSection from "./components/homePage/whySmeOnCall";
 
 // Custom Arrows
 function NextArrow(props: any) {
@@ -45,15 +47,19 @@ function PrevArrow(props: any) {
 
 export default function Page() {
   const { data: homePageData, isLoading, isError } = useHomePageContent();
-  // If Backend is down or no data fallback to default landing content
+  {/* If Backend is down or no data fallback to default landing content (landing page content is dynamic) */}
+  {/* take data from strapi or default data */}
   const HeroSectionData = (isError || isLoading || homePageData?.data?.Hero_section.length === 0)
     ? defaultHeroData
     : homePageData?.data?.Hero_section
 
-  const HowItWorksData = (isError || isLoading || homePageData?.data?.How_it_works.length === 0)
+  const HowItWorksSectionData = (isError || isLoading || homePageData?.data?.How_it_works.length === 0)
     ? defaultHowItWorksData
     : homePageData?.data?.How_it_works
 
+  const WhySmeOnCallSectionData = (isError || isLoading || homePageData?.data?.Why_sme_on_call?.length === 0 || homePageData?.data?.Why_sme_on_call === null)
+    ? defaultWhySmeOnCallData
+    : homePageData?.data?.Why_sme_on_call
 
   // ✅ Services Slider Settings
   const serviceSettings = {
@@ -170,54 +176,15 @@ export default function Page() {
 
   return (
     <>
-      {/* HERO SLIDER */}
+      {/* Hero section */}
       <HeroSection HeroSection={HeroSectionData} />
 
       {/* How its works */}
-      <HowItWorksSection HowItWorksData={HowItWorksData} />
+      <HowItWorksSection HowItWorksData={HowItWorksSectionData} />
 
       {/* Why SME on Call */}
-      <section className="py-16 sm:py-20 md:py-24" data-aos="fade-up">
-        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Left: Text & Checklist */}
-          <div data-aos="fade-up">
-            <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Why SME <span className='text-[#32a2dc]'>on Call</span></h2>
-            <p className="text-gray-600 max-w-xl mb-8 sm:mb-12 text-sm sm:text-base md:text-lg">
-              Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development.
-            </p>
-
-            <ul className="space-y-3 sm:space-y-4">
-              {[
-                "Customized financial roadmaps",
-                "Cash flow forecasting and budgeting",
-                "Long-term growth and sustainability strategies",
-              ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3">
-                  <span className="flex items-center justify-center w-6 h-6 rounded bg-green-100 text-green-600 text-sm sm:text-base">
-                    ✓
-                  </span>
-                  <span className="text-gray-800 text-sm sm:text-base">{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <button className="mt-6 sm:mt-8 px-6 py-3 bg-[#32A2DC] text-white rounded-full text-base sm:text-lg hover:bg-[#1e86bb] transition">
-              View Details
-            </button>
-          </div>
-
-          {/* Right: Image */}
-          <div data-aos="fade-up">
-            <Image
-              src={WhySme}
-              alt="Team working together"
-              width={600}
-              height={400}
-              className="w-full h-auto rounded-xl object-cover"
-            />
-          </div>
-        </div>
-      </section>
+      <WhySmeOnCallSection WhySmeOnCallSectionData={WhySmeOnCallSectionData}/>
+      
 
       <section className="bg-[#F6FAFF] py-16 sm:py-20 lg:pt-25 lg:pb-40" data-aos="fade-up">
         <div className="container mx-auto px-6">
