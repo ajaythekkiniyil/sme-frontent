@@ -19,31 +19,8 @@ import { defaultHowItWorksData } from "./lib/homePage/defaultHowItWorksData";
 import HowItWorksSection from "./components/homePage/howItWorks";
 import { defaultWhySmeOnCallData } from "./lib/homePage/defaultWhySmeOnCallData";
 import WhySmeOnCallSection from "./components/homePage/whySmeOnCall";
-
-// Custom Arrows
-function NextArrow(props: any) {
-  const { onClick } = props;
-  return (
-    <button
-      onClick={onClick}
-      className="cursor-pointer absolute bottom-[-100px] left-1/2 transform -translate-x-1/2 bg-[#32A2DC] text-white p-3 rounded-full hover:bg-[#2684b9] transition"
-    >
-      <ChevronRight className="w-6 h-6" />
-    </button>
-  );
-}
-
-function PrevArrow(props: any) {
-  const { onClick } = props;
-  return (
-    <button
-      onClick={onClick}
-      className="cursor-pointer absolute bottom-[-100px] left-1/2 transform -translate-x-[160%] bg-[#32A2DC] text-white p-3 rounded-full hover:bg-[#2684b9] transition"
-    >
-      <ChevronLeft className="w-6 h-6" />
-    </button>
-  );
-}
+import { defaultServicesData } from "./lib/homePage/defaultServicesData";
+import ServiceSection from "./components/homePage/services";
 
 export default function Page() {
   const { data: homePageData, isLoading, isError } = useHomePageContent();
@@ -60,25 +37,12 @@ export default function Page() {
   const WhySmeOnCallSectionData = (isError || isLoading || homePageData?.data?.Why_sme_on_call?.length === 0 || homePageData?.data?.Why_sme_on_call === null)
     ? defaultWhySmeOnCallData
     : homePageData?.data?.Why_sme_on_call
+    
+  const servicesSectionData = (isError || isLoading || homePageData?.data?.Services?.length === 0 || homePageData?.data?.Services === null)
+    ? defaultServicesData
+    : homePageData?.data?.Services
 
-  // ✅ Services Slider Settings
-  const serviceSettings = {
-    dots: true,
-    infinite: true,
-    speed: 600,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    arrows: false,   // ✅ hide both next/prev arrows
-    // nextArrow: <NextArrow />,
-    // prevArrow: <PrevArrow />,
-    responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 4 } },
-      { breakpoint: 1024, settings: { slidesToShow: 3 } },
-      { breakpoint: 768, settings: { slidesToShow: 2 } },
-      { breakpoint: 480, settings: { slidesToShow: 1 } },
-    ],
-  };
+  
 
   const testimonialSettings = {
     dots: true,          // show navigation dots
@@ -135,15 +99,6 @@ export default function Page() {
     },
   ];
 
-  const slides = [
-    { id: 1, title: "Testing" },
-    { id: 2, title: "Consulting" },
-    { id: 3, title: "Analysis" },
-    { id: 4, title: "Support" },
-    { id: 5, title: "Training" },
-    { id: 6, title: "Implementation" },
-  ];
-
   const faqs = [
     {
       q: "How do I become a featured expert?",
@@ -186,31 +141,8 @@ export default function Page() {
       <WhySmeOnCallSection WhySmeOnCallSectionData={WhySmeOnCallSectionData}/>
       
 
-      <section className="bg-[#F6FAFF] py-16 sm:py-20 lg:pt-25 lg:pb-40" data-aos="fade-up">
-        <div className="container mx-auto px-6">
-          <div className="text-left mb-20">
-            <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Our <span className='text-[#32a2dc]'>Services</span></h2>
-            <p className="text-gray-600 max-w-xl text-sm sm:text-base md:text-lg">
-              Lorem ipsum is a dummy or placeholder text commonly used in design.
-            </p>
-          </div>
-        </div>
-        <div className="container relative mx-auto">
-          <Slider {...serviceSettings}>
-            {slides.map((slide) => (
-              <div key={slide.id} className="px-3 pb-18" data-aos="fade-up">
-                <div className="relative rounded-2xl overflow-hidden">
-                  <Image src={ServiceGridImage} alt={slide.title} className="w-full h-80 object-cover rounded-2xl" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#32A2DC]/100 to-transparent" />
-                  <div className="absolute bottom-6 left-6">
-                    <p className="text-2xl font-thin text-white">{slide.title}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </section>
+    {/* Services */}
+    <ServiceSection servicesSectionData={servicesSectionData}/>
 
       {/* Contact Section */}
       <section className="py-16 sm:py-20 md:py-24" id='contact-us' data-aos="fade-up">
