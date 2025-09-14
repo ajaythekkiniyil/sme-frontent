@@ -1,16 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Link from 'next/link'
 import Slider from "react-slick";
 import Image from 'next/image'
-import ServiceGridImage from '../../public/project-one.jpg'
-import WhySme from '../../public/why-sme.png'
-import { ChevronLeft, ChevronRight, MessageSquare, Users, FileCheck } from "lucide-react";
 import BasicEnquiryForm from './components/basicEnquiryForm'
 import { ChevronDown } from "lucide-react";
-import GeneralManager from '../../public/general-manager-sme.jpg'
 import Testimonial from '../../public/item-testimonial.png'
 import HeroSection from "./components/homePage/heroSection";
 import { useHomePageContent } from "./hooks/useHomePageContent";
@@ -21,6 +16,8 @@ import { defaultWhySmeOnCallData } from "./lib/homePage/defaultWhySmeOnCallData"
 import WhySmeOnCallSection from "./components/homePage/whySmeOnCall";
 import { defaultServicesData } from "./lib/homePage/defaultServicesData";
 import ServiceSection from "./components/homePage/services";
+import { defaultExpertsData } from "./lib/homePage/defaultExpertsData";
+import ExpertSection from "./components/homePage/expertSection";
 
 export default function Page() {
   const { data: homePageData, isLoading, isError } = useHomePageContent();
@@ -41,6 +38,10 @@ export default function Page() {
   const servicesSectionData = (isError || isLoading || homePageData?.data?.Services?.length === 0 || homePageData?.data?.Services === null)
     ? defaultServicesData
     : homePageData?.data?.Services
+    
+  const expertSectionData = (isError || isLoading || homePageData?.data?.Experts?.length === 0 || homePageData?.data?.Experts === null)
+    ? defaultExpertsData
+    : homePageData?.data?.Experts
 
   const testimonialSettings = {
     dots: true,          // show navigation dots
@@ -54,48 +55,6 @@ export default function Page() {
     autoplaySpeed: 4000,
     arrows: false,       // hide arrows (you can enable if needed)
   };
-
-  const Featuredexperts = {
-    dots: true,
-    infinite: true,
-    speed: 600,
-    slidesToShow: 1, // desktop default
-    slidesToScroll: 1,
-    autoplay: true,
-    arrows: false,   // ✅ hide both next/prev arrows
-    responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 3 } },
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
-    ],
-  };
-
-  const experts = [
-    {
-      name: "Noah Oliver",
-      role: "General Manager",
-      img: GeneralManager,
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
-    },
-    {
-      name: "Samantha Nguyen",
-      role: "Compliance Specialist",
-      img: "/team-4.jpg",
-      desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
-    },
-    {
-      name: "Michelle Garcia",
-      role: "SEO Specialist",
-      img: "/team-2.jpg",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also ",
-    },
-    {
-      name: "Kobie Mainoo",
-      role: "Marketing Manager",
-      img: "/team-3.jpg",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
-    },
-  ];
 
   const faqs = [
     {
@@ -116,7 +75,7 @@ export default function Page() {
     },
   ];
 
-  // ✅ Initialize AOS here
+  // Initialize AOS here
   useEffect(() => {
     AOS.init({
       duration: 2000,   // animation duration (ms)
@@ -162,44 +121,7 @@ export default function Page() {
       </section>
 
       {/* Featured Experts */}
-      <section className="bg-[#F6FAFF] mx-auto py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px]" data-aos="fade-up">
-        <div className="container mx-auto px-6">
-          <div className="text-left mb-8 sm:mb-12">
-            <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Featured <span className='text-[#32a2dc]'>Experts</span></h2>
-            <p className="text-gray-600 max-w-3xl text-sm sm:text-base md:text-lg">
-              Our dedicated members actively participate in our community, sharing
-              expertise, collaborating on projects, and supporting one another.
-            </p>
-          </div>
-
-          {/* Slider */}
-          <Slider {...Featuredexperts}>
-            {experts.map((expert, i) => (
-              <div key={i} className="pb-18" data-aos="fade-up">
-
-
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-20 items-center">
-                  <div>
-                    <Image src={expert.img} alt={expert.name} width={600} height={400} className="w-full h-auto rounded-xl object-cover" />
-                  </div>
-                  <div className='md:col-span-2'>
-                    <h3 className="text-4xl font-semibold text-gray-900 mb-4">{expert.name}</h3>
-                    <p className="text-[#273677] uppercase text-xl mb-8"> {expert.role}</p>
-                    <p className='text-xl leading-8'>{expert.desc}</p>
-                  </div>
-                </div>
-
-
-
-
-
-
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </section>
+      <ExpertSection expertSectionData={expertSectionData}/>
 
       <section className="bg-white mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px]" data-aos="fade-up">
         <div className="container mx-auto px-6">
