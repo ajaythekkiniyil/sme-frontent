@@ -2,6 +2,7 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
+
 @theme {
   --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
 }
@@ -22,4 +23,48 @@
   .above-1400 {
     display: flex !important; /* or block */
   }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.slick-dots {
+  bottom: 0;
+}
+.slick-dots li.slick-active button:before {
+  opacity: 0;
+  color: #00000000;
+}
+.slick-dots li {
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  margin: 0 4px;
+  display: inline-block;
+  position: relative;
+  border-radius: 100%;
+  border: 2px solid #32a2dc;
+}
+.slick-dots .slick-active {
+  background: #32a2dc;
+}
+.slick-dots li button:before {
+  content: "•";
+  opacity: 0 !important;
+
+}
+
+.slick-vertical .slick-dots {
+  position: absolute;
+  top: 50%;
+  right: -44px;
+  transform: translateY(-50%);
+  display: flex !important;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;   /* keeps them vertically centered */
+  align-items: flex-end;     /* ✅ push dots to the right */
+
+  
 }
