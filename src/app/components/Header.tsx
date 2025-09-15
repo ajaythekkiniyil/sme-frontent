@@ -29,7 +29,7 @@ export default function Header() {
                     <li><Link href="/clients" className="hover:text-[#32A2DC]">Clients</Link></li>
                     <li><Link href="/careers" className="hover:text-[#32A2DC]">Careers</Link></li>
                     <li><Link href="/about-us" className="hover:text-[#32A2DC]">About Us</Link></li>
-                    <li><Link href="/#contact-us" className="hover:text-[#32A2DC]">Contact Us</Link></li>
+                    <li><Link href="/contact-us" className="hover:text-[#32A2DC]">Contact Us</Link></li>
                 </ul>
 
                 {/* Desktop Buttons (≥1400px) */}

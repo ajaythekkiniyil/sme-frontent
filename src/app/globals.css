@@ -38,8 +38,8 @@ html {
 }
 .slick-dots li {
   cursor: pointer;
-  width: 14px;
-  height: 14px;
+  width: 14px !important;
+  height: 14px !important;
   margin: 0 4px;
   display: inline-block;
   position: relative;

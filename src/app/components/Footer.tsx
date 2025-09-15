@@ -68,7 +68,7 @@ export default function Footer() {
                         <li><Link href="/clients">Clients</Link></li>
                         <li><Link href="/careers">Careers</Link></li>
                         <li><Link href="/about-us">About us</Link></li>
-                        <li><Link href="/#contact-us">Contact us</Link></li>
+                        <li><Link href="/contact-us">Contact us</Link></li>
                     </ul>
                 </div>
 
@@ -88,7 +88,7 @@ export default function Footer() {
                     <h3 className="font-thin text-lg text-gray-900 mb-4">Who We Are</h3>
                     <ul className="space-y-3 text-md text-gray-500">
                         <li><Link href="/careers">Careers</Link></li>
-                        <li><Link href="/#contact-us">Contact us</Link></li>
+                        <li><Link href="/contact-us">Contact us</Link></li>
                         <li><Link href="/about-us">About us</Link></li>
                         <li><Link href="/faq">FAQs</Link></li>
                     </ul>
