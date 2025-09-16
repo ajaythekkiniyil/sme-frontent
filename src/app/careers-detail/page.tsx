@@ -108,25 +108,85 @@ export default function SMEs() {
       </section>
 
 
-      <section className="py-30 bg-white" data-aos="fade-up">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 gap-10 items-center">
-              <div>
-                <Image src={JoinNetwork} alt="General Manager"/>
-              </div>
-
-              <div>
-                <h3 className="text-3xl text-[#273677] mb-6 md:leading-12 leading-10 sm:leading-10 font-regular">SMEONCALL – Join Our Network</h3>
-                <p className="text-xl mb-5 leading-9">We connect decision-makers with verified subject matter experts, empowering them to make faster, smarter, and more confident choices.</p>
-                <p className="text-xl mb-5 leading-9">Our diverse global network is one of the largest and most dynamic sources of real-world expertise—growing daily with new professionals from across the energy industry.  </p>
-              </div>
-          </div>
-        </div>
-    </section>
 
 
+      <section className="py-16 sm:py-24 md:py-32" data-aos="fade-up">
+  <div className="container mx-auto px-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-15">
 
-    <section className="py-30 bg-[#F6FAFF]" data-aos="fade-up">
+      <div className="bg-white px-10 py-20 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
+        
+        <h3 className="text-2xl font-semibold text-[#273677] mb-5">Drilling And Well Engineering</h3>
+        
+        <p className="flex items-center text-[#32A2DC] mb-4">
+          <span>Location: Remote / On Call</span>
+        </p>
+        
+        <p className="text-gray-700 text-lg mb-6 line-clamp-3">
+          Our SMEs in drilling help clients reduce non-productive time, enhance rig performance, and optimize bit selection. Ideal for experts with field or office-based drilling experience.
+        </p>
+        
+        <button className="bg-[#273677] cursor-pointer text-white font-semibold px-6 py-3 rounded-md hover:bg-[#1f2f60] transition-colors duration-200">
+          View Details
+        </button>
+        
+      </div>
+
+      <div className="bg-white px-10 py-20 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
+        
+        <h3 className="text-2xl font-semibold text-[#273677] mb-5">Drilling And Well Engineering</h3>
+        
+        <p className="flex items-center text-[#32A2DC] mb-4">
+          <span>Location: Remote / On Call</span>
+        </p>
+        
+        <p className="text-gray-700 text-lg mb-6 line-clamp-3">
+          Our SMEs in drilling help clients reduce non-productive time, enhance rig performance, and optimize bit selection. Ideal for experts with field or office-based drilling experience.
+        </p>
+        
+        <button className="bg-[#273677] cursor-pointer text-white font-semibold px-6 py-3 rounded-md hover:bg-[#1f2f60] transition-colors duration-200">
+          View Details
+        </button>
+        
+      </div>
+      
+
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+      <section className="py-30 bg-[#F6FAFF]" data-aos="fade-up">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1">
               <div>
@@ -163,51 +223,6 @@ export default function SMEs() {
               </div>
           </div>
     </section>
-
-
-
-    <section className="py-30 bg-white" data-aos="fade-up">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 gap-10 items-center">
-
-              <div>
-                <h3 className="text-3xl text-[#273677] mb-6 md:leading-12 leading-10 sm:leading-10 font-regular">We believe in the power of knowledge.</h3>
-                <p className="text-xl mb-5 leading-9">We work together, win together, and grow together
-“At SMEOnCall, we value diversity, inclusion, and the power of shared expertise. We believe in working as a team—leveraging collective knowledge to help organizations make better, faster, and more informed decisions.” </p>
-              </div>
-
-
-              <div>
-                <Image src={CrTeam07} alt="General Manager"/>
-              </div>
-
-          </div>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-
-
-
-
-
-
-
-
 
 
     </>
