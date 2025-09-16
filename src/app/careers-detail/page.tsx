@@ -100,9 +100,11 @@ export default function SMEs() {
               </span>
             </h1>
             <p className="mb-8 md:mb-12 text-xl text-white font-thin">Subject Matter Experts (SMEs) bring curiosity, depth, and clarity to every professional decision that matters.</p>
+            <Link href="/careers-detail-inner">
             <button className="cursor-pointer px-6 py-3 bg-[#32A2DC] text-white rounded-full text-lg shadow hover:bg-[#2790c7] transition">
               View All Jobs
             </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -110,15 +112,15 @@ export default function SMEs() {
 
 
 
-      <section className="py-16 sm:py-24 md:py-32" data-aos="fade-up">
+      <section className="bg-[#F6FAFF] py-16 sm:py-24 md:py-32" data-aos="fade-up">
   <div className="container mx-auto px-6">
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-15">
 
-      <div className="bg-white px-10 py-20 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
+      <div className="bg-white px-10 py-20 rounded-2xl border border-[#dedede] hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
         
         <h3 className="text-2xl font-semibold text-[#273677] mb-5">Drilling And Well Engineering</h3>
         
-        <p className="flex items-center text-[#32A2DC] mb-4">
+        <p className="flex items-center text-[#32A2DC] text-lg mb-4">
           <span>Location: Remote / On Call</span>
         </p>
         
@@ -126,30 +128,165 @@ export default function SMEs() {
           Our SMEs in drilling help clients reduce non-productive time, enhance rig performance, and optimize bit selection. Ideal for experts with field or office-based drilling experience.
         </p>
         
+        <Link href="/careers-detail-inner">
         <button className="bg-[#273677] cursor-pointer text-white font-semibold px-6 py-3 rounded-md hover:bg-[#1f2f60] transition-colors duration-200">
           View Details
-        </button>
+        </button> 
+        </Link>
         
       </div>
 
-      <div className="bg-white px-10 py-20 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
-        
-        <h3 className="text-2xl font-semibold text-[#273677] mb-5">Drilling And Well Engineering</h3>
-        
-        <p className="flex items-center text-[#32A2DC] mb-4">
-          <span>Location: Remote / On Call</span>
+      <div className="bg-white px-10 py-20 rounded-2xl border border-[#dedede] hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
+        <h3 className="text-2xl font-semibold text-[#273677] mb-5">Well Integrity & Inspection</h3>
+        <p className="flex items-center text-[#32A2DC] text-lg mb-4">
+          <span>Location: Global</span>
         </p>
-        
         <p className="text-gray-700 text-lg mb-6 line-clamp-3">
-          Our SMEs in drilling help clients reduce non-productive time, enhance rig performance, and optimize bit selection. Ideal for experts with field or office-based drilling experience.
+        Support operators with major inspections, risk assessments, and regulatory compliance. Experience in CAT III/IV audits, API RP 90, and integrity management is a plus. 
         </p>
-        
+        <Link href="/careers-detail-inner">
         <button className="bg-[#273677] cursor-pointer text-white font-semibold px-6 py-3 rounded-md hover:bg-[#1f2f60] transition-colors duration-200">
           View Details
-        </button>
-        
+        </button> 
+        </Link>
       </div>
-      
+
+
+
+      <div className="bg-white px-10 py-20 rounded-2xl  border border-[#dedede] hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
+        <h3 className="text-2xl font-semibold text-[#273677] mb-5">Production & Artificial Lift</h3>
+        <p className="mb-3 text-xl leading-6">Subject Matter Expert, ESP & Artificial Lift Systems</p>
+        <p className="flex items-center text-[#32A2DC] text-lg mb-4">
+          <span>Location: Remote</span>
+        </p>
+        <p className="text-gray-700 text-lg mb-6 line-clamp-3">
+        Provide clients with recommendations for optimizing artificial lift strategies and reducing system failures. Must have ESP/rod lift/jet pump design and troubleshooting experience.
+        </p>
+        <Link href="/careers-detail-inner">
+        <button className="bg-[#273677] cursor-pointer text-white font-semibold px-6 py-3 rounded-md hover:bg-[#1f2f60] transition-colors duration-200">
+          View Details
+        </button> 
+        </Link>
+      </div>
+
+
+      <div className="bg-white px-10 py-20 rounded-2xl  border border-[#dedede] hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
+        <h3 className="text-2xl font-semibold text-[#273677] mb-5">Hse & Regulatory Compliance</h3>
+        <p className="mb-3 text-xl leading-6">SME, Health, Safety & Environmental (HSE)</p>
+        <p className="flex items-center text-[#32A2DC] text-lg mb-4">
+          <span>Location: Remote</span>
+        </p>
+        <p className="text-gray-700 text-lg mb-6 line-clamp-3">
+        Guide companies in building safety management systems, incident response, and training programs. Ideal for those with NEBOSH, OSHA, or ADNOC/Aramco compliance expertise.
+        </p>
+        <Link href="/careers-detail-inner">
+        <button className="bg-[#273677] cursor-pointer text-white font-semibold px-6 py-3 rounded-md hover:bg-[#1f2f60] transition-colors duration-200">
+          View Details
+        </button> 
+        </Link>
+      </div>
+
+
+      <div className="bg-white px-10 py-20 rounded-2xl  border border-[#dedede] hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
+        <h3 className="text-2xl font-semibold text-[#273677] mb-5">Energy Transition & Sustainability</h3>
+        <p className="mb-3 text-xl leading-6">Consultant, Carbon Management & Sustainability</p>
+        <p className="flex items-center text-[#32A2DC] text-lg mb-4">
+          <span>Location: Remote</span>
+        </p>
+        <p className="text-gray-700 text-lg mb-6 line-clamp-3">
+        Help clients navigate carbon strategy, methane abatement, and flaring reduction plans. Suitable for experts in CCUS, ESG reporting, and oilfield sustainability programs. 
+        </p>
+        <Link href="/careers-detail-inner">
+        <button className="bg-[#273677] cursor-pointer text-white font-semibold px-6 py-3 rounded-md hover:bg-[#1f2f60] transition-colors duration-200">
+          View Details
+        </button> 
+        </Link> 
+      </div>
+
+
+      <div className="bg-white px-10 py-20 rounded-2xl  border border-[#dedede] hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
+        <h3 className="text-2xl font-semibold text-[#273677] mb-5">Digital Transformation & Ai</h3>
+        <p className="mb-3 text-xl leading-6">Advisor, Digital Oilfield & AI Applications</p>
+        <p className="flex items-center text-[#32A2DC] text-lg mb-4">
+          <span>Location: Global / Remote</span>
+        </p>
+        <p className="text-gray-700 text-lg mb-6 line-clamp-3">
+        Work with clients to digitize operations using AI, digital twins, and real-time monitoring. Seeking SMEs with experience in predictive maintenance, asset optimization, or SCADA.
+        </p>
+        <Link href="/careers-detail-inner">
+        <button className="bg-[#273677] cursor-pointer text-white font-semibold px-6 py-3 rounded-md hover:bg-[#1f2f60] transition-colors duration-200">
+          View Details
+        </button> 
+        </Link> 
+      </div>
+
+
+      <div className="bg-white px-10 py-20 rounded-2xl  border border-[#dedede] hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
+        <h3 className="text-2xl font-semibold text-[#273677] mb-5">Reservoir & Petroleum Engineering</h3>
+        <p className="mb-3 text-xl leading-6">Senior Consultant, Reservoir Simulation & Field Development</p>
+        <p className="flex items-center text-[#32A2DC] text-lg mb-4">
+          <span>Location: Middle East / Remote</span>
+        </p>
+        <p className="text-gray-700 text-lg mb-6 line-clamp-3">
+        Support with field development planning, material balance, or dynamic reservoir modeling. Proficiency in ECLIPSE, Petrel, or CMG preferred.
+        </p>
+        <Link href="/careers-detail-inner">
+        <button className="bg-[#273677] cursor-pointer text-white font-semibold px-6 py-3 rounded-md hover:bg-[#1f2f60] transition-colors duration-200">
+          View Details
+        </button> 
+        </Link>
+      </div>
+
+
+      <div className="bg-white px-10 py-20 rounded-2xl  border border-[#dedede] hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
+        <h3 className="text-2xl font-semibold text-[#273677] mb-5">Technical Expert, Cementing & Stimulatio</h3>
+        <p className="mb-3 text-xl leading-6">Senior Consultant, Reservoir Simulation & Field Development</p>
+        <p className="flex items-center text-[#32A2DC] text-lg mb-4">
+          <span>Location: MENATI / APAC</span>
+        </p>
+        <p className="text-gray-700 text-lg mb-6 line-clamp-3">
+        Assist in treatment design, post-job evaluation, and failure investigation. Experience in frac, acidizing, and zonal isolation strongly valued. 
+        </p>
+        <Link href="/careers-detail-inner">
+        <button className="bg-[#273677] cursor-pointer text-white font-semibold px-6 py-3 rounded-md hover:bg-[#1f2f60] transition-colors duration-200">
+          View Details
+        </button> 
+        </Link>
+      </div>
+
+
+      <div className="bg-white px-10 py-20 rounded-2xl  border border-[#dedede] hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
+        <h3 className="text-2xl font-semibold text-[#273677] mb-5">Coordinator, SME Engagement & Sales Ops </h3>
+        {/* <p className="mb-3 text-xl leading-8">Senior Consultant, Reservoir Simulation & Field Development</p> */}
+        <p className="flex items-center text-[#32A2DC] text-lg mb-4">
+          <span>Location: Dubai (Hybrid)</span>
+        </p>
+        <p className="text-gray-700 text-lg mb-6 line-clamp-3">
+        Help onboard SMEs, match them to client needs, and support consulting logistics. Great for someone with oilfield operations background and a flair for customer 
+        </p>
+        <Link href="/careers-detail-inner">
+        <button className="bg-[#273677] cursor-pointer text-white font-semibold px-6 py-3 rounded-md hover:bg-[#1f2f60] transition-colors duration-200">
+          View Details
+        </button> 
+        </Link>
+      </div>
+
+      <div className="bg-white px-10 py-20 rounded-2xl  border border-[#dedede] hover:shadow-xl transition-shadow duration-300" data-aos="fade-up">
+        <h3 className="text-2xl font-semibold text-[#273677] mb-5">Coordinator, SME Engagement & Sales Ops </h3>
+        {/* <p className="mb-3 text-xl leading-8">Senior Consultant, Reservoir Simulation & Field Development</p> */}
+        <p className="flex items-center text-[#32A2DC] text-lg mb-4">
+          <span>Location: Dubai (Hybrid)</span>
+        </p>
+        <p className="text-gray-700 text-lg mb-6 line-clamp-3">
+        Help onboard SMEs, match them to client needs, and support consulting logistics. Great for someone with oilfield operations background and a flair for customer 
+        </p>
+        <Link href="/careers-detail-inner">
+        <button className="bg-[#273677] cursor-pointer text-white font-semibold px-6 py-3 rounded-md hover:bg-[#1f2f60] transition-colors duration-200">
+          View Details
+        </button> 
+        </Link>
+      </div>
+
 
 
     </div>
@@ -186,15 +323,17 @@ export default function SMEs() {
 
 
 
-      <section className="py-30 bg-[#F6FAFF]" data-aos="fade-up">
+      <section className="pt-30 bg-[#F6FAFF]" data-aos="fade-up">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1">
               <div>
               <h3 className="text-center text-3xl text-[#273677] mb-6 md:leading-12 leading-10 sm:leading-10 font-regular">At SMEOnCall, we welcome talent at every stage. If you're smart, curious, and passionate about making an impact, we’d love to hear from you. Check out our current openings and apply today. </h3>
               </div>
+              <Link href="/careers-detail" className="mx-auto">
               <button className="cursor-pointer px-10 py-3 bg-[#32A2DC] text-white rounded-full text-lg hover:bg-[#2790c7] transition max-w-xl mx-auto">
               Join Now
             </button>   
+            </Link>
           </div>
         </div>
         <div className="grid grid-cols-6 gap-3 mt-20">
