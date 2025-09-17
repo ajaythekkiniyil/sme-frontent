@@ -17,6 +17,7 @@ const heroSettings = {
 };
 
 export default function HeroSection({ HeroSection }: any) {
+    
     return (
         <Slider {...heroSettings} className="pb-10 overflow-hidden" data-aos="fade-up">
             {HeroSection?.map((slide: any, index: number) => (
@@ -51,7 +52,7 @@ export default function HeroSection({ HeroSection }: any) {
                                 {/* Mobile image */}
                                 <div className="relative w-full h-64 md:h-96 lg:hidden">
                                     <Image
-                                        src={slide.hero_image.url === "" ? SmeBanner : `${process.env.NEXT_PUBLIC_STRAPI_URL}${slide.hero_image.url}`}
+                                        src={slide.hero_image.url === "" ? SmeBanner : `${slide.hero_image.url}`}
                                         alt="Hero"
                                         fill
                                         className="object-cover rounded-2xl"
@@ -64,7 +65,7 @@ export default function HeroSection({ HeroSection }: any) {
                         {/* Desktop background image */}
                         <div className="absolute top-0 right-0 bottom-0 left-1/2 hidden lg:block">
                             <Image
-                                src={slide.hero_image.url === "" ? SmeBannerTwo : `${process.env.NEXT_PUBLIC_STRAPI_URL}${slide.hero_image.url}`}
+                                src={slide.hero_image.url === "" ? SmeBannerTwo : `${slide.hero_image.url}`}
                                 alt="Hero"
                                 fill
                                 className="object-cover"

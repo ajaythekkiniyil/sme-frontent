@@ -20,38 +20,39 @@ import FAQSection from "./components/homePage/faq";
 import { defaultFaqData } from "./lib/homePage/defaultFaqData";
 import TestimonialSection from "./components/homePage/testimonials";
 import { defaultTestimonial } from "./lib/homePage/defaultTestimonials";
+import CustomLoader from "./components/CustomLoader";
 
 export default function Page() {
   const { data: homePageData, isLoading, isError } = useHomePageContent();
   {/* If Backend is down or no data fallback to default landing content (landing page content is dynamic) */ }
   {/* take data from strapi or default data */ }
-  const HeroSectionData = (isError || isLoading || homePageData?.data?.Hero_section.length === 0)
+  const HeroSectionData = (isError || homePageData?.data?.Hero_section.length === 0)
     ? defaultHeroData
     : homePageData?.data?.Hero_section
 
-  const HowItWorksSectionData = (isError || isLoading || homePageData?.data?.How_it_works.length === 0)
+  const HowItWorksSectionData = (isError || homePageData?.data?.How_it_works.length === 0)
     ? defaultHowItWorksData
     : homePageData?.data?.How_it_works
 
-  const WhySmeOnCallSectionData = (isError || isLoading || homePageData?.data?.Why_sme_on_call?.length === 0 || homePageData?.data?.Why_sme_on_call === null)
+  const WhySmeOnCallSectionData = (isError || homePageData?.data?.Why_sme_on_call?.length === 0 || homePageData?.data?.Why_sme_on_call === null)
     ? defaultWhySmeOnCallData
     : homePageData?.data?.Why_sme_on_call
 
-  const servicesSectionData = (isError || isLoading || homePageData?.data?.Services?.length === 0 || homePageData?.data?.Services === null)
+  const servicesSectionData = (isError || homePageData?.data?.Services?.length === 0 || homePageData?.data?.Services === null)
     ? defaultServicesData
     : homePageData?.data?.Services
-    
-  const expertSectionData = (isError || isLoading || homePageData?.data?.Experts?.length === 0 || homePageData?.data?.Experts === null)
+
+  const expertSectionData = (isError || homePageData?.data?.Experts?.length === 0 || homePageData?.data?.Experts === null)
     ? defaultExpertsData
     : homePageData?.data?.Experts
 
-  const faqSectionData = (isError || isLoading || homePageData?.data?.Faq?.length === 0 || homePageData?.data?.Faq === null)
+  const faqSectionData = (isError || homePageData?.data?.Faq?.length === 0 || homePageData?.data?.Faq === null)
     ? defaultFaqData
     : homePageData?.data?.Faq
 
-  const testimonialSectionData = (isError || isLoading || homePageData?.data?.Testimonials?.length === 0 || homePageData?.data?.Testimonials === null)
+  const testimonialSectionData = (isError || homePageData?.data?.Testimonials?.length === 0 || homePageData?.data?.Testimonials === null)
     ? defaultTestimonial
-    : homePageData?.data?.Testimonials    
+    : homePageData?.data?.Testimonials
 
   // Initialize AOS here
   useEffect(() => {
@@ -62,6 +63,12 @@ export default function Page() {
       easing: "ease-in-out",
     });
   }, []);
+
+  if (isLoading) {
+    return (
+      <CustomLoader />
+    )
+  }
 
   return (
     <>
@@ -99,13 +106,13 @@ export default function Page() {
       </section>
 
       {/* Featured Experts */}
-      <ExpertSection expertSectionData={expertSectionData}/>
+      <ExpertSection expertSectionData={expertSectionData} />
 
       {/* FAQ */}
-      <FAQSection  faqSectionData={faqSectionData}/>
+      <FAQSection faqSectionData={faqSectionData} />
 
       {/* Testimonials */}
-      <TestimonialSection testimonialSectionData={testimonialSectionData}/>
+      <TestimonialSection testimonialSectionData={testimonialSectionData} />
     </>
   )
 }

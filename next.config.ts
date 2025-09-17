@@ -10,7 +10,12 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ['127.0.0.1', 'localhost', 'api.myapp.com', "*"]
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**", // allows all HTTPS domains
+      },
+    ],
   }
 };
 
