@@ -23,36 +23,44 @@ import { defaultTestimonial } from "./lib/homePage/defaultTestimonials";
 import CustomLoader from "./components/CustomLoader";
 
 export default function Page() {
-  const { data: homePageData, isLoading, isError } = useHomePageContent();
+  // const { data: homePageData, isLoading, isError } = useHomePageContent();
+
   {/* If Backend is down or no data fallback to default landing content (landing page content is dynamic) */ }
   {/* take data from strapi or default data */ }
-  const HeroSectionData = (isError || homePageData?.data?.Hero_section.length === 0)
-    ? defaultHeroData
-    : homePageData?.data?.Hero_section
+  const HeroSectionData = defaultHeroData
+    // (isError || homePageData?.data?.Hero_section.length === 0)
+    //   ? defaultHeroData
+    //   : homePageData?.data?.Hero_section
 
-  const HowItWorksSectionData = (isError || homePageData?.data?.How_it_works.length === 0)
-    ? defaultHowItWorksData
-    : homePageData?.data?.How_it_works
+  const HowItWorksSectionData = defaultHowItWorksData
+    // (isError || homePageData?.data?.How_it_works.length === 0)
+    //   ? defaultHowItWorksData
+    //   : homePageData?.data?.How_it_works
 
-  const WhySmeOnCallSectionData = (isError || homePageData?.data?.Why_sme_on_call?.length === 0 || homePageData?.data?.Why_sme_on_call === null)
-    ? defaultWhySmeOnCallData
-    : homePageData?.data?.Why_sme_on_call
+  const WhySmeOnCallSectionData = defaultWhySmeOnCallData
+    // (isError || homePageData?.data?.Why_sme_on_call?.length === 0 || homePageData?.data?.Why_sme_on_call === null)
+    //   ? defaultWhySmeOnCallData
+    //   : homePageData?.data?.Why_sme_on_call
 
-  const servicesSectionData = (isError || homePageData?.data?.Services?.length === 0 || homePageData?.data?.Services === null)
-    ? defaultServicesData
-    : homePageData?.data?.Services
+  const servicesSectionData = defaultServicesData
+    // (isError || homePageData?.data?.Services?.length === 0 || homePageData?.data?.Services === null)
+    //   ? defaultServicesData
+    //   : homePageData?.data?.Services
 
-  const expertSectionData = (isError || homePageData?.data?.Experts?.length === 0 || homePageData?.data?.Experts === null)
-    ? defaultExpertsData
-    : homePageData?.data?.Experts
+  const expertSectionData = defaultExpertsData
+    // (isError || homePageData?.data?.Experts?.length === 0 || homePageData?.data?.Experts === null)
+    //   ? defaultExpertsData
+    //   : homePageData?.data?.Experts
 
-  const faqSectionData = (isError || homePageData?.data?.Faq?.length === 0 || homePageData?.data?.Faq === null)
-    ? defaultFaqData
-    : homePageData?.data?.Faq
+  const faqSectionData = defaultFaqData
+    // (isError || homePageData?.data?.Faq?.length === 0 || homePageData?.data?.Faq === null)
+    //   ? defaultFaqData
+    //   : homePageData?.data?.Faq
 
-  const testimonialSectionData = (isError || homePageData?.data?.Testimonials?.length === 0 || homePageData?.data?.Testimonials === null)
-    ? defaultTestimonial
-    : homePageData?.data?.Testimonials
+  const testimonialSectionData = defaultTestimonial
+    // (isError || homePageData?.data?.Testimonials?.length === 0 || homePageData?.data?.Testimonials === null)
+    //   ? defaultTestimonial
+    //   : homePageData?.data?.Testimonials
 
   // Initialize AOS here
   useEffect(() => {
@@ -64,11 +72,11 @@ export default function Page() {
     });
   }, []);
 
-  if (isLoading) {
-    return (
-      <CustomLoader />
-    )
-  }
+  // if (isLoading) {
+  //   return (
+  //     <CustomLoader />
+  //   )
+  // }
 
   return (
     <>
@@ -91,11 +99,12 @@ export default function Page() {
           <div className="text-left mb-8 md:mb-0" data-aos="fade-up">
             <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Contact <span className='text-[#32a2dc]'>Us</span></h2>
             <p className="text-gray-600 max-w-xl text-sm sm:text-base md:text-lg">
-              {
+              {/* {
                 homePageData?.data.Contact_us_description[0].children[0].text === "" || !homePageData
                   ? "Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development."
                   : homePageData?.data.Contact_us_description[0].children[0].text
-              }
+              } */}
+              Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development.
             </p>
           </div>
           {/* Right: Form */}
