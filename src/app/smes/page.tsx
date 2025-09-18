@@ -9,7 +9,10 @@ import Gallery01 from "../../../public/gl-01.jpg";
 import Gallery02 from "../../../public/gl-02.jpg";
 import Gallery03 from "../../../public/gl-03.jpg";
 import Gallery04 from "../../../public/gl-04.jpg";
+import CompleteProfile from "../../../public/complete-profile.svg";
+import Monitor from "../../../public/opportunities.svg";
 import GeneralManager from '../../../public/general-manager-sme.jpg'
+import Respond from '../../../public/respond.svg'
 
 export default function SMEs() {
 
@@ -109,7 +112,7 @@ export default function SMEs() {
       {/* Placeholder for next section */}
       <section className="py-30">
         <div className="container mx-auto px-6">
-          <h2 className="text-9xl text-[#273677] mb-10">TRUST SMEs</h2>
+          <h2 className="text-3xl sm:text-3xl md:text-5xl text-[#273677] mb-10">TRUST SMEs</h2>
           <p className="text-xl mb-5 leading-9">Organizations encounter challenges throughout the life cycle of the well every single day. So, how can leaders effectively navigate these obstacles, reduce risks, and save costs to improve efficiency? </p>
           <p className="text-xl mb-5 leading-9">That’s where SMEOnCall comes in.  </p>
           <p className="text-xl mb-5 leading-9">We will connect you with the real Subject Matter Experts (SMEs) who will share their knowledge with clients through flexible opportunities such as phone consultations, short or detailed reports—each offered at standarized pricing based on the scope of work.  Our network consists of highly experienced professionals in the Oil & Gas sector.   </p>
@@ -244,14 +247,14 @@ export default function SMEs() {
       <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6 pb-8 border-b border-gray-300">
         {/* Column 1 - Icon */}
         <div className="flex justify-center md:justify-start">
-          <div className="w-14 h-14 rounded-full bg-[#273677] flex items-center justify-center">
-            <Image src="/icons/profile-icon.svg" alt="Profile" width={28} height={28} />
+          <div className="w-25 h-25 rounded-full bg-[#273677] flex items-center justify-center">
+            <Image src={CompleteProfile} alt="Profile" width={32} height={32} />
           </div>
         </div>
 
         {/* Column 2 - Heading */}
         <div>
-          <h3 className="text-xl font-semibold text-[#007AB9]">
+          <h3 className="text-2xl font-medium text-[#007AB9]">
             Complete SME On Call Profile
           </h3>
         </div>
@@ -267,12 +270,12 @@ export default function SMEs() {
       {/* Step 2 */}
       <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6 pb-8 border-b border-gray-300">
         <div className="flex justify-center md:justify-start">
-          <div className="w-14 h-14 rounded-full bg-[#273677] flex items-center justify-center">
-            <Image src="/icons/opportunity-icon.svg" alt="Opportunity" width={28} height={28} />
+          <div className="w-25 h-25 rounded-full bg-[#273677] flex items-center justify-center">
+            <Image src={Monitor} alt="Opportunity" width={32} height={32} />
           </div>
         </div>
         <div>
-          <h3 className="text-xl font-semibold text-[#007AB9]">
+          <h3 className="text-2xl font-medium text-[#007AB9]">
             Monitor Open Opportunities
           </h3>
         </div>
@@ -283,59 +286,98 @@ export default function SMEs() {
         </div>
       </div>
 
-      {/* Step 3 */}
-      <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6 pb-8 border-b border-gray-300">
         <div className="flex justify-center md:justify-start">
-          <div className="w-14 h-14 rounded-full bg-[#273677] flex items-center justify-center">
-            <Image src="/icons/respond-icon.svg" alt="Respond" width={28} height={28} />
+          <div className="w-25 h-25 rounded-full bg-[#273677] flex items-center justify-center">
+            <Image src={Respond} alt="Opportunity" width={32} height={32} />
           </div>
         </div>
         <div>
-          <h3 className="text-xl font-semibold text-[#007AB9]">
-            Respond In Real Time
+          <h3 className="text-2xl font-medium text-[#007AB9]">
+          Respond In Real Time
           </h3>
         </div>
         <div>
           <p className="text-gray-700 text-lg">
-            When you accept a project invitation, our team introduces you—along with other qualified experts—to the client. We will notify you if the client selects you.
+          When you accept a project invitation, our team introduces you—along with other qualified experts—to the client. We will notify you if the client selects you. 
           </p>
         </div>
       </div>
 
 
 
-      <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6 pb-8 border-b border-gray-300">
         <div className="flex justify-center md:justify-start">
-          <div className="w-14 h-14 rounded-full bg-[#273677] flex items-center justify-center">
-            <Image src="/icons/respond-icon.svg" alt="Respond" width={28} height={28} />
+          <div className="w-25 h-25 rounded-full bg-[#273677] flex items-center justify-center">
+            <Image src={Respond} alt="Opportunity" width={32} height={32} />
           </div>
         </div>
         <div>
-          <h3 className="text-xl font-semibold text-[#007AB9]">
-            Respond In Real Time
+          <h3 className="text-2xl font-medium text-[#007AB9]">
+          Get Paid
           </h3>
         </div>
         <div>
           <p className="text-gray-700 text-lg">
-            When you accept a project invitation, our team introduces you—along with other qualified experts—to the client. We will notify you if the client selects you.
+          After project completion, your payment is deposited directly into your bank account.
           </p>
         </div>
       </div>
 
-
-
-
-
+      <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6 pb-8 border-b border-gray-300">
+        <div className="flex justify-center md:justify-start">
+          <div className="w-25 h-25 rounded-full bg-[#273677] flex items-center justify-center">
+            <Image src={Respond} alt="Opportunity" width={32} height={32} />
+          </div>
+        </div>
+        <div>
+          <h3 className="text-2xl font-medium text-[#007AB9]">
+          Keep In Touch
+          </h3>
+        </div>
+        <div>
+          <p className="text-gray-700 text-lg">
+          Stay connected with SMEOnCall to discover your next opportunity.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 
+<section className="bg-[#f8fafc] mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px] mt-16" data-aos="fade-up">
+  <div className="container mx-auto px-6 text-center max-w-3xl">
+    <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-[#273677] mb-6">
+      Subscribe to Our <span className="text-[#32a2dc]">Newsletter</span>
+    </h2>
+    <p className="text-gray-700 text-lg mb-8">
+      Stay up-to-date with the latest opportunities, insights, and updates from SMEOnCall.  
+      Join our community of experts today!
+    </p>
 
+    {/* Form */}
+    <form className="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <input
+        type="email"
+        placeholder="Enter your email"
+        className="w-full sm:w-auto flex-1 px-5 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#32a2dc] text-gray-700"
+        required
+      />
+      <button
+        type="submit"
+        className="cursor-pointer bg-[#32a2dc] text-white font-medium px-8 py-3 rounded-full hover:bg-[#273677] transition"
+      >
+        Subscribe
+      </button>
+    </form>
 
-
-
-
+    {/* Privacy Note */}
+    <p className="text-sm text-gray-500 mt-4">
+      We respect your privacy. Unsubscribe anytime.
+    </p>
+  </div>
+</section>
 
     </>
   );
