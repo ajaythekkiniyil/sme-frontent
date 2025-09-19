@@ -26,45 +26,22 @@ export default function Page() {
 
   {/* If Backend is down or no data fallback to default landing content (landing page content is dynamic) */ }
   {/* take data from strapi or default data */ }
-  const HeroSectionData = 
-    (isError || homePageData?.data?.Hero_section.length === 0)
-      ? defaultHeroData
-      : homePageData?.data?.Hero_section
+  const getSectionData = (key: string, defaultData: any) => {
+    const section = homePageData?.data?.[key];
+    if (isError || !section || section.length === 0) {
+      return defaultData;
+    }
+    return section;
+  };
 
-  const HowItWorksSectionData = 
-    (isError || homePageData?.data?.How_it_works.length === 0)
-      ? defaultHowItWorksData
-      : homePageData?.data?.How_it_works
-
-  const WhySmeOnCallSectionData = 
-    (isError || homePageData?.data?.Why_sme_on_call?.length === 0 || homePageData?.data?.Why_sme_on_call === null)
-      ? defaultWhySmeOnCallData
-      : homePageData?.data?.Why_sme_on_call
-
-  const servicesSectionData = 
-    (isError || homePageData?.data?.Services?.length === 0 || homePageData?.data?.Services === null)
-      ? defaultServicesData
-      : homePageData?.data?.Services
-
-  const expertSectionData = 
-    (isError || homePageData?.data?.Experts?.length === 0 || homePageData?.data?.Experts === null)
-      ? defaultExpertsData
-      : homePageData?.data?.Experts
-
-  const faqSectionData = 
-    (isError || homePageData?.data?.Faq?.length === 0 || homePageData?.data?.Faq === null)
-      ? defaultFaqData
-      : homePageData?.data?.Faq
-
-  const testimonialSectionData = 
-    (isError || homePageData?.data?.Testimonials?.length === 0 || homePageData?.data?.Testimonials === null)
-      ? defaultTestimonial
-      : homePageData?.data?.Testimonials
-
-  const contactSectionData = 
-    (isError || homePageData?.data?.Testimonials?.length === 0 || homePageData?.data?.Testimonials === null)
-      ? defaultContactData
-      : homePageData?.data?.Contact_us_description
+  const HeroSectionData = getSectionData("Hero_section", defaultHeroData);
+  const HowItWorksSectionData = getSectionData("How_it_works", defaultHowItWorksData);
+  const WhySmeOnCallSectionData = getSectionData("Why_sme_on_call", defaultWhySmeOnCallData);
+  const servicesSectionData = getSectionData("Services", defaultServicesData);
+  const expertSectionData = getSectionData("Experts", defaultExpertsData);
+  const faqSectionData = getSectionData("Faq", defaultFaqData);
+  const testimonialSectionData = getSectionData("Testimonials", defaultTestimonial);
+  const contactSectionData = getSectionData("Contact_us_description", defaultContactData);
 
   // Initialize AOS here
   useEffect(() => {
@@ -97,7 +74,7 @@ export default function Page() {
       <ServiceSection servicesSectionData={servicesSectionData} />
 
       {/* Contact Section */}
-      <ContactSection contactSectionData={contactSectionData}/>
+      <ContactSection contactSectionData={contactSectionData} />
 
       {/* Featured Experts */}
       <ExpertSection expertSectionData={expertSectionData} />
