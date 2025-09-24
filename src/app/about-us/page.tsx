@@ -114,9 +114,9 @@ export default function SMEs() {
         <div className="container mx-auto px-6">
           
           <h2 className="text-3xl text-[#273677] mb-10 md:leading-12 leading-10 sm:leading-10">In a world full of noise, real expertise is rare-and more critical than ever.<br/>SMEOnCall exists to bridge that gap. </h2>
-          <p className="text-xl mb-5 leading-9">We are building the world’s most trusted insight network, connecting decision-makers with the experts who’ve been there, done that, and solved it before. Our carefully vetted Subject Matter Experts (SMEs) bring clarity, experience, and precision to every conversation-so you can act with confidence and get ahead faster.</p>
-          <p className="text-xl mb-5 leading-9">Whether you're navigating technical challenges, strategic shifts, or operational uncertainty, SMEOnCall gives you direct access to best-in-class experts across the oil & gas industry and beyond. Our network is growing daily to help answer tomorrow’s toughest questions. </p>
-          <p className="text-xl mb-5 leading-9">Every consultation is backed by a commitment to professionalism, discretion, and integrity-because we know that great decisions start with trust. </p>
+          <p className="text-xl mb-5 leading-9">We are building the world’s most trusted insight network, connecting decision-makers with the experts who’ve been there, done that, and solved it before. Our carefully vetted Subject Matter Experts (SMEs) bring clarity, experience, and precision to every conversation-so you can act with confidence and get ahead faster.
+          Whether you're navigating technical challenges, strategic shifts, or operational uncertainty, SMEOnCall gives you direct access to best-in-class experts across the oil & gas industry and beyond. Our network is growing daily to help answer tomorrow’s toughest questions.
+          Every consultation is backed by a commitment to professionalism, discretion, and integrity-because we know that great decisions start with trust. </p>
         </div>
       </section>
 

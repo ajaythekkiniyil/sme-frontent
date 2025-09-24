@@ -16,7 +16,6 @@ import { defaultServicesData } from "./lib/homePage/defaultServicesData";
 import ServiceSection from "./components/homePage/services";
 import { defaultExpertsData } from "./lib/homePage/defaultExpertsData";
 import ExpertSection from "./components/homePage/expertSection";
-import FAQSection from "./components/homePage/faq";
 import { defaultFaqData } from "./lib/homePage/defaultFaqData";
 import TestimonialSection from "./components/homePage/testimonials";
 import { defaultTestimonial } from "./lib/homePage/defaultTestimonials";
@@ -52,10 +51,6 @@ export default function Page() {
     //   ? defaultExpertsData
     //   : homePageData?.data?.Experts
 
-  const faqSectionData = defaultFaqData
-    // (isError || homePageData?.data?.Faq?.length === 0 || homePageData?.data?.Faq === null)
-    //   ? defaultFaqData
-    //   : homePageData?.data?.Faq
 
   const testimonialSectionData = defaultTestimonial
     // (isError || homePageData?.data?.Testimonials?.length === 0 || homePageData?.data?.Testimonials === null)
@@ -117,8 +112,6 @@ export default function Page() {
       {/* Featured Experts */}
       <ExpertSection expertSectionData={expertSectionData} />
 
-      {/* FAQ */}
-      <FAQSection faqSectionData={faqSectionData} />
 
       {/* Testimonials */}
       <TestimonialSection testimonialSectionData={testimonialSectionData} />

@@ -13,6 +13,8 @@ import CompleteProfile from "../../../public/complete-profile.svg";
 import Monitor from "../../../public/opportunities.svg";
 import GeneralManager from '../../../public/general-manager-sme.jpg'
 import Respond from '../../../public/respond.svg'
+import GetPaid from '../../../public/get-paid.svg'
+import KeepinTouch from '../../../public/sme-contact.svg'
 
 export default function SMEs() {
 
@@ -117,6 +119,9 @@ export default function SMEs() {
           <p className="text-xl mb-5 leading-9">That’s where SMEOnCall comes in.  </p>
           <p className="text-xl mb-5 leading-9">We will connect you with the real Subject Matter Experts (SMEs) who will share their knowledge with clients through flexible opportunities such as phone consultations, short or detailed reports—each offered at standarized pricing based on the scope of work.  Our network consists of highly experienced professionals in the Oil & Gas sector.   </p>
           <p className="text-xl mb-5 leading-9">By joining our network , you can share your expertise, earn additional incomce and help solve real-world challenges across the energy industry.  </p>
+          <p><button className="cursor-pointer px-6 py-3 bg-[#32A2DC] text-white rounded-full text-lg  hover:bg-[#2790c7] transition">
+              Join Our Network
+            </button></p>
         </div>
       </section>
 
@@ -185,54 +190,7 @@ export default function SMEs() {
 
 
 
-
-
-
-
-
-
-
-
-{/* Featured Experts */}
-<section className="bg-[#F6FAFF] mx-auto py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px]" data-aos="fade-up">
-      <div className="container mx-auto px-6">
-        <div className="text-left mb-8 sm:mb-12">
-        <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Featured <span className='text-[#32a2dc]'>Experts</span></h2>
-          <p className="text-gray-600 max-w-3xl text-sm sm:text-base md:text-lg">
-            Our dedicated members actively participate in our community, sharing
-            expertise, collaborating on projects, and supporting one another.
-          </p>
-        </div>
-
-        {/* Slider */}
-        <Slider {...Featuredexperts}>
-          {experts.map((expert, i) => (
-            <div key={i} className="pb-18" data-aos="fade-up">
-              
-
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-20 items-center"> 
-              <div> 
-                <Image src={expert.img} alt={expert.name} width={600} height={400} className="w-full h-auto rounded-xl object-cover" /> 
-                </div> 
-                <div className='md:col-span-2'> 
-                <h3 className="text-4xl font-semibold text-gray-900 mb-4">{expert.name}</h3> 
-                <p className="text-[#273677] uppercase text-xl mb-8"> {expert.role}</p> 
-                <p className='text-xl leading-8'>{expert.desc}</p> 
-                </div> 
-                </div>
-
-            </div>
-          ))}
-        </Slider>
-      </div>
-    </section>
-
-
-
-
-
-    <section className="bg-white mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px]" data-aos="fade-up">
+    <section className="bg-[#F6FAFF] mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px]" data-aos="fade-up">
   <div className="container mx-auto px-6">
     <div className="text-left mb-8 sm:mb-12 md:mb-20">
       <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5">
@@ -309,7 +267,7 @@ export default function SMEs() {
       <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6 pb-8 border-b border-gray-300">
         <div className="flex justify-center md:justify-start">
           <div className="w-25 h-25 rounded-full bg-[#273677] flex items-center justify-center">
-            <Image src={Respond} alt="Opportunity" width={32} height={32} />
+            <Image src={GetPaid} alt="Opportunity" width={32} height={32} />
           </div>
         </div>
         <div>
@@ -327,7 +285,7 @@ export default function SMEs() {
       <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6 pb-8 border-b border-gray-300">
         <div className="flex justify-center md:justify-start">
           <div className="w-25 h-25 rounded-full bg-[#273677] flex items-center justify-center">
-            <Image src={Respond} alt="Opportunity" width={32} height={32} />
+            <Image src={KeepinTouch} alt="Opportunity" width={32} height={32} />
           </div>
         </div>
         <div>
@@ -344,6 +302,42 @@ export default function SMEs() {
     </div>
   </div>
 </section>
+
+
+{/* Featured Experts */}
+<section className="bg-white mx-auto py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px]" data-aos="fade-up">
+      <div className="container mx-auto px-6">
+        <div className="text-left mb-8 sm:mb-12">
+        <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Featured <span className='text-[#32a2dc]'>Experts</span></h2>
+          <p className="text-gray-600 max-w-3xl text-sm sm:text-base md:text-lg">
+            Our dedicated members actively participate in our community, sharing
+            expertise, collaborating on projects, and supporting one another.
+          </p>
+        </div>
+
+        {/* Slider */}
+        <Slider {...Featuredexperts}>
+          {experts.map((expert, i) => (
+            <div key={i} className="pb-18" data-aos="fade-up">
+              
+
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-20 items-center"> 
+              <div> 
+                <Image src={expert.img} alt={expert.name} width={600} height={400} className="w-full h-auto rounded-xl object-cover" /> 
+                </div> 
+                <div className='md:col-span-2'> 
+                <h3 className="text-4xl font-semibold text-gray-900 mb-4">{expert.name}</h3> 
+                <p className="text-[#273677] uppercase text-xl mb-8"> {expert.role}</p> 
+                <p className='text-xl leading-8'>{expert.desc}</p> 
+                </div> 
+                </div>
+
+            </div>
+          ))}
+        </Slider>
+      </div>
+    </section>
 
 
 <section className="bg-[#f8fafc] mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px] mt-16" data-aos="fade-up">
