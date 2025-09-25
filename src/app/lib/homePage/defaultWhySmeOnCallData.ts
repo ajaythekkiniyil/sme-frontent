@@ -4,13 +4,16 @@ export const defaultWhySmeOnCallData = {
     primary_button_link: "#",
     bullet_points: [
         {
-            text: "Customized financial roadmaps"
+            text: "Access to top-tier talent from Top Oil and Gas companies"
         },
         {
-            text: "Cash flow forecasting and budgeting"
+            text: "Fast turnaround for time-sensitive challenges"
         },
         {
-            text: "Long-term growth and sustainability strategies"
+            text: "Cheaper than hiring consultants"
+        },
+        {
+            text: "Fully confidential with IP-safe workflows ✓Cash flow forecasting and budgeting"
         }
     ],
     image: {

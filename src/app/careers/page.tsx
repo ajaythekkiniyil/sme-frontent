@@ -100,7 +100,7 @@ export default function SMEs() {
               </span>
             </h1>
             <p className="mb-8 md:mb-12 text-xl text-white font-thin">Subject Matter Experts (SMEs) bring curiosity, depth, and clarity to every professional decision that matters.</p>
-            <Link href="/careers-detail">
+            <Link href="/job-posts">
             <button className="cursor-pointer px-6 py-3 bg-[#32A2DC] text-white rounded-full text-lg shadow hover:bg-[#2790c7] transition">
               View All Jobs
             </button>

@@ -163,44 +163,6 @@ export default function SMEs() {
 
    {/* Contact section insert here */}
 
-
-{/* Featured Experts */}
-<section className="bg-[#F6FAFF] mx-auto py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px]" data-aos="fade-up">
-      <div className="container mx-auto px-6">
-        <div className="text-left mb-8 sm:mb-12">
-        <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Featured <span className='text-[#32a2dc]'>Experts</span></h2>
-          <p className="text-gray-600 max-w-3xl text-sm sm:text-base md:text-lg">
-            Our dedicated members actively participate in our community, sharing
-            expertise, collaborating on projects, and supporting one another.
-          </p>
-        </div>
-
-        {/* Slider */}
-        <Slider {...Featuredexperts}>
-          {experts.map((expert, i) => (
-            <div key={i} className="pb-18" data-aos="fade-up">
-              
-
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-20 items-center"> 
-              <div> 
-                <Image src={expert.img} alt={expert.name} width={600} height={400} className="w-full h-auto rounded-xl object-cover" /> 
-                </div> 
-                <div className='md:col-span-2'> 
-                <h3 className="text-4xl font-semibold text-gray-900 mb-4">{expert.name}</h3> 
-                <p className="text-[#273677] uppercase text-xl mb-8"> {expert.role}</p> 
-                <p className='text-xl leading-8'>{expert.desc}</p> 
-                </div> 
-                </div>
-
-            </div>
-          ))}
-        </Slider>
-      </div> 
-    </section>
-
-
-
     <section>
   <Slider
     {...imageSliderSettings}
