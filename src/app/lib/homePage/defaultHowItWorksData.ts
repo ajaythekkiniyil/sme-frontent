@@ -5,7 +5,7 @@ export const defaultHowItWorksData = [
           {
             children: [
               {
-                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+                text: "Tell us what challenge you're facing. From drilling fluid design to offshore procurement — we've got experts for every case.",
               }
             ]
           }
@@ -19,7 +19,7 @@ export const defaultHowItWorksData = [
           {
             children: [
               {
-                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+                text: "We instantly connect you to a top-tier Subject Matter Expert with relevant oilfield experience.",
               }
             ]
           }
@@ -33,7 +33,7 @@ export const defaultHowItWorksData = [
           {
             children: [
               {
-                text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+                text: "Within 24–72 hours, you'll receive a written brief, analysis, or call — based on your request type.",
               }
             ]
           }

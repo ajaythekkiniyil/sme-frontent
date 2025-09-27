@@ -20,19 +20,19 @@ export const defaultServicesData = {
             }
         },
         {
-            service_title: "Digital solutions",
+            service_title: "Digital solutions and AI support",
             background_image: {
                 url: ""
             }
         },
         {
-            service_title: "Safety & compliance questions",
+            service_title: "Safety & compliance questions including incident nvestigation and root cause analysis",
             background_image: {
                 url: ""
             }
         },
         {
-            service_title: "Training strategy feedback",
+            service_title: "Training and persolized mentorship through top tier experts in the O&G field",
             background_image: {
                 url: ""
             }

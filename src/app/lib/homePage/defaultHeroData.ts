@@ -6,7 +6,7 @@ export const defaultHeroData = [
             {
                 children: [
                     {
-                        text: "Our Subject Matter Experts provide insights and solutions to your toughest challenges, helping you make informed business decisions quickly.",
+                        text: "A digital platform that enables companies or individuals to submit technical or strategic questions and receive tailored answers, guidance, or analysis from pre-vetted Oil and Gas Subject Matter Experts (SMES) - often within 24-72 hours.",
                     }
                 ]
             }
@@ -26,7 +26,7 @@ export const defaultHeroData = [
             {
                 children: [
                     {
-                        text: "Our Subject Matter Experts provide insights and solutions to your toughest challenges, helping you make informed business decisions quickly.",
+                        text: "Tap into decades of industry experience from retired and active experts. Ask your question, and get a tailored, confidential answer within 48 hours.",
                     }
                 ]
             }

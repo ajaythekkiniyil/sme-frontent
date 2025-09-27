@@ -20,6 +20,7 @@ import { defaultFaqData } from "./lib/homePage/defaultFaqData";
 import TestimonialSection from "./components/homePage/testimonials";
 import { defaultTestimonial } from "./lib/homePage/defaultTestimonials";
 import CustomLoader from "./components/CustomLoader";
+import FaqSection from './components/homePage/faq'
 
 export default function Page() {
   // const { data: homePageData, isLoading, isError } = useHomePageContent();
@@ -112,6 +113,8 @@ export default function Page() {
       {/* Featured Experts */}
       <ExpertSection expertSectionData={expertSectionData} />
 
+      {/* Faq */}
+      <FaqSection faqSectionData={defaultFaqData}/>
 
       {/* Testimonials */}
       <TestimonialSection testimonialSectionData={testimonialSectionData} />

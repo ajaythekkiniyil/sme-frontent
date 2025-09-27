@@ -1,47 +1,35 @@
 export const defaultFaqData = [
     {
-        "question": "How do I become a featured expert?",
+        "question": "How do you select experts?",
         "answer": [
             {
                 "children": [
                     {
-                        "text": "You can apply by signing up as an SME. Once approved, your profile will be featured on our platform.",
+                        "text": "We vet every SME based on years of experience, past roles, and peer references.",
                     }
                 ]
             }
         ]
     },
     {
-        "question": "Is there a fee to join as a client or SME?",
+        "question": "Is my question confidential?",
         "answer": [
             {
                 "children": [
                     {
-                        "text": "Joining is free, but certain premium services and features may have associated costs.",
+                        "text": "Yes. You and the expert both agree to our NDA before any work is done.",
                     }
                 ]
             }
         ]
     },
     {
-        "question": "Can I collaborate directly with experts?",
+        "question": "Can I request a specific expert?",
         "answer": [
             {
                 "children": [
                     {
-                        "text": "Yes! Our platform allows you to connect and collaborate directly with featured experts.",
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "question": "How is my information kept confidential?",
-        "answer": [
-            {
-                "children": [
-                    {
-                        "text": "We follow strict security protocols and NDAs to ensure your information remains private and protected.",
+                        "text": "Yes, once you’ve used the platform and are familiar with our experts.",
                     }
                 ]
             }
