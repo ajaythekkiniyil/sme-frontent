@@ -1,5 +1,5 @@
 export const defaultServicesData = {
-    description: "Lorem ipsum is a dummy or placeholder text commonly used in design.",
+    description: "",
     services_card: [
         {
             service_title: "Drilling program reviews",

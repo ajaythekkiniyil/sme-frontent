@@ -100,7 +100,7 @@ export default function Page() {
                   ? "Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development."
                   : homePageData?.data.Contact_us_description[0].children[0].text
               } */}
-              Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development.
+              {/* Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development. */}
             </p>
           </div>
           {/* Right: Form */}
@@ -114,7 +114,7 @@ export default function Page() {
       <ExpertSection expertSectionData={expertSectionData} />
 
       {/* Faq */}
-      <FaqSection faqSectionData={defaultFaqData}/>
+      {/* <FaqSection faqSectionData={defaultFaqData}/> */}
 
       {/* Testimonials */}
       <TestimonialSection testimonialSectionData={testimonialSectionData} />
