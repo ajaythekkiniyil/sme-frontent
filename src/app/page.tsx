@@ -90,10 +90,10 @@ export default function Page() {
 
       {/* Contact Section */}
       <section className="py-16 sm:py-20 md:py-24" id='contact-us' data-aos="fade-up">
-        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+        <div className="container mx-auto px-6 grid grid-cols-1 gap-8 md:gap-12 items-start">
           {/* Left: Text */}
           <div className="text-left mb-8 md:mb-0" data-aos="fade-up">
-            <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Contact <span className='text-[#32a2dc]'>Us</span></h2>
+            <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677]  md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Contact <span className='text-[#32a2dc]'>Us</span></h2>
             <p className="text-gray-600 max-w-xl text-sm sm:text-base md:text-lg">
               {/* {
                 homePageData?.data.Contact_us_description[0].children[0].text === "" || !homePageData
@@ -117,7 +117,7 @@ export default function Page() {
       {/* <FaqSection faqSectionData={defaultFaqData}/> */}
 
       {/* Testimonials */}
-      <TestimonialSection testimonialSectionData={testimonialSectionData} />
+      {/* <TestimonialSection testimonialSectionData={testimonialSectionData} /> */}
     </>
   )
 }

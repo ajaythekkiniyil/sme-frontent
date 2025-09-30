@@ -22,7 +22,7 @@ export default function TestimonialSection({ testimonialSectionData }: any) {
                 <div className="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-1 md:gap-20 sm:gap-10">
                     <div>
                         <div className="text-left mb-8 sm:mb-12">
-                            <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Client Satisfaction <br /><span className='text-[#32a2dc]'>Our Reputation</span></h2>
+                            <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Client Satisfaction <br /><span className='text-[#32a2dc]'>Our Reputation</span></h2>
                             <p className="text-gray-600 max-w-3xl text-sm sm:text-base md:text-lg">
                                 Our dedicated members actively participate in our community, sharing
                                 expertise, collaborating on projects, and supporting one another.

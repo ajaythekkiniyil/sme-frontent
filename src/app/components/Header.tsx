@@ -23,8 +23,8 @@ export default function Header() {
                 </Link>
 
                 {/* Desktop Navigation (≥1400px) */}
-                <ul className="above-1400 space-x-8 font-sans text-gray-600 text-lg uppercase font-medium">
-                    <li><Link href="/" className="text-[#32A2DC] font-normal">Home</Link></li>
+                <ul className="above-1400 space-x-8 font-sans text-gray-600 text-lg uppercase font-bold">
+                    <li><Link href="/" className="text-[#32A2DC] font-bold">Home</Link></li>
                     <li><Link href="/smes" className="hover:text-[#32A2DC]">SMEs</Link></li>
                     {/* <li><Link href="/clients" className="hover:text-[#32A2DC]">Clients</Link></li> */}
                     <li><Link href="/careers" className="hover:text-[#32A2DC]">Careers</Link></li>

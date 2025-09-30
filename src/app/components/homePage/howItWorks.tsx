@@ -7,7 +7,7 @@ export default function HowItWorksSection({ HowItWorksData }: any) {
         <div className="container mx-auto px-6 items-center">
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 items-center mb-15 mx-auto'>
             <div>
-              <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-0 sm:mb-0">Ask SMEs<br /> How it <span className='text-[#32a2dc]'>Works</span></h2>
+              <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] md:leading-15 leading-9 mb-5 md:mb-0 sm:mb-0">Ask SMEs<br /> How it <span className='text-[#32a2dc]'>Works</span></h2>
             </div>
 
             <div>

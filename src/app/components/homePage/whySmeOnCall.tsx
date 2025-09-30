@@ -8,7 +8,7 @@ export default function WhySmeOnCallSection({ WhySmeOnCallSectionData }: any) {
             <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
                 {/* Left: Text & Checklist */}
                 <div data-aos="fade-up">
-                    <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Why SME <span className='text-[#32a2dc]'>on Call</span></h2>
+                    <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Why SME <span className='text-[#32a2dc]'>on Call</span></h2>
                     <p className="text-gray-600 max-w-xl mb-8 sm:mb-12 text-sm sm:text-base md:text-lg">
                         {WhySmeOnCallSectionData.why_sme_on_call_description}
                     </p>
@@ -17,10 +17,10 @@ export default function WhySmeOnCallSection({ WhySmeOnCallSectionData }: any) {
                         {
                             WhySmeOnCallSectionData.bullet_points.map((item: any, i: number) => (
                                 <li key={i} className="flex items-center gap-3">
-                                    <span className="flex items-center justify-center w-6 h-6 rounded bg-green-100 text-green-600 text-sm sm:text-base">
+                                    <span className="flex items-center justify-center w-6 h-6 rounded bg-green-100 text-green-600 text-sm sm:text-lg">
                                         ✓
                                     </span>
-                                    <span className="text-gray-800 text-sm sm:text-base">{item.text}</span>
+                                    <span className="text-gray-800 text-sm sm:text-lg">{item.text}</span>
                                 </li>
                             ))
                         }
@@ -40,7 +40,7 @@ export default function WhySmeOnCallSection({ WhySmeOnCallSectionData }: any) {
                         alt="Team working together"
                         width={600}
                         height={400}
-                        className="w-full h-auto rounded-xl object-cover"
+                        className="w-full h-[400px] rounded-xl object-cover"
                     />
                 </div>
             </div>

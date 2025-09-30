@@ -118,7 +118,7 @@ export default function SMEs() {
               </div>
 
               <div>
-                <h3 className="text-3xl text-[#273677] mb-6 md:leading-12 leading-10 sm:leading-10 font-regular">SMEONCALL – Join Our Network</h3>
+                <h3 className="text-3xl text-[#273677] mb-6 md:leading-12 leading-10 sm:leading-10 font-regular">SMEOnCall – Join Our Network</h3>
                 <p className="text-xl mb-5 leading-9">We connect decision-makers with verified subject matter experts, empowering them to make faster, smarter, and more confident choices.</p>
                 <p className="text-xl mb-5 leading-9">Our diverse global network is one of the largest and most dynamic sources of real-world expertise—growing daily with new professionals from across the energy industry.  </p>
               </div>

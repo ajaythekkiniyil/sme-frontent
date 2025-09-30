@@ -9,7 +9,7 @@ export default function BasicEnquiryForm() {
         <>
             <form className="space-y-4 sm:space-y-6 md:space-y-8" onSubmit={handleSubmitEnquiry}>
 
-            <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4  gap-6">
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2 sm:mb-3">First Name*</label>
                     <input
