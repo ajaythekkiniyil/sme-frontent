@@ -134,7 +134,7 @@ export default function SMEs() {
               <div>
               <h3 className="text-center text-3xl text-[#273677] mb-6 md:leading-12 leading-10 sm:leading-10 font-regular">At SMEOnCall, we welcome talent at every stage. If you're smart, curious, and passionate about making an impact, we’d love to hear from you. Check out our current openings and apply today. </h3>
               </div>
-              <Link href="/careers-detail" className="mx-auto">
+              <Link href="/enrollment-forum" className="mx-auto">
               <button className="cursor-pointer px-10 py-3 bg-[#32A2DC] text-white rounded-full text-lg hover:bg-[#2790c7] transition max-w-xl mx-auto">
               Join Now
             </button>   

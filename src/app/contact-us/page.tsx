@@ -79,9 +79,9 @@ export default function SMEs() {
               Us
               </span>
             </h1>
-            <button className="cursor-pointer px-6 py-3 bg-[#32A2DC] text-white rounded-full text-lg shadow hover:bg-[#2790c7] transition">
+            {/* <button className="cursor-pointer px-6 py-3 bg-[#32A2DC] text-white rounded-full text-lg shadow hover:bg-[#2790c7] transition">
               Join Our Network
-            </button>
+            </button> */}
           </div>
         </div>
       </section>

@@ -102,9 +102,11 @@ export default function SMEs() {
               Are
               </span>
             </h1>
-            <button className="cursor-pointer px-6 py-3 bg-[#32A2DC] text-white rounded-full text-lg shadow hover:bg-[#2790c7] transition">
+            <p className="mb-8 md:mb-12 text-xl text-white font-thin">In a world full of noise, real expertise is rare-and more critical than ever.
+SMEOnCall exists to bridge that gap.</p>
+            {/* <button className="cursor-pointer px-6 py-3 bg-[#32A2DC] text-white rounded-full text-lg shadow hover:bg-[#2790c7] transition">
               Join Our Network
-            </button>
+            </button> */}
           </div>
         </div>
       </section>
@@ -113,16 +115,17 @@ export default function SMEs() {
       <section className="py-30" data-aos="fade-up">
         <div className="container mx-auto px-6">
           
-          <h2 className="text-3xl text-[#273677] mb-10 md:leading-12 leading-10 sm:leading-10">In a world full of noise, real expertise is rare-and more critical than ever.<br/>SMEOnCall exists to bridge that gap. </h2>
-          <p className="text-xl mb-5 leading-9">We are building the world’s most trusted insight network, connecting decision-makers with the experts who’ve been there, done that, and solved it before. Our carefully vetted Subject Matter Experts (SMEs) bring clarity, experience, and precision to every conversation-so you can act with confidence and get ahead faster.
-          Whether you're navigating technical challenges, strategic shifts, or operational uncertainty, SMEOnCall gives you direct access to best-in-class experts across the oil & gas industry and beyond. Our network is growing daily to help answer tomorrow’s toughest questions.
-          Every consultation is backed by a commitment to professionalism, discretion, and integrity-because we know that great decisions start with trust. </p>
+          {/* <h2 className="text-3xl text-[#273677] mb-10 md:leading-12 leading-10 sm:leading-10">In a world full of noise, real expertise is rare-and more critical than ever.<br/>SMEOnCall exists to bridge that gap. </h2> */}
+          <p className="text-xl mb-5 leading-9">We are building the world’s most trusted insight network, connecting decision-makers with the experts who’ve been there, done that, and solved it before. Our carefully vetted Subject Matter Experts (SMEs) bring clarity, experience, and precision to every conversation-so you can act with confidence and get ahead faster.</p>
+
+          <p className="text-xl mb-5 leading-9">Whether you're navigating technical challenges, strategic shifts, or operational uncertainty, SMEOnCall gives you direct access to best-in-class experts across the oil & gas industry and beyond.</p>
+          <p className="text-xl mb-5 leading-9">Our network is growing daily to help answer tomorrow’s toughest questions. Every consultation is backed by a commitment to professionalism, discretion, and integrity-because we know that great decisions start with trust.</p>
         </div>
       </section>
 
     <section className="bg-[#F6FAFF] mx-auto py-16 sm:py-24 md:py-32" data-aos="fade-up">
       <div className="container mx-auto px-6">
-      <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Our <span className='text-[#32a2dc]'>Values</span></h2>
+      <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Our <span className='text-[#32a2dc]'>Values</span></h2>
       <p className="text-gray-600 max-w-3xl text-sm sm:text-base md:text-lg">SMEOnCall connects you with the knowledge you need—when it matters most. </p>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-15 gap-6">
