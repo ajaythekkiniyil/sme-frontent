@@ -12,9 +12,9 @@ export const defaultHeroData = [
             }
         ],
         primary_button_text: "Become a Client",
-        primary_button_link: "#",
+        primary_button_link: "/clients",
         secondary_button_text: "Become an SME",
-        secondary_button_link: "#",
+        secondary_button_link: "/smes",
         hero_image: {
             url: "",
         }
@@ -32,9 +32,9 @@ export const defaultHeroData = [
             }
         ],
         primary_button_text: "Become a Client",
-        primary_button_link: "#",
+        primary_button_link: "/clients",
         secondary_button_text: "Become an SME",
-        secondary_button_link: "#",
+        secondary_button_link: "/smes",
         hero_image: {
             url: "",
         }
