@@ -21,7 +21,7 @@ const Featuredexperts = {
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
 
-export default function ExpertSection() {
+export default function ExpertSection({ bgColor = "#F6FAFF" }) {
     const { data: expertSectionData, isLoading, isError } = useExpertSectionContent();
 
     {/* If Backend is down or no data fallback to default content */ }
@@ -36,10 +36,10 @@ export default function ExpertSection() {
 
     const expertData = getSectionData("Experts", defaultExpertsData);
     console.log(expertData.section_title);
-    
+
 
     return (
-        <section className="bg-[#F6FAFF] mx-auto py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px]" data-aos="fade-up">
+        <section className={`${"bg-" + bgColor}` + " " + "bg-[#F6FAFF] mx-auto py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px]"} data-aos="fade-up">
             <div className="container mx-auto px-6">
                 <div className="text-left mb-8 sm:mb-12">
                     <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">
