@@ -13,7 +13,10 @@ export const defaultWhySmeOnCallData = {
             text: "Cheaper than hiring consultants"
         },
         {
-            text: "Fully confidential with IP-safe workflows ✓Cash flow forecasting and budgeting"
+            text: "Fully confidential with IP-safe workflows"
+        },
+        {
+            text: "Cash flow forecasting and budgeting"
         }
     ],
     image: {

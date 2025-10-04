@@ -13,6 +13,7 @@ export default function Header() {
     return (
         <nav className="bg-white sticky top-0 z-50">
             <div className="container flex items-center justify-between mx-auto px-6 py-6">
+            <div className="flex items-center space-x-20">
                 {/* Logo */}
                 <Link href="/" className="flex items-center">
                     <Image
@@ -25,7 +26,7 @@ export default function Header() {
                 </Link>
 
                 {/* Desktop Navigation (≥1400px) */}
-                <ul className="above-1400 space-x-8 font-sans text-gray-600 text-lg uppercase font-bold">
+                <ul className="above-1400 flex space-x-8 font-sans text-gray-600 text-lg uppercase font-bold">
                     <li><Link href="/" className={`${urlPath === "/" ? 'text-[#32A2DC]' : 'font-bold'}`}>Home</Link></li>
                     <li><Link href="/smes" className={`${urlPath === '/smes' ? 'text-[#32A2DC]' : 'hover:text-[#32A2DC]'}`}>SMEs</Link></li>
                     {/* <li><Link href="/clients" className="hover:text-[#32A2DC]">Clients</Link></li> */}
@@ -33,6 +34,7 @@ export default function Header() {
                     <li><Link href="/about-us" className={`${urlPath === '/about-us' ? 'text-[#32A2DC]' : 'hover:text-[#32A2DC]'}`}>About Us</Link></li>
                     <li><Link href="/contact-us" className={`${urlPath === '/contact-us' ? 'text-[#32A2DC]' : 'hover:text-[#32A2DC]'}`}>Contact Us</Link></li>
                 </ul>
+</div>
 
                 {/* Desktop Buttons (≥1400px) */}
                 <div className="above-1400 items-center space-x-4">
@@ -64,7 +66,7 @@ export default function Header() {
             {isOpen && (
                 <div className="below-1400 bg-white border-t border-gray-200 shadow-md">
                     <ul className="flex flex-col space-y-4 px-6 py-6 text-gray-700 font-medium">
-                        <li><Link href="/" onClick={() => setIsOpen(false)}>How We Help</Link></li>
+                        <li><Link href="/" onClick={() => setIsOpen(false)}>Home</Link></li>
                         <li><Link href="/smes" onClick={() => setIsOpen(false)}>SMEs</Link></li>
                         <li><Link href="/clients" onClick={() => setIsOpen(false)}>Clients</Link></li>
                         <li><Link href="/careers" onClick={() => setIsOpen(false)}>Careers</Link></li>
