@@ -16,7 +16,7 @@ import CustomLoader from "./components/CustomLoader";
 import ContactSection from "./components/homePage/ContactSection";
 
 export default function Page() {
-  const { data: homePageData, isLoading, isError } = useHomePageContent();
+  const { data: homePageData, isError } = useHomePageContent();
 
   {/* If Backend is down or no data fallback to default landing content (landing page content is dynamic) */ }
   {/* take data from strapi or default data */ }
@@ -42,12 +42,6 @@ export default function Page() {
       easing: "ease-in-out",
     });
   }, []);
-
-  if (isLoading) {
-    return (
-      <CustomLoader />
-    )
-  }
 
   return (
     <>
