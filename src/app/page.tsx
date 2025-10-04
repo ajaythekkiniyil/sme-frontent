@@ -12,7 +12,6 @@ import WhySmeOnCallSection from "./components/homePage/whySmeOnCall";
 import { defaultUsecasesData } from "./lib/homePage/defaultUsecasesData";
 import UsecasesSection from "./components/homePage/UsecasesSection";
 import ExpertSection from "./components/homePage/expertSection";
-import CustomLoader from "./components/CustomLoader";
 import ContactSection from "./components/homePage/ContactSection";
 
 export default function Page() {

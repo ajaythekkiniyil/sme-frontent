@@ -29,7 +29,7 @@ export default function ExpertSection({ bgColor = "#F6FAFF" }) {
     const getSectionData = (key: string, defaultData: any) => {
         const section = expertSectionData?.data?.[key];
         if (isError || !section || section.length === 0) {
-            return defaultExpertsData;
+            return defaultData;
         }
         return section;
     };

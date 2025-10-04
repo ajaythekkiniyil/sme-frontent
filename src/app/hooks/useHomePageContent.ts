@@ -5,6 +5,5 @@ export function useHomePageContent(){
     return useQuery({
         queryKey: ['home-page'],
         queryFn: fetchHomePageData,
-        retry: 1,
     })
 }

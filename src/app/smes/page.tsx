@@ -14,39 +14,71 @@ import GetPaid from '../../../public/get-paid.svg'
 import KeepinTouch from '../../../public/sme-contact.svg'
 import ExpertSection from "../components/homePage/expertSection";
 import CommonHeader from '../components/commonHeader'
+import { useSMESectionContent } from "../hooks/useSMESectionContent";
+import { defaultSMEHeaderData } from "../lib/SMEPage/defaultSMEHeaderData";
+import Link from "next/link";
+import { defaultSmeMainContentData } from "../lib/SMEPage/defaultSmeMainContentData";
+import { defaultBenefitsofChoosingData } from "../lib/SMEPage/defaultBenefitsofChoosingData";
+import { defaultHowWeWorkTogetherData } from "../lib/SMEPage/defaultHowWeWorkTogetherData";
+import Newsletter from "../components/Newsletter";
+
+const imageSliderSettings = {
+  dots: false,
+  infinite: true,
+  speed: 600,
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  arrows: false,
+  cssEase: "ease-in-out",
+};
+
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
 
 export default function SMEs() {
-  const imageSliderSettings = {
-    dots: false,
-    infinite: true,
-    speed: 600,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    arrows: false,
-    cssEase: "ease-in-out",
+
+  const { data: smeSectionData, isError } = useSMESectionContent();
+
+  {/* If Backend is down or no data fallback to default content */ }
+  {/* take data from strapi or default data */ }
+  const getSectionData = (key: string, defaultData: any) => {
+    const section = smeSectionData?.data?.[key];
+    if (isError || !section || section.length === 0) {
+      return defaultData;
+    }
+    return section;
   };
+
+  const smeHeader = getSectionData("Header", defaultSMEHeaderData);
+  const mainContent = getSectionData("Main_content", defaultSmeMainContentData);
+  const imageSlider = getSectionData("Image_slider", []);
+  const benefits = getSectionData("Benefits", defaultBenefitsofChoosingData);
+  const HowWeWorkTogether = getSectionData("How_we_work_together_section", defaultHowWeWorkTogetherData);
 
   return (
     <>
       {/* Common Header */}
-      <CommonHeader />
+      <CommonHeader headerData={smeHeader} />
 
-      {/* Placeholder for next section */}
+      {/* main content */}
       <section className="py-30">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl sm:text-3xl md:text-5xl text-[#273677] mb-10">Trust SMEs</h2>
-          <p className="text-xl mb-5 leading-9">Organizations encounter challenges throughout the life cycle of the well every single day. So, how can leaders effectively navigate these obstacles, reduce risks, and save costs to improve efficiency? </p>
-          <p className="text-xl mb-5 leading-9">That’s where SMEOnCall comes in.  </p>
-          <p className="text-xl mb-5 leading-9">We will connect you with the real Subject Matter Experts (SMEs) who will share their knowledge with clients through flexible opportunities such as phone consultations, short or detailed reports—each offered at standarized pricing based on the scope of work.  Our network consists of highly experienced professionals in the Oil & Gas sector.   </p>
-          <p className="text-xl mb-5 leading-9">By joining our network , you can share your expertise, earn additional incomce and help solve real-world challenges across the energy industry.  </p>
-          <p><button className="cursor-pointer px-6 py-3 bg-[#32A2DC] text-white rounded-full text-lg  hover:bg-[#2790c7] transition">
-            Join Our Network
-          </button></p>
+          <h2 className="text-3xl sm:text-3xl md:text-5xl text-[#273677] mb-10">{mainContent.title}</h2>
+          {
+            mainContent.description.map((paragraph: any, index: number) => (
+              <p key={index} className="text-xl mb-5 leading-9">{paragraph.children[0].text}</p>
+            ))
+          }
+          <p>
+            <button className="cursor-pointer px-6 py-3 bg-[#32A2DC] text-white rounded-full text-lg  hover:bg-[#2790c7] transition">
+              <Link href={mainContent.primary_button_link}>{mainContent.primary_button_text}</Link>
+            </button>
+          </p>
         </div>
       </section>
 
+      {/* image sliders */}
       <section>
         <Slider
           {...imageSliderSettings}
@@ -60,51 +92,58 @@ export default function SMEs() {
           centerMode={false}         // optional: true if you want partial prev/next slides visible
           variableWidth={true}       // allows each slide to take width + margin
         >
-          {[Gallery01, Gallery02, Gallery03, Gallery04, Gallery01, Gallery02, Gallery03, Gallery04].map(
-            (img, index) => (
-              <div key={index} className="px-2"> {/* px-2 = horizontal margin */}
-                <Image
-                  src={img}
-                  alt={`Gallery Image ${index + 1}`}
-                  width={1200}
-                  height={600}
-                  className="w-full h-[300px] object-cover"
-                />
-              </div>
-            )
-          )}
+          {
+            // take image from strapi or defult array
+            (imageSlider?.image_slider?.length ? imageSlider.image_slider : [Gallery01, Gallery02, Gallery03, Gallery04])
+              .map(
+                (img: any, index: number) => {
+                  return (
+                    <div key={index} className="px-2">
+                      <Image
+                        src={imageSlider?.image_slider?.length > 0 ? `${STRAPI_URL + img.url}` : img}
+                        alt={`Gallery Image ${index + 1}`}
+                        width={1200}
+                        height={600}
+                        className="w-full h-[300px] object-cover"
+                      />
+                    </div>
+                  )
+                }
+              )
+          }
         </Slider>
       </section>
 
+      {/* Benefits of choosing */}
       <section className="bg-white mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px]" data-aos="fade-up">
         <div className="container mx-auto px-6">
           <div className="text-left mb-8 sm:mb-12 md:mb-20">
-            <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Benefits of Choosing <br /><span className='text-[#32a2dc]'>to
-              Work With us ?</span></h2>
+            <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">
+              {benefits.benefits_heading.split(",")[0]}
+              <br />
+              <span className='text-[#32a2dc]'>{benefits.benefits_heading.split(",")[1]}</span>
+            </h2>
           </div>
           <div className="grid grid-cols-1">
-            <div className="border-b border-b-[#dadada] pb-10 mb-10">
-              <h3 className="text-2xl text-[#007AB9] mb-5">Get Paid</h3>
-              <p className="text-xl">You will receive direct payment automatically after each completed project </p>
-            </div>
-            <div className="border-b border-b-[#dadada] pb-10 mb-10">
-              <h3 className="text-2xl text-[#007AB9] mb-5">Make your job Meaningful</h3>
-              <p className="text-xl leading-8">Engage with SMEOnCall clients and fellow experts in your field, leverage your experience, and gain access to exclusive content, webcasts, and transcripts across and beyond your industry. </p>
-            </div>
-            <div className="border-b border-b-[#dadada] pb-10 mb-10">
-              <h3 className="text-2xl text-[#007AB9] mb-5">Trust & Confidence </h3>
-              <p className="text-xl leading-8">Share your expertise in a secure environment, supported by SMEOnCall’s industry-leading compliance standards that minimize conflicts of interest and ensure confidentiality. </p>
-            </div>
+            {
+              benefits.benfits_list.map((benefit: any, index: number) => (
+                <div key={index} className="border-b border-b-[#dadada] pb-10 mb-10">
+                  <h3 className="text-2xl text-[#007AB9] mb-5">{benefit.benefit}</h3>
+                  <p className="text-xl">{benefit.description[0].children[0].text}</p>
+                </div>
+              ))
+            }
           </div>
         </div>
       </section>
 
+      {/* How We Work */}
       <section className="bg-[#F6FAFF] mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px]" data-aos="fade-up">
         <div className="container mx-auto px-6">
           <div className="text-left mb-8 sm:mb-12 md:mb-20">
             <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] md:leading-15 leading-9 mb-5">
-              How We Work <br />
-              <span className="text-[#32a2dc]">Together ?</span>
+              {HowWeWorkTogether.heading.split(",")[0]} <br />
+              <span className="text-[#32a2dc]">{HowWeWorkTogether.heading.split(",")[1]}</span>
             </h2>
           </div>
 
@@ -122,14 +161,14 @@ export default function SMEs() {
               {/* Column 2 - Heading */}
               <div className="md:col-span-2">
                 <h3 className="text-2xl font-medium text-[#007AB9]">
-                  Complete SME On Call Profile
+                  {HowWeWorkTogether.steps[0].step}
                 </h3>
               </div>
 
               {/* Column 3 - Description */}
               <div className="md:col-span-3">
                 <p className="text-gray-700 text-lg">
-                  Add your experience, and SMEOnCall will find the right projects for you through intelligent matching.
+                  {HowWeWorkTogether.steps[0].description[0].children[0].text}
                 </p>
               </div>
             </div>
@@ -143,12 +182,12 @@ export default function SMEs() {
               </div>
               <div className="md:col-span-2">
                 <h3 className="text-2xl font-medium text-[#007AB9]">
-                  Monitor Open Opportunities
+                  {HowWeWorkTogether.steps[1].step}
                 </h3>
               </div>
               <div className="md:col-span-3">
                 <p className="text-gray-700 text-lg">
-                  We email you potential client projects as soon as they become available.
+                  {HowWeWorkTogether.steps[1].description[0].children[0].text}
                 </p>
               </div>
             </div>
@@ -161,12 +200,12 @@ export default function SMEs() {
               </div>
               <div className="md:col-span-2">
                 <h3 className="text-2xl font-medium text-[#007AB9]">
-                  Respond In Real Time
+                  {HowWeWorkTogether.steps[2].step}
                 </h3>
               </div>
               <div className="md:col-span-3">
                 <p className="text-gray-700 text-lg">
-                  When you accept a project invitation, our team introduces you—along with other qualified experts—to the client. We will notify you if the client selects you.
+                  {HowWeWorkTogether.steps[2].description[0].children[0].text}
                 </p>
               </div>
             </div>
@@ -179,12 +218,12 @@ export default function SMEs() {
               </div>
               <div className="md:col-span-2">
                 <h3 className="text-2xl font-medium text-[#007AB9]">
-                  Get Paid
+                  {HowWeWorkTogether.steps[3].step}
                 </h3>
               </div>
               <div className="md:col-span-3">
                 <p className="text-gray-700 text-lg">
-                  After project completion, your payment is deposited directly into your bank account.
+                  {HowWeWorkTogether.steps[3].description[0].children[0].text}
                 </p>
               </div>
             </div>
@@ -197,12 +236,12 @@ export default function SMEs() {
               </div>
               <div className="md:col-span-2">
                 <h3 className="text-2xl font-medium text-[#007AB9]">
-                  Keep In Touch
+                  {HowWeWorkTogether.steps[4].step}
                 </h3>
               </div>
               <div className="md:col-span-3">
                 <p className="text-gray-700 text-lg">
-                  Stay connected with SMEOnCall to discover your next opportunity.
+                  {HowWeWorkTogether.steps[4].description[0].children[0].text}
                 </p>
               </div>
             </div>
@@ -213,38 +252,8 @@ export default function SMEs() {
       {/* Featured Experts */}
       <ExpertSection bgColor="white" />
 
-      <section className="bg-[#f8fafc] mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px] mt-16" data-aos="fade-up">
-        <div className="container mx-auto px-6 text-center max-w-3xl">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-[#273677] mb-6">
-            Subscribe to Our <span className="text-[#32a2dc]">Newsletter</span>
-          </h2>
-          <p className="text-gray-700 text-lg mb-8">
-            Stay up-to-date with the latest opportunities, insights, and updates from SMEOnCall.
-            Join our community of experts today!
-          </p>
-
-          {/* Form */}
-          <form className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="w-full sm:w-auto flex-1 px-5 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#32a2dc] text-gray-700"
-              required
-            />
-            <button
-              type="submit"
-              className="cursor-pointer bg-[#32a2dc] text-white font-medium px-8 py-3 rounded-full hover:bg-[#273677] transition"
-            >
-              Subscribe
-            </button>
-          </form>
-
-          {/* Privacy Note */}
-          <p className="text-sm text-gray-500 mt-4">
-            We respect your privacy. Unsubscribe anytime.
-          </p>
-        </div>
-      </section>
+      {/* Newsletter */}
+      <Newsletter />
     </>
   );
 }
