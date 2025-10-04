@@ -35,8 +35,6 @@ export default function ExpertSection({ bgColor = "#F6FAFF" }) {
     };
 
     const expertData = getSectionData("Experts", defaultExpertsData);
-    console.log(expertData.section_title);
-
 
     return (
         <section className={`${"bg-" + bgColor}` + " " + "bg-[#F6FAFF] mx-auto py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px]"} data-aos="fade-up">
