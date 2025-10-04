@@ -37,7 +37,6 @@ const imageSliderSettings = {
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
 
 export default function SMEs() {
-
   const { data: smeSectionData, isError } = useSMESectionContent();
 
   {/* If Backend is down or no data fallback to default content */ }
