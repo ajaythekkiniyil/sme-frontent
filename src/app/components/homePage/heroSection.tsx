@@ -18,9 +18,7 @@ const heroSettings = {
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
 
-export default function HeroSection({ HeroSection }: any) {  
-    console.log(HeroSection);
-    
+export default function HeroSection({ HeroSection }: any) {      
     return (
         <Slider {...heroSettings} className="pb-10 overflow-hidden" data-aos="fade-up">
             {HeroSection?.map((slide: any, index: number) => (

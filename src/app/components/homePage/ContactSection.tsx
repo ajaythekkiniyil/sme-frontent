@@ -1,6 +1,6 @@
 import BasicEnquiryForm from "../basicEnquiryForm";
 
-export default function ContactSection({ contactSectionData }: any) {
+export default function ContactSection() {
   return (
     <section className="py-16 sm:py-20 md:py-24" id='contact-us' data-aos="fade-up">
       <div className="container mx-auto px-6 grid grid-cols-1 gap-8 md:gap-12 items-start">

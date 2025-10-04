@@ -18,7 +18,9 @@ const serviceSettings = {
     ],
 };
 
-export default function ServiceSection({ servicesSectionData }: any) {
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
+
+export default function UsecasesSection({ servicesSectionData }: any) {    
     return (
         <section className="bg-[#F6FAFF] py-16 sm:py-20 lg:pt-25 lg:pb-40" data-aos="fade-up">
             <div className="container mx-auto px-6">
@@ -35,7 +37,7 @@ export default function ServiceSection({ servicesSectionData }: any) {
                         <div key={index} className="px-3 pb-18" data-aos="fade-up">
                             <div className="relative rounded-2xl overflow-hidden">
                                 <Image
-                                    src={slide.background_image.url === "" ? ServiceGridImage : `${process.env.NEXT_PUBLIC_STRAPI_URL}${slide.background_image.url}`}
+                                    src={slide.background_image.url === "" ? ServiceGridImage : `${STRAPI_URL + slide.background_image.url}`}
                                     alt={slide.service_title}
                                     className="w-full h-80 object-cover rounded-2xl"
                                     width={900}

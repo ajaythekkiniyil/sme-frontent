@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Slider from "react-slick";
 import GeneralManager from '../../../../public/general-manager-sme.jpg'
+import { useExpertSectionContent } from "@/app/hooks/useExpertSectionContent";
+import { defaultExpertsData } from "@/app/lib/homePage/defaultExpertsData";
 
 const Featuredexperts = {
     dots: true,
@@ -17,25 +19,43 @@ const Featuredexperts = {
     ],
 };
 
-export default function ExpertSection({ expertSectionData }: any) {    
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
+
+export default function ExpertSection() {
+    const { data: expertSectionData, isLoading, isError } = useExpertSectionContent();
+
+    {/* If Backend is down or no data fallback to default content */ }
+    {/* take data from strapi or default data */ }
+    const getSectionData = (key: string, defaultData: any) => {
+        const section = expertSectionData?.data?.[key];
+        if (isError || !section || section.length === 0) {
+            return defaultExpertsData;
+        }
+        return section;
+    };
+
+    const expertData = getSectionData("Experts", defaultExpertsData);
+    console.log(expertData.section_title);
+    
+
     return (
         <section className="bg-[#F6FAFF] mx-auto py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px]" data-aos="fade-up">
             <div className="container mx-auto px-6">
                 <div className="text-left mb-8 sm:mb-12">
                     <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">
-                        {expertSectionData?.title?.split(" ")[0]}<span className='text-[#32a2dc]'> {expertSectionData?.title.split(" ")[1]}</span>
+                        {expertData?.section_title?.split(" ")[0]}<span className='text-[#32a2dc]'> {expertData?.section_title?.split(" ")[1]}</span>
                     </h2>
                     <p className="text-gray-600 max-w-3xl text-sm sm:text-base md:text-lg">
-                        {expertSectionData.description}
+                        {expertData.description}
                     </p>
                 </div>
                 <Slider {...Featuredexperts}>
-                    {expertSectionData.profile?.map((item: any, i: number) => (
-                        <div key={i} className="pb-18" data-aos="fade-up">
+                    {expertData?.profile?.map((item: any, index: number) => (
+                        <div key={index} className="pb-18" data-aos="fade-up">
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-20 items-center">
                                 <div>
                                     <Image
-                                        src={item.profile_image.url === "" ? GeneralManager : `${process.env.NEXT_PUBLIC_STRAPI_URL}${item.profile_image.url}`}
+                                        src={item?.profile_image?.url === "" ? GeneralManager : `${STRAPI_URL + item.profile_image.url}`}
                                         width={600} height={400} className="w-full h-auto rounded-xl object-cover" alt={item.name} />
                                 </div>
                                 <div className='md:col-span-2'>

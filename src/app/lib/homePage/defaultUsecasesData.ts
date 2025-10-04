@@ -1,5 +1,4 @@
-export const defaultServicesData = {
-    description: "",
+export const defaultUsecasesData = {
     services_card: [
         {
             service_title: "Drilling program reviews",

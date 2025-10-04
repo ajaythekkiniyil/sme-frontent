@@ -2,6 +2,8 @@ import Image from "next/image";
 import WhySme from '../../../../public/why-sme.png'
 import Link from "next/link";
 
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
+
 export default function WhySmeOnCallSection({ WhySmeOnCallSectionData }: any) {
     return (
         <section className="py-16 sm:py-20 md:py-24" data-aos="fade-up">
@@ -36,7 +38,7 @@ export default function WhySmeOnCallSection({ WhySmeOnCallSectionData }: any) {
                 {/* Right: Image */}
                 <div data-aos="fade-up">
                     <Image
-                        src={WhySmeOnCallSectionData.image.url === "" ? WhySme : `${process.env.NEXT_PUBLIC_STRAPI_URL}${WhySmeOnCallSectionData.image.url}`}
+                        src={WhySmeOnCallSectionData.image.url === "" ? WhySme : `${STRAPI_URL + WhySmeOnCallSectionData.image.url}`}
                         alt="Team working together"
                         width={600}
                         height={400}

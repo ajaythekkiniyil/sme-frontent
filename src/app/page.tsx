@@ -9,16 +9,11 @@ import { defaultHowItWorksData } from "./lib/homePage/defaultHowItWorksData";
 import HowItWorksSection from "./components/homePage/howItWorks";
 import { defaultWhySmeOnCallData } from "./lib/homePage/defaultWhySmeOnCallData";
 import WhySmeOnCallSection from "./components/homePage/whySmeOnCall";
-import { defaultServicesData } from "./lib/homePage/defaultServicesData";
-import ServiceSection from "./components/homePage/services";
-import { defaultExpertsData } from "./lib/homePage/defaultExpertsData";
+import { defaultUsecasesData } from "./lib/homePage/defaultUsecasesData";
+import UsecasesSection from "./components/homePage/UsecasesSection";
 import ExpertSection from "./components/homePage/expertSection";
-import { defaultFaqData } from "./lib/homePage/defaultFaqData";
-import TestimonialSection from "./components/homePage/testimonials";
-import { defaultTestimonial } from "./lib/homePage/defaultTestimonials";
 import CustomLoader from "./components/CustomLoader";
 import ContactSection from "./components/homePage/ContactSection";
-import { defaultContactData } from "./lib/homePage/defaultContactData";
 
 export default function Page() {
   const { data: homePageData, isLoading, isError } = useHomePageContent();
@@ -36,12 +31,8 @@ export default function Page() {
   const HeroSectionData = getSectionData("Hero_section", defaultHeroData);
   const HowItWorksSectionData = getSectionData("How_it_works", defaultHowItWorksData);
   const WhySmeOnCallSectionData = getSectionData("Why_sme_on_call", defaultWhySmeOnCallData);
-  const servicesSectionData = getSectionData("Services", defaultServicesData);
-  const expertSectionData = getSectionData("Experts", defaultExpertsData);
-  const faqSectionData = getSectionData("Faq", defaultFaqData);
-  const testimonialSectionData = getSectionData("Testimonials", defaultTestimonial);
-  const contactSectionData = getSectionData("Contact_us_description", defaultContactData);
-
+  const servicesSectionData = getSectionData("Use_cases", defaultUsecasesData);
+  
   // Initialize AOS here
   useEffect(() => {
     AOS.init({
@@ -69,14 +60,14 @@ export default function Page() {
       {/* Why SME on Call */}
       <WhySmeOnCallSection WhySmeOnCallSectionData={WhySmeOnCallSectionData} />
 
-      {/* Services */}
-      <ServiceSection servicesSectionData={servicesSectionData} />
+      {/* Use cases */}
+      <UsecasesSection servicesSectionData={servicesSectionData} />
 
       {/* Contact Section */}
-      <ContactSection contactSectionData={contactSectionData} />
+      <ContactSection />
 
       {/* Featured Experts */}
-      <ExpertSection expertSectionData={expertSectionData} />
+      <ExpertSection />
 
       {/* Faq */}
       {/* <FaqSection faqSectionData={defaultFaqData}/> */}
