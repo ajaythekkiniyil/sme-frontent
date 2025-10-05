@@ -21,11 +21,7 @@ export default function JoinNowSection() {
     const { data: joinNow } = useQuery({
         queryKey: ['join-now-section'],
         queryFn: fetchNewletter,
-    })
-
-    // console.log(joinNow?.data?.image_slider?.image_slider.length);
-    console.log(joinNow?.data?.image_slider?.image_slider);
-    
+    })    
 
     return (
         <section className="py-30 bg-[#F6FAFF]" data-aos="fade-up">
