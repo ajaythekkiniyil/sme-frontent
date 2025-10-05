@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Slider from "react-slick";
 import ServiceGridImage from '../../../../public/project-one.jpg'
+import { STRAPI_URL } from "./heroSection";
 
 const serviceSettings = {
     dots: true,
@@ -17,8 +18,6 @@ const serviceSettings = {
         { breakpoint: 480, settings: { slidesToShow: 1 } },
     ],
 };
-
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
 
 export default function UsecasesSection({ servicesSectionData }: any) {    
     return (

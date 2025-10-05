@@ -21,6 +21,7 @@ import { defaultSmeMainContentData } from "../lib/SMEPage/defaultSmeMainContentD
 import { defaultBenefitsofChoosingData } from "../lib/SMEPage/defaultBenefitsofChoosingData";
 import { defaultHowWeWorkTogetherData } from "../lib/SMEPage/defaultHowWeWorkTogetherData";
 import Newsletter from "../components/Newsletter";
+import { STRAPI_URL } from "../components/homePage/heroSection";
 
 const imageSliderSettings = {
   dots: false,
@@ -33,8 +34,6 @@ const imageSliderSettings = {
   arrows: false,
   cssEase: "ease-in-out",
 };
-
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
 
 export default function SMEs() {
   const { data: smeSectionData, isError } = useSMESectionContent();

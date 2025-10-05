@@ -2,8 +2,7 @@
 import React, { useState } from 'react';
 import { useTicketDetails } from '@/app/hooks/tickets';
 import Link from 'next/link';
-
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
+import { STRAPI_URL } from '@/app/components/homePage/heroSection';
 
 export default function TicketDetails({ params }: { params: Promise<{ id: number }> }) {
     const { id } = React.use(params)

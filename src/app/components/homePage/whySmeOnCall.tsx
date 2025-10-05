@@ -1,8 +1,7 @@
 import Image from "next/image";
 import WhySme from '../../../../public/why-sme.png'
 import Link from "next/link";
-
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
+import { STRAPI_URL } from "./heroSection";
 
 export default function WhySmeOnCallSection({ WhySmeOnCallSectionData }: any) {
     return (

@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import GeneralManager from '../../../../public/general-manager-sme.jpg'
 import { useExpertSectionContent } from "@/app/hooks/useExpertSectionContent";
 import { defaultExpertsData } from "@/app/lib/homePage/defaultExpertsData";
+import { STRAPI_URL } from "./heroSection";
 
 const Featuredexperts = {
     dots: true,
@@ -18,8 +19,6 @@ const Featuredexperts = {
         { breakpoint: 768, settings: { slidesToShow: 1 } },
     ],
 };
-
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
 
 export default function ExpertSection({ bgColor = "#F6FAFF" }) {
     const { data: expertSectionData, isLoading, isError } = useExpertSectionContent();
@@ -53,13 +52,13 @@ export default function ExpertSection({ bgColor = "#F6FAFF" }) {
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-20 items-center">
                                 <div>
                                     <Image
-                                        src={item?.profile_image?.url === "" ? GeneralManager : `${STRAPI_URL + item.profile_image.url}`}
-                                        width={600} height={400} className="w-full h-auto rounded-xl object-cover" alt={item.name} />
+                                        src={item?.profile_image?.url === "" ? GeneralManager : `${STRAPI_URL + item?.profile_image?.url}`}
+                                        width={600} height={400} className="w-full h-auto rounded-xl object-cover" alt={item?.name} />
                                 </div>
                                 <div className='md:col-span-2'>
-                                    <h3 className="text-4xl font-semibold text-gray-900 mb-4">{item.name}</h3>
-                                    <p className="text-[#273677] uppercase text-xl mb-8"> {item.designation}</p>
-                                    <p className='text-xl leading-8'>{item.profile_summary[0].children[0].text}</p>
+                                    <h3 className="text-4xl font-semibold text-gray-900 mb-4">{item?.name}</h3>
+                                    <p className="text-[#273677] uppercase text-xl mb-8"> {item?.designation}</p>
+                                    <p className='text-xl leading-8'>{item?.profile_summary[0]?.children[0]?.text}</p>
                                 </div>
                             </div>
                         </div>

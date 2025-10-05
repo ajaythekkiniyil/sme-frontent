@@ -7,12 +7,13 @@ import CrTeam06 from "../../../public/cr-team-05.jpg";
 import CrTeam01 from "../../../public/cr-team-06.jpg";
 import CrTeam02 from "../../../public/cr-team-02.jpg";
 import { useQuery } from "@tanstack/react-query";
+import { STRAPI_URL } from "./homePage/heroSection";
 
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
+const STRAPI_URL_API = process.env.NEXT_PUBLIC_STRAPI_URL
 
 export default function JoinNowSection() {
     const fetchNewletter = async () => {
-        const res = await fetch(`${STRAPI_URL}/api/join-now-section`);
+        const res = await fetch(`${STRAPI_URL_API}/api/join-now-section`);
         if (!res.ok) throw new Error("Failed to fetch join-now-section");
         return res.json();
     }
@@ -21,7 +22,7 @@ export default function JoinNowSection() {
     const { data: joinNow } = useQuery({
         queryKey: ['join-now-section'],
         queryFn: fetchNewletter,
-    })    
+    })
 
     return (
         <section className="py-30 bg-[#F6FAFF]" data-aos="fade-up">

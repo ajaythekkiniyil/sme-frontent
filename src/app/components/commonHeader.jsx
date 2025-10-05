@@ -1,10 +1,9 @@
 import Link from "next/link";
 import BannerImage from "../../../public/inner-smes.jpg";
 import Image from "next/image";
+import { STRAPI_URL } from "./homePage/heroSection";
 
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
-
-export default function CommonHeader({ headerData }) {
+export default function CommonHeader({ headerData }) {    
     return (
         <section className="relative w-full h-[500px] sm:h-[700px] md:h-[900px] overflow-hidden">
             {/* Background Image */}

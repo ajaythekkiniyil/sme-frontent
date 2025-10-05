@@ -2,8 +2,7 @@ import { getStepContentSMEType, smeStatusType } from '@/app/types/sme';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { createSmeAccount, updateSmeStatus } from '@/app/lib/sme';
 import { Button } from '@mui/material';
-
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
+import { STRAPI_URL } from './homePage/heroSection';
 
 type GetStepContentSMETypes = {
     stepIndex: number,

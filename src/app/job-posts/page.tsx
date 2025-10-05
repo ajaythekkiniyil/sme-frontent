@@ -1,12 +1,4 @@
 "use client"
-import Image from "next/image";
-import Link from "next/link";
-import CrTeam03 from "../../../public/cr-team-01.jpg";
-import CrTeam04 from "../../../public/cr-team-07.jpg";
-import CrTeam05 from "../../../public/cr-team-03.jpg";
-import CrTeam06 from "../../../public/cr-team-05.jpg";
-import CrTeam01 from "../../../public/cr-team-06.jpg";
-import CrTeam02 from "../../../public/cr-team-02.jpg";
 import { jobData } from "../lib/tempJobData";
 import JobCard from "../components/jobCard";
 import CommonHeader from "../components/commonHeader";

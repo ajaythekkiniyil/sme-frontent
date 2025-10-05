@@ -9,8 +9,7 @@ import { defaultCareersHeaderData } from "../lib/careers/defaultCareersHeaderDat
 import { useCareerSectionContent } from "../hooks/useCareerSectionContent";
 import { defaultMainContent } from "../lib/careers/defaultMainContent";
 import JoinNowSection from "../components/JoinNowSection";
-
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
+import { STRAPI_URL } from "../components/homePage/heroSection";
 
 export default function SMEs() {
   const { data: careerSectionData, isError } = useCareerSectionContent();

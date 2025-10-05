@@ -16,9 +16,11 @@ const heroSettings = {
     arrows: true,
 };
 
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
+export const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL === 'http://localhost:1337' ? 'http://localhost:1337' : ''
 
-export default function HeroSection({ HeroSection }: any) {      
+export default function HeroSection({ HeroSection }: any) {  
+    console.log(HeroSection[0].hero_image.url);
+        
     return (
         <Slider {...heroSettings} className="pb-10 overflow-hidden" data-aos="fade-up">
             {HeroSection?.map((slide: any, index: number) => (
