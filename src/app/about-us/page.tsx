@@ -50,7 +50,7 @@ export default function SMEs() {
   const aboutUsHeader = getSectionData("Header", defaultAboutusHeaderData);
   const mainContent = getSectionData("Main_content", defaultMainContent);
   const ourValues = getSectionData("Our_values", defaultOurValuesData);
-  const imageSlider = getSectionData("Image_slider", defaultOurValuesData);
+  const imageSlider = getSectionData("Image_slider", []);
 
   return (
     <>
