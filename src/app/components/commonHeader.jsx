@@ -8,7 +8,7 @@ export default function CommonHeader({ headerData }) {
         <section className="relative w-full h-[500px] sm:h-[700px] md:h-[900px] overflow-hidden">
             {/* Background Image */}
             <Image
-                src={headerData?.background_image?.url === "" ? BannerImage : `${STRAPI_URL + headerData?.background_image?.url}`}
+                src={(headerData?.background_image?.url === "" || headerData?.background_image === null) ? BannerImage : `${STRAPI_URL + headerData?.background_image?.url}`}
                 alt="SME Banner"
                 fill
                 priority
@@ -31,9 +31,9 @@ export default function CommonHeader({ headerData }) {
                     
                     <p className="mb-8 md:mb-12 text-xl text-white font-thin">{headerData?.description}</p>
                     
-                    <Link href={headerData?.primary_button_link} className="cursor-pointer px-6 py-3 bg-[#32A2DC] text-white rounded-full text-lg shadow hover:bg-[#2790c7] transition">
+                    {headerData?.primary_button_link && <Link href={headerData?.primary_button_link} className="cursor-pointer px-6 py-3 bg-[#32A2DC] text-white rounded-full text-lg shadow hover:bg-[#2790c7] transition">
                         {headerData?.primary_button_text}
-                    </Link>
+                    </Link>}
                 </div>
             </div>
         </section>
