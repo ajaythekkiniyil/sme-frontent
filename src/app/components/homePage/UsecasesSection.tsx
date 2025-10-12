@@ -4,19 +4,42 @@ import ServiceGridImage from '../../../../public/project-one.jpg'
 import { STRAPI_URL } from "./heroSection";
 
 const serviceSettings = {
-    dots: true,
-    infinite: true,
-    speed: 600,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    arrows: false,
-    responsive: [
-        { breakpoint: 1280, settings: { slidesToShow: 4 } },
-        { breakpoint: 1024, settings: { slidesToShow: 3 } },
-        { breakpoint: 768, settings: { slidesToShow: 2 } },
-        { breakpoint: 480, settings: { slidesToShow: 1 } },
-    ],
+  dots: true,
+  infinite: true,
+  speed: 600,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  autoplay: true,
+  arrows: false,
+  responsive: [
+    {
+      breakpoint: 1280, // ≤1280px
+      settings: {
+        slidesToShow: 4,
+      },
+    },
+    {
+      breakpoint: 1024, // ≤1024px
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 768, // ≤768px
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 640, // ≤640px
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        centerMode: true,
+        centerPadding: "0px",
+      },
+    },
+  ],
 };
 
 export default function UsecasesSection({ servicesSectionData }: any) {    

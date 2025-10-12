@@ -1,10 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
-import Slider from "react-slick";
 import Image from "next/image";
 import BannerImage from "../../../public/sme-about.jpg";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { defaultFaqData } from "../lib/homePage/defaultFaqData";
 import FaqSection from '../components/homePage/faq'
 

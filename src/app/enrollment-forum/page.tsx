@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import BannerImage from "../../../public/sme-about.jpg";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Gallery01 from "../../../public/about-gal-01.jpg";
 import Gallery02 from "../../../public/about-gal-02.jpg";
 import Gallery03 from "../../../public/about-gal-03.jpg";

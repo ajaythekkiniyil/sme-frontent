@@ -5,8 +5,6 @@ import { MapPin, Mail, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import BannerImage from "../../../public/dubai.jpg";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Gallery01 from "../../../public/about-gal-01.jpg";
 import Gallery02 from "../../../public/about-gal-02.jpg";
 import Gallery03 from "../../../public/about-gal-03.jpg";

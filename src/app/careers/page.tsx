@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
 import JoinNetwork from "../../../public/join-network.jpg";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import CrTeam07 from "../../../public/cr-team-04.jpg";
 import CommonHeader from "../components/commonHeader";
 import { defaultCareersHeaderData } from "../lib/careers/defaultCareersHeaderData";

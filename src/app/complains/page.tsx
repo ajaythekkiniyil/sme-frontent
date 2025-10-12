@@ -1,9 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import BannerImage from "../../../public/sme-about.jpg";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 export default function SMEs() {
   return (
