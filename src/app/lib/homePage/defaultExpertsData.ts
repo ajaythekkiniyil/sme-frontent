@@ -1,5 +1,5 @@
 export const defaultExpertsData = {
-    section_title: "Featured Experts",
+    section_title: "Featured SMEs",
     description: "Our dedicated members actively participate in our community, sharing expertise, collaborating on projects, and supporting one another.",
     profile: [
         {

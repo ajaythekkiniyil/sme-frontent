@@ -39,7 +39,7 @@ export default function ExpertSection({ bgColor = "#F6FAFF" }) {
         <section className={`${"bg-" + bgColor}` + " " + "bg-[#F6FAFF] mx-auto py-16 sm:py-24 md:py-32 rounded-[30px] sm:rounded-[40px]"} data-aos="fade-up">
             <div className="container mx-auto px-6">
                 <div className="text-left mb-8 sm:mb-12">
-                    <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] uppercase md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">
+                    <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">
                         {expertData?.section_title?.split(" ")[0]}<span className='text-[#32a2dc]'> {expertData?.section_title?.split(" ")[1]}</span>
                     </h2>
                     <p className="text-gray-600 max-w-3xl text-sm sm:text-base md:text-lg">

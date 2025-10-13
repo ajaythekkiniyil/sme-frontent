@@ -25,7 +25,7 @@ export const defaultUsecasesData = {
             }
         },
         {
-            service_title: "Safety & compliance questions including incident nvestigation and root cause analysis",
+            service_title: "HSE & Complaince Training & Personalized Mentorshi",
             background_image: {
                 url: ""
             }

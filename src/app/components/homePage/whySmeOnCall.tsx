@@ -9,7 +9,7 @@ export default function WhySmeOnCallSection({ WhySmeOnCallSectionData }: any) {
             <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
                 {/* Left: Text & Checklist */}
                 <div data-aos="fade-up">
-                    <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Why SME <span className='text-[#32a2dc]'>on Call</span></h2>
+                    <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Why SME<span className='text-[#32a2dc]'>ONCALL</span></h2>
                     <p className="text-gray-600 max-w-xl mb-8 sm:mb-12 text-sm sm:text-base md:text-lg">
                         {WhySmeOnCallSectionData.why_sme_on_call_description}
                     </p>

@@ -22,9 +22,8 @@ export default function CommonHeader({ headerData }) {
             <div className="absolute inset-0 flex items-end">
                 <div className="container mx-auto px-6 md:pb-28 pb-20">
                     <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white leading-8 md:leading-[4rem] mb-6">
-                        {headerData?.title?.split(",")[0]}
+                        {headerData?.title?.split(",")[0]} {" "}
                         <span className="text-[#32A2DC]">
-                            <br />
                             {headerData?.title.split(",")[1]}
                         </span>
                     </h1>

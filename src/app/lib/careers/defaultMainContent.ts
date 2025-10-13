@@ -29,7 +29,7 @@ export const defaultMainContent = [
             {
                 children: [
                     {
-                        text: "We work together, win together, and grow together “At SMEOnCall, we value diversity, inclusion, and the power of shared expertise. We believe in working as a team—leveraging collective knowledge to help organizations make better, faster, and more informed decisions.”",
+                        text: "We work together, win together, and grow together “At SMEOnCall, we value diversity, and the power of shared expertise. We believe in working as a team—leveraging collective knowledge to help organizations make better, faster, and more informed decisions.”",
                     }
                 ]
             }

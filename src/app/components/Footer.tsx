@@ -69,7 +69,7 @@ export default function Footer() {
                         <li><Link href="/careers">Careers</Link></li>
                         <li><Link href="/about-us">About us</Link></li>
                         <li><Link href="/contact-us">Contact us</Link></li>
-                        <li><Link href="/complains">Complains</Link></li>
+                        <li><Link href="/compliance">Compliance</Link></li>
                     </ul>
                 </div>
 
@@ -91,7 +91,6 @@ export default function Footer() {
                         <li><Link href="/careers">Careers</Link></li>
                         <li><Link href="/contact-us">Contact us</Link></li>
                         <li><Link href="/about-us">About us</Link></li>
-                        <li><Link href="/faq">FAQs</Link></li>
                     </ul>
                 </div>
             </div>

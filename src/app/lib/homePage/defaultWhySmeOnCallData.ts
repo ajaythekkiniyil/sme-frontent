@@ -10,7 +10,7 @@ export const defaultWhySmeOnCallData = {
             text: "Fast turnaround for time-sensitive challenges"
         },
         {
-            text: "Cheaper than hiring consultants"
+            text: "Cheaper than hiring full time consultants."
         },
         {
             text: "Fully confidential with IP-safe workflows"

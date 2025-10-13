@@ -12,7 +12,6 @@ export default function SMEs() {
   {/* take data from strapi or default data */ }
   const getSectionData = (key: string, defaultData: any) => {
     const section = complainsSectionData?.data?.[key];
-    console.log(section);
     
     if (isError || !section || section.length === 0) {
       return defaultData;

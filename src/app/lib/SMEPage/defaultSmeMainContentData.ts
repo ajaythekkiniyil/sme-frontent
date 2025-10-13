@@ -31,6 +31,6 @@ export const defaultSmeMainContentData = {
         }
     ],
     primary_button_text: "Join Our Network",
-    primary_button_link: "#",
+    primary_button_link: "/enrollment-forum",
     image: null
 }
