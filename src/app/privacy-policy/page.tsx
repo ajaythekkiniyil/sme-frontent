@@ -22,7 +22,7 @@ export default function SMEs() {
   return (
     <>
       {/* Common Header */}
-      <CommonHeader headerData={complainsHeader} />
+      <CommonHeader headerData={defaultPrivacyHeaderData} />
 
       {/* Dynamic Content Section */}
       <section className="py-20 bg-gray-50" data-aos="fade-up">
