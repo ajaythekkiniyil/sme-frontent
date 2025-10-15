@@ -27,7 +27,7 @@ export default function Header() {
 
                 {/* Desktop Navigation (≥1400px) */}
                 <ul className="above-1400 flex space-x-8 font-sans text-gray-600 text-lg uppercase font-bold">
-                    <li><Link href="/" className={`${urlPath === "/" ? 'text-[#32A2DC]' : 'font-bold'}`}>Home</Link></li>
+                    <li><Link href="/" className={`${urlPath === "/" ? '' : 'hover:text-[#32A2DC]'}`}>Home</Link></li>
                     <li><Link href="/smes" className={`${urlPath === '/smes' ? 'text-[#32A2DC] capitalize' : 'hover:text-[#32A2DC] capitalize'}`}>SMEs</Link></li>
                     {/* <li><Link href="/clients" className="hover:text-[#32A2DC]">Clients</Link></li> */}
                     <li><Link href="/careers" className={`${urlPath === '/careers' ? 'text-[#32A2DC]' : 'hover:text-[#32A2DC]'}`}>Careers</Link></li>
