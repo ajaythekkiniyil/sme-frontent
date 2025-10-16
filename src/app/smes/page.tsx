@@ -156,14 +156,14 @@ export default function SMEs() {
 
               {/* Column 2 - Heading */}
               <div className="md:col-span-2">
-                <h3 className="text-2xl font-medium text-[#007AB9]">
+                <h3 className="text-3xl font-bold text-[#007AB9]">
                   {HowWeWorkTogether.steps[0].step}
                 </h3>
               </div>
 
               {/* Column 3 - Description */}
               <div className="md:col-span-3">
-                <p className="text-gray-700 text-lg">
+                <p className="text-gray-700 text-xl">
                   {HowWeWorkTogether.steps[0].description[0].children[0].text}
                 </p>
               </div>
@@ -177,12 +177,12 @@ export default function SMEs() {
                 </div>
               </div>
               <div className="md:col-span-2">
-                <h3 className="text-2xl font-medium text-[#007AB9]">
+                <h3 className="text-3xl font-bold text-[#007AB9]">
                   {HowWeWorkTogether.steps[1].step}
                 </h3>
               </div>
               <div className="md:col-span-3">
-                <p className="text-gray-700 text-lg">
+                <p className="text-gray-700 text-xl">
                   {HowWeWorkTogether.steps[1].description[0].children[0].text}
                 </p>
               </div>
@@ -195,12 +195,12 @@ export default function SMEs() {
                 </div>
               </div>
               <div className="md:col-span-2">
-                <h3 className="text-2xl font-medium text-[#007AB9]">
+                <h3 className="text-3xl font-bold text-[#007AB9]">
                   {HowWeWorkTogether.steps[2].step}
                 </h3>
               </div>
               <div className="md:col-span-3">
-                <p className="text-gray-700 text-lg">
+                <p className="text-gray-700 text-xl">
                   {HowWeWorkTogether.steps[2].description[0].children[0].text}
                 </p>
               </div>
@@ -213,12 +213,12 @@ export default function SMEs() {
                 </div>
               </div>
               <div className="md:col-span-2">
-                <h3 className="text-2xl font-medium text-[#007AB9]">
+                <h3 className="text-3xl font-bold text-[#007AB9]">
                   {HowWeWorkTogether.steps[3].step}
                 </h3>
               </div>
               <div className="md:col-span-3">
-                <p className="text-gray-700 text-lg">
+                <p className="text-gray-700 text-xl">
                   {HowWeWorkTogether.steps[3].description[0].children[0].text}
                 </p>
               </div>
@@ -231,12 +231,12 @@ export default function SMEs() {
                 </div>
               </div>
               <div className="md:col-span-2">
-                <h3 className="text-2xl font-medium text-[#007AB9]">
+                <h3 className="text-3xl font-bold text-[#007AB9]">
                   {HowWeWorkTogether.steps[4].step}
                 </h3>
               </div>
               <div className="md:col-span-3">
-                <p className="text-gray-700 text-lg">
+                <p className="text-gray-700 text-xl">
                   {HowWeWorkTogether.steps[4].description[0].children[0].text}
                 </p>
               </div>
