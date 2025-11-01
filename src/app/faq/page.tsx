@@ -5,10 +5,6 @@ import { defaultFaqData } from "../lib/homePage/defaultFaqData";
 import FaqSection from '../components/homePage/faq'
 
 export default function faq() {
-
-
-
-
   return (
     <>
       <section className="relative w-full h-[500px] sm:h-[700px] md:h-[900px] overflow-hidden">
@@ -42,26 +38,6 @@ export default function faq() {
 
        {/* Faq */}
       <FaqSection faqSectionData={defaultFaqData}/>
-
-
-
-
-
-
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
     </>
   );
 }
