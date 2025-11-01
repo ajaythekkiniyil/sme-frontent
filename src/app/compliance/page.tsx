@@ -4,6 +4,7 @@ import { useComplainsSectionContent } from "../lib/complains-page/useComplainsSe
 import CommonHeader from "../components/commonHeader";
 import { defaultComplainsHeaderData } from "../lib/complains-page/defaultComplainsHeaderData";
 import { defaultComplainsPageData } from "../lib/complains-page/defaultComplainsPageData";
+import RichTextBlock from "../components/RichTextBlock";
 
 export default function SMEs() {
   const { data: complainsSectionData, isError } = useComplainsSectionContent();
@@ -30,56 +31,7 @@ export default function SMEs() {
       {/* Compliance Framework */}
       <section className="py-20 bg-gray-50" data-aos="fade-up">
         <div className="container mx-auto px-6">
-          {mainContent.map((block: any, index: any) => {
-            switch (block.type) {
-              case "heading":
-                const HeadingTag = `h${block.level}` as keyof JSX.IntrinsicElements;
-                return (
-                  <HeadingTag
-                    key={index}
-                    className={`font-bold text-[#273677] ${block.level === 2
-                      ? "text-3xl mb-8"
-                      : block.level === 3
-                        ? "text-xl font-medium mb-3"
-                        : "text-lg"
-                      }`}
-                  >
-                    {block.children.map((child: any, i: number) => child.text).join("")}
-                  </HeadingTag>
-                );
-
-              case "paragraph":
-                return (
-                  <p key={index} className="text-lg leading-8 mb-5">
-                    {block.children.map((child: any, i: number) => child.text).join("")}
-                  </p>
-                );
-
-              case "list":
-                return (
-                  <ul
-                    key={index}
-                    className={`list-disc pl-6 space-y-2 text-lg ${block.format === "unordered" ? "" : "list-decimal"
-                      }`}
-                  >
-                    {block.children.map((item: any, i: number) => (
-                      <li key={i}>
-                        {item.children.map((child: any, j: number) =>
-                          child.bold ? (
-                            <strong key={j}>{child.text}</strong>
-                          ) : (
-                            child.text
-                          )
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                );
-
-              default:
-                return null;
-            }
-          })}
+          <RichTextBlock mainContent={mainContent}/>
         </div>
       </section>
     </>
