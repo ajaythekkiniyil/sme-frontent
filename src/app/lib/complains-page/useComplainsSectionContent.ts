@@ -3,7 +3,7 @@ import { fetchComplainsPageData } from "./fetchComplainsPageData";
 
 export function useComplainsSectionContent(){
     return useQuery({
-        queryKey: ['complains-page'],
+        queryKey: ['complains-page-data'],
         queryFn: fetchComplainsPageData,
     })
 }

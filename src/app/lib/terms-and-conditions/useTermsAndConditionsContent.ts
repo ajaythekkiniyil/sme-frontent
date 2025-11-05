@@ -3,7 +3,7 @@ import { fetchTermsAndConditionPageData } from "./fetchTermsAndConditionPageData
 
 export function useTermsAndConditionSectionContent(){
     return useQuery({
-        queryKey: ['terms-and-condition'],
+        queryKey: ['terms-and-conditions'],
         queryFn: fetchTermsAndConditionPageData,
     })
 }

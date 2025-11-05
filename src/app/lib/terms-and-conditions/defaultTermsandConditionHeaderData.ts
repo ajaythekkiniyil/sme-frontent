@@ -392,6 +392,29 @@ export const defaultTermsAndConditionPageData = [
         "type": "paragraph",
         "children": [
             {
+                "text": "For any info please contact at ",
+                "type": "text"
+            },
+            {
+                "bold": true,
+                "text": "info@smeoncall.co",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "type": "paragraph",
+        "children": [
+            {
+                "text": "",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "type": "paragraph",
+        "children": [
+            {
                 "text": "",
                 "type": "text"
             }
