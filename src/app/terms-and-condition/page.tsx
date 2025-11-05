@@ -1,7 +1,7 @@
 "use client";
 import React, { JSX } from "react";
 import CommonHeader from "../components/commonHeader";
-import { useTermsAndConditionSectionContent } from "../lib/terms-and-conditions/useComplainsSectionContent";
+import { useTermsAndConditionSectionContent } from "../lib/terms-and-conditions/useTermsAndConditionsContent";
 import { defaultTermsAndConditionHeaderData, defaultTermsAndConditionPageData } from "../lib/terms-and-conditions/defaultTermsandConditionHeaderData";
 import RichTextBlock from "../components/RichTextBlock";
 
