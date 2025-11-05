@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies and build
         run: |
-          npm install --production
+          npm ci
           npm run build
 
       - name: Deploy to VPS
