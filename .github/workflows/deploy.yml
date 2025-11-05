@@ -20,8 +20,8 @@ jobs:
 
       - name: Install dependencies and build
         run: |
-          sudo npm ci
-          sudo npm run build
+          npm install --production
+          npm run build
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v0.1.10
@@ -32,6 +32,6 @@ jobs:
           script: |
             cd ${{ secrets.APP_DIR }}
             git pull origin hari-prasad
-            sudo npm ci --omit=dev
-            sudo npm run build
+            npm i --omit=dev
+            npm run build
             pm2 restart sme-oncall || pm2 start npm --name "sme-oncall" -- start
