@@ -1,21 +1,22 @@
 import './globals.css'
 import QueryProvider from "./QueryProvider";
-import { Inter_Tight } from 'next/font/google'
+import { Source_Sans_3 } from 'next/font/google';
 import type { ReactNode } from 'react'
 import Footer from './components/Footer';
 import Header from './components/Header';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const interTight = Inter_Tight({
+// 1. Configure the font and assign it a CSS variable
+const sourceSans = Source_Sans_3({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-})
+  variable: '--font-source-sans', // <--- This is the key CSS variable name
+});
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body className={interTight.className}>
+    <html lang="en" className={sourceSans.variable}>
+      <body className={`${sourceSans.variable} font-sans`}>
         <Header />
         <QueryProvider>
           {children}

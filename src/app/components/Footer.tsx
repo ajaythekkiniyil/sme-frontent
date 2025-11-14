@@ -19,7 +19,7 @@ export default function Footer() {
                         />
                     </Link>
                     <ul className="mt-4 space-y-2 text-md text-gray-600">
-                        <li>ipsum@gmail.com</li>
+                        <li>info@smeoncall.co</li>
                         <li>152 Thatcher Road St, Mahattan, NY 10463, United States</li>
                         <li>(+068) 568 9696</li>
                     </ul>

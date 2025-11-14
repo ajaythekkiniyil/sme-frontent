@@ -27,9 +27,9 @@ export default function HeroSection({ HeroSection }: any) {
                         <div className="container mx-auto px-6 py-20 lg:py-60 relative z-10">
                             <div className="grid lg:grid-cols-2 gap-10 items-center">
                                 <div className="text-center lg:text-left">
-                                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-light mb-6 lg:leading-22 leading-snug">
+                                    <h1 className="text-4xl md:text-4xl lg:text-5xl font-medium mb-6 lg:leading-18 leading-snug">
                                         {slide.title}{" "}
-                                        <span className="text-[#32A2DC]">{slide.highlighted_text}</span>
+                                        <span className="">{slide.highlighted_text}</span>
                                     </h1>
                                     <p className="text-gray-600 mb-8 text-base md:text-lg max-w-xl mx-auto lg:mx-0">
                                         {slide.description[0].children[0].text}

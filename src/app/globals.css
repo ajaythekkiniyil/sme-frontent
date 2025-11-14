@@ -1,8 +1,23 @@
+/* app/globals.css */
+
 @import "tailwindcss";
 
+/* 1. Use the @theme directive to create a new font utility */
 @theme {
-  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  /* This creates a 'font-source' utility class */
+  --font-source: var(--font-source-sans); 
 }
+
+/* * Optional: Override the default font-sans if you want Source Sans 3 
+* to be the default for all font-sans classes.
+*/
+@theme {
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+
+/* Your other global styles go here */
+
 
 @media (max-width: 1399px) {
   .below-1400 {
