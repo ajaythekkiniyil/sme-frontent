@@ -19,7 +19,7 @@ export default function CommonHeader({ headerData }) {
             <div className="absolute inset-0 bg-gradient-to-t from-[#273677]/100 via-[#273677]/90 to-transparent"></div>
 
             {/* Content inside container */}
-            <div className="absolute inset-0 flex items-end">
+            <div className="absolute inset-0 flex items-center">
                 <div className="container mx-auto px-6 md:pb-28 pb-20">
                     <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white leading-8 md:leading-[4rem] mb-6">
                         {headerData?.title?.split(",")[0]} {" "}
@@ -28,7 +28,7 @@ export default function CommonHeader({ headerData }) {
                         </span>
                     </h1>
                     
-                    <p className="mb-8 md:mb-12 text-xl text-white font-thin">{headerData?.description}</p>
+                    <p className="mb-8 md:mb-12 text-xl text-white font-regular">{headerData?.description}</p>
                     
                     {headerData?.primary_button_link && <Link href={headerData?.primary_button_link} className="cursor-pointer px-6 py-3 bg-[#32A2DC] text-white rounded-full text-lg shadow hover:bg-[#2790c7] transition">
                         {headerData?.primary_button_text}

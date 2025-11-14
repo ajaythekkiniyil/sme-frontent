@@ -61,7 +61,7 @@ export default function Footer() {
 
                 {/* Useful Links */}
                 <div>
-                    <h3 className="font-thin text-lg text-gray-900 mb-4">Useful Links</h3>
+                    <h3 className="font-regular text-lg text-gray-900 mb-4">Useful Links</h3>
                     <ul className="space-y-3 text-md text-gray-500">
                         <li><Link href="/">Home</Link></li>
                         <li><Link href="/smes">SMEs</Link></li>
@@ -75,7 +75,7 @@ export default function Footer() {
 
                 {/* How We Help */}
                 <div>
-                    <h3 className="font-thin text-lg text-gray-900 mb-4">How We Help</h3>
+                    <h3 className="font-regular text-lg text-gray-900 mb-4">How We Help</h3>
                     <ul className="space-y-3 text-md text-gray-500">
                         <li><Link href="/help-center">Help Center</Link></li>
                         <li><Link href="/privacy-policy">Privacy Policy</Link></li>
@@ -86,7 +86,7 @@ export default function Footer() {
 
                 {/* Who We Are */}
                 <div>
-                    <h3 className="font-thin text-lg text-gray-900 mb-4">Who We Are</h3>
+                    <h3 className="font-regular text-lg text-gray-900 mb-4">Who We Are</h3>
                     <ul className="space-y-3 text-md text-gray-500">
                         <li><Link href="/careers">Careers</Link></li>
                         <li><Link href="/contact-us">Contact us</Link></li>
