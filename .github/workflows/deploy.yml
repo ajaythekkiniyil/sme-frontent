@@ -31,7 +31,13 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ${{ secrets.APP_DIR }}
+
+            rm -rf .next
+
             git pull origin hari-prasad
+
             npm i --omit=dev
+
             npm run build
+
             pm2 restart sme-oncall || pm2 start npm --name "sme-oncall" -- start
