@@ -65,9 +65,9 @@ export default function UsecasesSection({ servicesSectionData }: any) {
                                     width={900}
                                     height={900}
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#32A2DC]/100 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#32A2DC]/100 via-[#32A2DC]/90 to-transparent" />
                                 <div className="absolute bottom-6 left-6">
-                                    <p className="text-2xl font-regular text-white">{slide.service_title}</p>
+                                    <p className="text-2xl font-regular text-white leading-7">{slide.service_title}</p>
                                 </div>
                             </div>
                         </div>
