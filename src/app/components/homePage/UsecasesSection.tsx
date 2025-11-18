@@ -13,25 +13,7 @@ const serviceSettings = {
   arrows: false,
   responsive: [
     {
-      breakpoint: 1280, // ≤1280px
-      settings: {
-        slidesToShow: 4,
-      },
-    },
-    {
-      breakpoint: 1024, // ≤1024px
-      settings: {
-        slidesToShow: 3,
-      },
-    },
-    {
-      breakpoint: 768, // ≤768px
-      settings: {
-        slidesToShow: 2,
-      },
-    },
-    {
-      breakpoint: 640, // ≤640px
+      breakpoint: 640, // ≤640px (Mobile)
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -39,8 +21,27 @@ const serviceSettings = {
         centerPadding: "0px",
       },
     },
+    {
+      breakpoint: 768, // ≤768px (Small tablets)
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 1024, // ≤1024px (Tablets)
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 1280, // ≤1280px (Laptops)
+      settings: {
+        slidesToShow: 4,
+      },
+    },
   ],
 };
+
 
 export default function UsecasesSection({ servicesSectionData }: any) {    
     return (
