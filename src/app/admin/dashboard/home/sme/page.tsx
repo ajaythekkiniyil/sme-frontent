@@ -7,23 +7,28 @@ import { GridColDef } from "@mui/x-data-grid";
 
 export const smeColumns: GridColDef[] = [
     {
-        field: "fullName",
-        headerName: "Full Name",
+        field: "firstName",
+        headerName: "First Name",
         flex: 1, // auto width
     },
     {
-        field: "email",
+        field: "lastName",
+        headerName: "Last Name",
+        flex: 1,
+    },
+    {
+        field: "businessEmail",
         headerName: "Email",
         flex: 1,
     },
     {
-        field: "phone",
-        headerName: "Phone",
+        field: "businessNumber",
+        headerName: "Number",
         flex: 1,
     },
     {
-        field: "experience",
-        headerName: "Experience",
+        field: "location",
+        headerName: "Location",
         flex: 1,
     },
     {
@@ -31,7 +36,12 @@ export const smeColumns: GridColDef[] = [
         headerName: "SME Status",
         flex: 1,
         renderCell: (params) => {
-            return <h1 className="text-green-900">{params.row.smeStatus}</h1>
+            return (
+                <h1
+                    className={params.row.smeStatus === 'active' ? 'text-green-900' : params.row.smeStatus === 'pending' ? 'text-blue-500' : 'text-red-400'}>
+                    {params.row.smeStatus}
+                </h1>
+            )
         }
     }
 ];

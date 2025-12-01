@@ -51,7 +51,7 @@ export default function JobDetails() {
           </div>
 
           {/* Job Apply Now form */}
-          <JobApplyNowForm />
+          <JobApplyNowForm selectedJob={seletedJob?.job_title}/>
         </div>
       </section>
     </>

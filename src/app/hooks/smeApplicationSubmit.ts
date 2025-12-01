@@ -1,25 +1,43 @@
 import { useState } from "react"
 import { uploadFiles } from "../lib/uploadFiles"
-import { smeApplication } from "../types/enquiry"
 
 export const useSmeApplicationSubmit = () => {
-    const [attachments, setAttachments] = useState<(File | Blob)[] | null>(null)
+    const [resume, setResume] = useState<(File | Blob)[] | null>(null)
+    const [coverLetter, setCoverLetter] = useState<(File | Blob)[] | null>(null)
     const [message, setMessage] = useState("")
     const [loading, setLoading] = useState(false)
-    const [smeApplication, setSmeApplication] = useState<smeApplication>({
-        fullName: "",
-        email: "",
-        phone: "",
-        linkedinUrl: "",
-        experience: "10-15",
-        pastCompanies: "",
-        expertiseAreas: "",
-        languageSpoken: ""
+    const [smeApplication, setSmeApplication] = useState({
+        jobName: "",
+        firstName: "",
+        lastName: "",
+        businessEmail: "",
+        businessNumber: "",
+        location: "",
+        school: "",
+        degree: "",
+        discipline: "",
+        endDate: "",
+        legalFirstName: "",
+        legalLastName: "",
+        preferredFirstName: "",
+        linkedinProfile: "",
+        website: "",
+        whereDidYouFindOutAboutThisRole: "",
+        previousEmployee: "",
+        nonDisclosureAgreement: "",
+        relationStatus: "",
+        relationName: "",
     })
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleResumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
-            setAttachments(Array.from(e.target.files))
+            setResume(Array.from(e.target.files))
+        }
+    }
+
+    const handleCoverLetterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setCoverLetter(Array.from(e.target.files))
         }
     }
 
@@ -28,16 +46,22 @@ export const useSmeApplicationSubmit = () => {
         setLoading(true)
 
         try {
-            let imageIds: number[] | null = null;
+            let resumeId: number[] | null = null;
+            let coverLetterId: number[] | null = null;
 
-            if (attachments) {
-                imageIds = await uploadFiles(attachments)
+            if (resume) {
+                resumeId = await uploadFiles(resume)
+            }
+
+            if (coverLetter) {
+                coverLetterId = await uploadFiles(coverLetter)
             }
 
             const smeApplicationPayload = {
                 data: {
                     ...smeApplication,
-                    resume: imageIds, // resume is the name used in strapi
+                    resume: resumeId, // resume is the name used in strapi
+                    coverLetter: coverLetterId, // coverLetter is the name used in strapi
                 }
             };
 
@@ -57,22 +81,35 @@ export const useSmeApplicationSubmit = () => {
             setMessage('Application submitted successfully!')
             setLoading(false)
             setSmeApplication({
-                fullName: "",
-                email: "",
-                phone: "",
-                linkedinUrl: "",
-                experience: "10-15",
-                pastCompanies: "",
-                expertiseAreas: "",
-                languageSpoken: ""
+                jobName: "",
+                firstName: "",
+                lastName: "",
+                businessEmail: "",
+                businessNumber: "",
+                location: "",
+                school: "",
+                degree: "",
+                discipline: "",
+                endDate: "",
+                legalFirstName: "",
+                legalLastName: "",
+                preferredFirstName: "",
+                linkedinProfile: "",
+                website: "",
+                whereDidYouFindOutAboutThisRole: "",
+                previousEmployee: "",
+                nonDisclosureAgreement: "",
+                relationStatus: "",
+                relationName: "",
             })
-            setAttachments(null)
+            setResume(null)
+            setCoverLetter(null)
         }
         catch (err) {
             setMessage('Something went wrong while submitting your enquiry.')
         }
     };
 
-    return { smeApplication, setSmeApplication, message, loading, attachments, handleFileChange, handleSubmitEnquiry }
+    return { smeApplication, setSmeApplication, message, loading, resume, handleResumeChange, handleCoverLetterChange, handleSubmitEnquiry }
 
 }
