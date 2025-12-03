@@ -7,57 +7,40 @@ const serviceSettings = {
   dots: true,
   infinite: true,
   speed: 600,
-  slidesToShow: 4,
+  slidesToShow: 4, // default for desktop
   slidesToScroll: 1,
   autoplay: true,
   arrows: false,
   responsive: [
     {
-      breakpoint: 640, // ≤640px (Mobile)
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        centerMode: true,
-        centerPadding: "0px",
-      },
+      breakpoint: 640, // mobile < 640px
+      settings: { slidesToShow: 1 },
     },
     {
-      breakpoint: 768, // ≤768px (Small tablets)
-      settings: {
-        slidesToShow: 2,
-      },
-    },
-    {
-      breakpoint: 1024, // ≤1024px (Tablets)
-      settings: {
-        slidesToShow: 3,
-      },
-    },
-    {
-      breakpoint: 1280, // ≤1280px (Laptops)
-      settings: {
-        slidesToShow: 4,
-      },
+      breakpoint: 1024, // tablets < 1024px
+      settings: { slidesToShow: 2 },
     },
   ],
 };
+
+
 
 
 export default function UsecasesSection({ servicesSectionData }: any) {    
     return (
         <section className="bg-[#F6FAFF] py-16 sm:py-20 lg:pt-25 lg:pb-40" data-aos="fade-up">
             <div className="container mx-auto px-6">
-                <div className="text-left mb-20">
+                <div className="text-left">
                     <h2 className="text-left text-3xl sm:text-3xl md:text-5xl font-medium text-[#273677] md:leading-15 leading-9 mb-5 md:mb-5 sm:mb-5">Use <span className='text-[#32a2dc]'>Cases</span></h2>
                     <p className="text-gray-600 max-w-xl text-sm sm:text-base md:text-lg">
                         {servicesSectionData.description}
                     </p>
                 </div>
             </div>
-            <div className="container relative mx-auto">
+            <div className="container relative mx-auto px-6">
                 <Slider {...serviceSettings}>
                     {servicesSectionData.services_card.map((slide: any, index: number) => (
-                        <div key={index} className="px-3 pb-18" data-aos="fade-up">
+                        <div key={index} className="px-1 pb-18" data-aos="fade-up">
                             <div className="relative rounded-2xl overflow-hidden">
                                 <Image
                                     src={slide.background_image.url === "" ? ServiceGridImage : `${STRAPI_URL + slide.background_image.url}`}
