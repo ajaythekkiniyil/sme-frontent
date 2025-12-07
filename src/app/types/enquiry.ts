@@ -20,14 +20,3 @@ export type Tickets = {
     }],
     adminVerified: boolean
 };
-
-export type smeApplication = {
-    fullName: string,
-    email: string,
-    phone: string,
-    linkedinUrl: string,
-    experience: string,
-    pastCompanies: string,
-    expertiseAreas: string,
-    languageSpoken: string
-}
