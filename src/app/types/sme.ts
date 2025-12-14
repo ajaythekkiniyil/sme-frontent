@@ -18,4 +18,6 @@ export type getStepContentSMEType = {
 export enum smeStatusType {
     rejected = "rejected",
     active = "active",
+    pending = "pending",
+    inactive = "inactive",
 }

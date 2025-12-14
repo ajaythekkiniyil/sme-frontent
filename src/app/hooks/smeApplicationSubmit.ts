@@ -75,7 +75,7 @@ export const useSmeApplicationSubmit = () => {
             });
 
             if (!res.ok) {
-                setMessage('Something went wrong while submitting your enquiry.')
+                return setMessage('Something went wrong while submitting your enquiry.')
             }
 
             setMessage('Application submitted successfully!')

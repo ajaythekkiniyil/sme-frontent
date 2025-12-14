@@ -1,9 +1,11 @@
+"use client"
 import './globals.css'
 import QueryProvider from "./QueryProvider";
 import { Source_Sans_3 } from 'next/font/google';
 import type { ReactNode } from 'react'
 import Footer from './components/Footer';
 import Header from './components/Header';
+import { usePathname } from "next/navigation";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -14,14 +16,17 @@ const sourceSans = Source_Sans_3({
 });
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  const hideLayout = pathname.startsWith("/admin/dashboard");
+
   return (
     <html lang="en" className={sourceSans.variable}>
       <body className={`${sourceSans.variable} font-sans`}>
-        <Header />
+        {!hideLayout && <Header />}
         <QueryProvider>
           {children}
         </QueryProvider>
-        <Footer />
+        {!hideLayout && <Footer />}
       </body>
     </html>
   )
