@@ -448,7 +448,7 @@ export default function JobApplyNowForm({selectedJob}:any) {
             className="cursor-pointer w-full px-6 py-3 bg-[#32A2DC] text-white rounded-full text-lg font-semibold hover:bg-[#2790c7] transition-colors duration-200">
             {loading ? 'Submiting...' : 'Submit Application'}
           </button>
-          <p>{message}</p>
+          <p style={{padding: '20px 0'}}>{message}</p>
         </div>
       </form>
     </div>
