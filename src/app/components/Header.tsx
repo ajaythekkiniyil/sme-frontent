@@ -125,9 +125,9 @@ export default function Header() {
             {/* 'pt-4' adds a safe "invisible bridge" so the mouse doesn't lose focus */}
             <div className={`absolute right-0 top-full pt-2 w-48 transition-all duration-200 ease-out z-50 ${isDesktopLoginOpen ? 'visible opacity-100 translate-y-0' : 'invisible opacity-0 translate-y-2'}`}>
               <div className="bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden text-left">
-                <Link href="/sme-login" className="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#32A2DC] transition-colors border-b border-gray-100">SMEs</Link>
-                <Link href="/client-login" className="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#32A2DC] transition-colors border-b border-gray-100">Clients</Link>
-                <Link href="/admin-login" className="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#32A2DC] transition-colors">Admin</Link>
+                <Link href="/sme/login" className="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#32A2DC] transition-colors border-b border-gray-100">SMEs</Link>
+                <Link href="/user/login" className="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#32A2DC] transition-colors border-b border-gray-100">Clients</Link>
+                <Link href="/admin/login" className="block px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#32A2DC] transition-colors">Admin</Link>
               </div>
             </div>
           </div>
@@ -203,9 +203,9 @@ export default function Header() {
 
               <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isMobileLoginOpen ? 'max-h-60 opacity-100 mt-2' : 'max-h-0 opacity-0 mt-0'}`}>
                 <div className="bg-gray-50 rounded-xl border border-gray-100">
-                  <Link href="/sme-login" className="block px-4 py-3 text-center text-gray-600 hover:text-[#32A2DC] border-b border-gray-200">SMEs</Link>
-                  <Link href="/client-login" className="block px-4 py-3 text-center text-gray-600 hover:text-[#32A2DC] border-b border-gray-200">Clients</Link>
-                  <Link href="/admin-login" className="block px-4 py-3 text-center text-gray-600 hover:text-[#32A2DC]">Admin</Link>
+                  <Link href="/sme/login" className="block px-4 py-3 text-center text-gray-600 hover:text-[#32A2DC] border-b border-gray-200">SMEs</Link>
+                  <Link href="/user/login" className="block px-4 py-3 text-center text-gray-600 hover:text-[#32A2DC] border-b border-gray-200">Clients</Link>
+                  <Link href="/admin/login" className="block px-4 py-3 text-center text-gray-600 hover:text-[#32A2DC]">Admin</Link>
                 </div>
               </div>
             </div>

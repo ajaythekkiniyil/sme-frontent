@@ -17,7 +17,7 @@ const sourceSans = Source_Sans_3({
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const hideLayout = pathname.startsWith("/admin/dashboard");
+  const hideLayout = pathname.includes("dashboard") || pathname.includes("login");
 
   return (
     <html lang="en" className={sourceSans.variable}>
