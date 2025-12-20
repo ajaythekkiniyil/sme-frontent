@@ -22,7 +22,6 @@ export const getCurrentUser = cache(async () => {
     const user = await res.json();
     return user;
   } catch (error) {
-    console.error(error);
     return null;
   }
 });

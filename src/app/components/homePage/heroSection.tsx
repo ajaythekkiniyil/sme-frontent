@@ -16,7 +16,7 @@ const heroSettings = {
     arrows: true,
 };
 
-export const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
+export const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL === 'http://localhost:1337' ? '' : process.env.NEXT_PUBLIC_STRAPI_URL;
 
 export default function HeroSection({ HeroSection }: any) {          
     return (

@@ -32,7 +32,6 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(strapiData);
 
   } catch (error) {
-    console.error('Error fetching from Strapi:', error);
     return NextResponse.json({ error: 'An unexpected error occurred' }, { status: 500 });
   }
 }

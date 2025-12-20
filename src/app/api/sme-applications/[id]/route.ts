@@ -37,7 +37,6 @@ export async function GET(
         return NextResponse.json(strapiData);
 
     } catch (error) {
-        console.error('Error fetching from Strapi:', error);
         return NextResponse.json({ error: 'An unexpected error occurred' }, { status: 500 });
     }
 }
@@ -85,7 +84,6 @@ export async function PUT(
         return NextResponse.json(strapiData);
 
     } catch (error) {
-        console.error('Error fetching from Strapi:', error);
         return NextResponse.json({ error: 'An unexpected error occurred' }, { status: 500 });
     }
 }

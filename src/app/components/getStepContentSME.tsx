@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
 import { smeStatusType } from '@/app/types/sme';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
-import { createSmeAccount, updateSmeStatus, sendInterviewInvite, sendEmail } from '@/app/lib/sme'; 
+import { createSmeAccount, updateSmeStatus, sendInterviewInvite, sendWelcomeEmail } from '@/app/lib/sme'; 
 import { STRAPI_URL } from './homePage/heroSection';
 import { CheckCircle, XCircle, FileText, Download, Plus, Link as LinkIcon, Clock, Calendar } from 'lucide-react';
 
@@ -142,7 +142,7 @@ export function GetStepContentSME({ stepIndex, data, handleNext, applicationPend
                 alert('Error creating account');
             } else {
                 alert('Account created successfully.');
-                sendEmail({ firstName: data.firstName, email: data.businessEmail, id: data.documentId }).then((data)=>{
+                sendWelcomeEmail({ firstName: data.firstName, email: data.businessEmail, id: data.documentId }).then((data)=>{
                     handleNext();
                 });
             }

@@ -36,9 +36,6 @@ export async function POST(req: NextRequest) {
 
         // 4. Handle Strapi's response
         if (!strapiRes.ok) {
-            // Log the detailed error on the server side
-            console.error("Error forwarding invite to Strapi:", strapiData);
-
             return NextResponse.json({
                 error: strapiData.error?.message || 'Failed to trigger email dispatch from Strapi'
             }, {
@@ -50,7 +47,6 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(strapiData);
 
     } catch (error) {
-        console.error('Error in Next.js API route for sending invite:', error);
         return NextResponse.json({ error: 'An unexpected server error occurred during email dispatch.' }, { status: 500 });
     }
 }

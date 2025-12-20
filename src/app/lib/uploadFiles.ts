@@ -23,7 +23,6 @@ export const uploadFiles = async (files: (File | Blob)[] | null): Promise<number
 
         return idArray;
     } catch (err) {
-        console.error("Upload error:", err);
         return null;
     }
 }

@@ -56,7 +56,6 @@ export async function createSmeAccount({ firstName, email, id }: { firstName: st
         return data;
     }
     catch (err) {
-        console.error('Registration failed:', err);
         // Re-throw to be caught by useMutation's onError
         throw err;
     }
@@ -88,12 +87,11 @@ export async function sendInterviewInvite(details: any) {
         return await response.json();
 
     } catch (error) {
-        console.error("Error sending invite:", error);
         throw error;
     }
 }
 
-export async function sendEmail(details: any) {
+export async function sendWelcomeEmail(details: any) {
     try {
         const response = await fetch(`/api/send-email`, {
             method: 'POST',
@@ -115,7 +113,6 @@ export async function sendEmail(details: any) {
         return await response.json();
 
     } catch (error) {
-        console.error("Error sending invite:", error);
         throw error;
     }
 }
