@@ -28,6 +28,12 @@ export const useStrapiLogin = (successUrl: string) => {
             if (res.ok) {
                 router.push(successUrl);
 
+                const { user } = await res.json();
+
+                localStorage.setItem('username', user.username);
+                localStorage.setItem('email', user.email);
+
+
                 // Refresh the router to re-fetch server components and
                 // reflect the new authentication state (the cookie being set).
                 // This ensures protected layouts and pages update correctly.
@@ -43,5 +49,5 @@ export const useStrapiLogin = (successUrl: string) => {
         }
     };
 
-    return { identifier, password, error, isLoading,setIdentifier, setPassword, handleSubmit }
+    return { identifier, password, error, isLoading, setIdentifier, setPassword, handleSubmit }
 }
