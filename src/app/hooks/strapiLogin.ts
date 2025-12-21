@@ -41,6 +41,10 @@ export const useStrapiLogin = (successUrl: string) => {
             } else {
                 // const data = await res.json();
                 setError('Failed to login. Please check your credentials.');
+
+                setTimeout(() => {
+                    setError('');
+                }, 2000);
             }
         } catch (err) {
             setError('An unexpected error occurred. Please try again.');
