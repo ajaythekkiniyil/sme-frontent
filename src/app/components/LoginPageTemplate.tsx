@@ -2,13 +2,14 @@
 import { useState } from "react";
 import { useStrapiLogin } from "../hooks/strapiLogin"
 import { sendOtp, verifyOtp } from "../lib/send-email/send-email";
+import { usePathname } from "next/navigation";
 
 type LoginPageTemplateProps = {
   role: string,
   successUrl: string,
 }
 
-export default function LoginPageTemplate({ role, successUrl }: LoginPageTemplateProps) {
+export default function LoginPageTemplate({ role, successUrl }: LoginPageTemplateProps) {  
   const {
     identifier,
     password,
@@ -18,6 +19,9 @@ export default function LoginPageTemplate({ role, successUrl }: LoginPageTemplat
     setPassword,
     handleSubmit,
   } = useStrapiLogin(successUrl);
+
+  // admin and sme cant able to create new account using signup method.
+  const [pathname] = useState(usePathname().includes('/admin') || usePathname().includes('/sme'));  
 
   const [signUp, setSignUp] = useState(false);
   const [showOtp, setShowOtp] = useState(false);
@@ -202,9 +206,9 @@ export default function LoginPageTemplate({ role, successUrl }: LoginPageTemplat
         </form>
 
         {/* Toggle Footer */}
-        {!showOtp && (
+        {!showOtp && !pathname && (
           <div className="pt-6 text-center border-t border-gray-100 dark:border-gray-700">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-md text-gray-600 dark:text-gray-400">
               {signUp ? "Already have an account?" : "Don't have an account?"}
               <button
                 type="button"

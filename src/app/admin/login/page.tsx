@@ -1,4 +1,4 @@
-import LoginPageTemplate from "@/app/components/login";
+import LoginPageTemplate from "@/app/components/LoginPageTemplate";
 
 export default function LoginPage() {
   return (
