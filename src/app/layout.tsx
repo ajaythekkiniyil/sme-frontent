@@ -8,6 +8,7 @@ import Header from './components/Header';
 import { usePathname } from "next/navigation";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { ToastProvider } from './components/ui/toast';
 
 // 1. Configure the font and assign it a CSS variable
 const sourceSans = Source_Sans_3({
@@ -24,7 +25,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={`${sourceSans.variable} font-sans`}>
         {!hideLayout && <Header />}
         <QueryProvider>
-          {children}
+          <ToastProvider>
+            {children}
+          </ToastProvider>
         </QueryProvider>
         {!hideLayout && <Footer />}
       </body>
