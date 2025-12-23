@@ -62,15 +62,12 @@ const smeColumns: GridColDef[] = [
     field: "businessNumber",
     headerName: "Phone",
     flex: 1,
-    // Hiding this column on small screens for better mobile layout
-    hide: true,
     minWidth: 120
   },
   {
     field: "location",
     headerName: "Location",
     flex: 1,
-    // Hiding this column on small screens
     minWidth: 100
   },
   {
@@ -80,7 +77,7 @@ const smeColumns: GridColDef[] = [
     minWidth: 120,
     renderCell: (params) => <StatusBadge status={params.row.smeStatus} />
   }
-].filter(col => col.hide !== true || window.innerWidth >= 768); // Simple client-side filtering based on screen width
+];
 
 export default function AdminSMEPage() {
   const { data, isLoading } = useSme();

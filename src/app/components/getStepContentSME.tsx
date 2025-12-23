@@ -4,9 +4,10 @@ import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
 import { smeStatusType } from '@/app/types/sme';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
-import { createSmeAccount, updateSmeStatus, sendInterviewInvite, sendWelcomeEmail } from '@/app/lib/sme'; 
+import { createSmeAccount, updateSmeStatus, sendInterviewInvite, sendWelcomeEmail } from '@/app/lib/sme';
 import { STRAPI_URL } from './homePage/heroSection';
 import { CheckCircle, XCircle, FileText, Download, Plus, Link as LinkIcon, Clock, Calendar } from 'lucide-react';
+import { useToast } from './ui/toast';
 
 // --- Reusable Button Component, InfoBlock, getStatusStyle (UNMODIFIED) ---
 const StyledButton = ({ onClick, children, className, color, disabled, startIcon }: any) => {
@@ -61,6 +62,7 @@ const getStatusStyle = (status: smeStatusType) => {
 export function GetStepContentSME({ stepIndex, data, handleNext, applicationPending, setApplicationPending }: any) {
     const queryClient = useQueryClient();
     const router = useRouter();
+    const { showToast } = useToast();
 
     // NEW STATE for Interview Scheduling
     const [interviewDetails, setInterviewDetails] = useState({
@@ -80,27 +82,25 @@ export function GetStepContentSME({ stepIndex, data, handleNext, applicationPend
     // NEW MUTATION for Scheduling
     const mutationSendInvite = useMutation({
         mutationFn: (details: typeof interviewDetails) =>
-            sendInterviewInvite({ 
-                smeId: data.documentId, 
-                smeName: data.firstName, 
+            sendInterviewInvite({
+                smeId: data.documentId,
+                smeName: data.firstName,
                 smeEmail: data.businessEmail,
-                ...details 
+                ...details
             }),
         onSuccess: () => {
-            // Note: Using alert() as a temporary notification method
-            alert('Interview invitation successfully sent! Moving to the next step.');
+            showToast("Interview invitation successfully sent! Moving to the next step.", "success")
             // Auto-advance to the next step (Approve/Reject)
             handleNext();
         },
         onError: () => {
-            alert('An error occurred while sending the interview invite.');
+            showToast("An error occurred while sending the interview invite. Please try again later", "error")
         }
     });
 
     const handleSchedule = () => {
         if (!interviewDetails.date || !interviewDetails.time || !interviewDetails.meetingLink) {
-            // data?.businessEmail
-            alert("Please fill out the Date, Time, and Meeting Link fields.");
+            showToast("Please fill out the Date, Time, and Meeting Link fields.", "info")
             return;
         }
         mutationSendInvite.mutate(interviewDetails);
@@ -115,21 +115,21 @@ export function GetStepContentSME({ stepIndex, data, handleNext, applicationPend
             queryClient.invalidateQueries({ queryKey: ["smeDetails", variables.id] });
 
             if (variables.status === smeStatusType.rejected) {
-                alert('Application rejected');
+                showToast("Application rejected", "error")
                 setApplicationPending(true);
 
                 // Navigate to the SME dashboard after rejection
                 router.push('/admin/dashboard/home/sme');
 
             } else if (variables.status === smeStatusType.active) {
-                alert('Application approved');
+                showToast("Application approved", "success")
                 setApplicationPending(false);
                 // Note: handleNext is called here for auto-advance upon approval
                 handleNext();
             }
         },
         onError: () => {
-            alert('An error occurred while updating the status.');
+            showToast("An error occurred while updating the status. Please try again later.", "error")
         }
     });
 
@@ -139,16 +139,16 @@ export function GetStepContentSME({ stepIndex, data, handleNext, applicationPend
 
         onSuccess: (res) => {
             if (res.status === false) {
-                alert('Error creating account');
+                showToast("An error occurred while creating account. Please try again later.", "error")
             } else {
-                alert('Account created successfully.');
-                sendWelcomeEmail({ firstName: data.firstName, email: data.businessEmail, id: data.documentId }).then((data)=>{
+                showToast("Account created successfully.", "success")
+                sendWelcomeEmail({ firstName: data.firstName, email: data.businessEmail, id: data.documentId }).then((data) => {
                     handleNext();
                 });
             }
         },
         onError: () => {
-            alert('An error occurred while attempting to create the account.');
+            showToast("An error occurred while creating account. Please try again later.", "error")
         }
     });
 
@@ -156,7 +156,7 @@ export function GetStepContentSME({ stepIndex, data, handleNext, applicationPend
         if (data?.firstName && data?.businessEmail) {
             mutationCreateAccount.mutate({ firstName: data.firstName, email: data.businessEmail, id: data.documentId });
         } else {
-            alert("Missing required data (Full Name or Email) to create the account.");
+            showToast("Missing required data (Full Name or Email) to create the account.", "info")
         }
     };
 
