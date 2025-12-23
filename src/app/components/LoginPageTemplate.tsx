@@ -3,13 +3,14 @@ import { useState } from "react";
 import { useStrapiLogin } from "../hooks/strapiLogin"
 import { sendOtp, verifyOtp } from "../lib/send-email/send-email";
 import { usePathname } from "next/navigation";
+import { useToast } from './ui/toast'
 
 type LoginPageTemplateProps = {
   role: string,
   successUrl: string,
 }
 
-export default function LoginPageTemplate({ role, successUrl }: LoginPageTemplateProps) {  
+export default function LoginPageTemplate({ role, successUrl }: LoginPageTemplateProps) {
   const {
     identifier,
     password,
@@ -20,10 +21,13 @@ export default function LoginPageTemplate({ role, successUrl }: LoginPageTemplat
     handleSubmit,
   } = useStrapiLogin(successUrl);
 
+  const { showToast } = useToast();
+
   // admin and sme cant able to create new account using signup method.
-  const [pathname] = useState(usePathname().includes('/admin') || usePathname().includes('/sme'));  
+  const [pathname] = useState(usePathname().includes('/admin') || usePathname().includes('/sme'));
 
   const [signUp, setSignUp] = useState(false);
+  const [signUpLoding, setSignUpLoding] = useState(false);
   const [showOtp, setShowOtp] = useState(false);
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [username, setUsername] = useState('');
@@ -56,24 +60,41 @@ export default function LoginPageTemplate({ role, successUrl }: LoginPageTemplat
     if (showOtp) {
       const userEnteredOtp = otp.join("");
       if (userEnteredOtp.length === 6) {
-        const response = await verifyOtp(identifier, username, password, userEnteredOtp);
-        if (response.status === '200') {
-          alert('Successfully created account')
-          setShowOtp(false)
-          setSignUp(false)
-          setOtp(["", "", "", "", "", ""])
-          setIdentifier('')
-          setPassword('')
-          setUsername('')
+        try {
+          const response = await verifyOtp(identifier, username, password, userEnteredOtp);
+          if (response.status === '200') {
+            showToast("Account created successfully. Sign in to continue.", "success");
+            setShowOtp(false)
+            setSignUp(false)
+            setOtp(["", "", "", "", "", ""])
+            setIdentifier('')
+            setPassword('')
+            setUsername('')
+          }
+          else showToast("Something went wrong while creating account, Please try again later.", "error");
         }
-        else alert('Something went wrong while creating account');
+        catch (err) {
+          showToast("Something went wrong while creating account, Please try again later.", "error");
+        }
       }
     } else if (signUp) {
-      const response = await sendOtp(identifier);
-      if (response.status === '200') {
-        setShowOtp(true);
+      try {
+        setSignUpLoding(true)
+        const response = await sendOtp(identifier);
+        if (response.message === "email already exist") {
+          showToast("It looks like an account has already been created with these email. If you need help, please contact the administrator.", "info");
+        }
+
+        if (response.status === '200') {
+          showToast("Please check your email and enter the verification code to continue.", "success");
+          setShowOtp(true);
+        }
+        setSignUpLoding(false)
       }
-      else alert('Something went wrong while creating account');
+      catch (err) {
+        showToast("Something went wrong while creating account, Please try again later.", "error");
+        setSignUpLoding(false)
+      }
     } else {
       await handleSubmit(e);
     }
@@ -186,21 +207,37 @@ export default function LoginPageTemplate({ role, successUrl }: LoginPageTemplat
           <div className="pt-2">
             <button
               type="submit"
-              disabled={isLoading || (showOtp && otp.join("").length < 6)}
+              disabled={isLoading || (showOtp && otp.join("").length < 6) || signUpLoding}
               className="relative flex justify-center w-full px-4 py-3.5 text-sm font-semibold text-white bg-indigo-600 border border-transparent rounded-lg shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-indigo-400 disabled:cursor-not-allowed transition-colors"
             >
-              {isLoading ? (
-                <div className="flex items-center space-x-2">
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  <span>Processing...</span>
-                </div>
-              ) : showOtp ? (
-                "Verify Code"
-              ) : signUp ? (
-                "Create Account"
-              ) : (
-                "Sign In"
-              )}
+              {
+                isLoading ?
+                  (
+                    <div className="flex items-center space-x-2">
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Processing...</span>
+                    </div>
+                  )
+                  :
+                  showOtp ?
+                    (
+                      "Verify Code"
+                    )
+                    :
+                    (signUp && signUpLoding) ?
+                      (
+                        "Creating Account..."
+                      )
+                      :
+                      signUp ?
+                        (
+                          "Create Account"
+                        )
+                        :
+                        (
+                          "Sign In"
+                        )
+              }
             </button>
           </div>
         </form>
