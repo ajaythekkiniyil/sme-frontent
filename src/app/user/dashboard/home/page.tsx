@@ -30,6 +30,7 @@ import {
   LogOutIcon
 } from 'lucide-react';
 import { useTicketCreation } from '@/app/hooks/tickets';
+import { useToast } from '../../../components/ui/toast';
 
 // --- Mock Data ---
 const MOCK_EXPERTS = [
@@ -88,7 +89,8 @@ export default function UserHomePage() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [showBriefForm, setShowBriefForm] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { status, handleTicketCreation, loading } = useTicketCreation()
+  const { handleTicketCreation, loading, setLoading } = useTicketCreation();
+  const { showToast } = useToast();
 
   // Profile State
   const [profile, setProfile] = useState({
@@ -113,19 +115,19 @@ export default function UserHomePage() {
   });
 
   // create new ticket
-  const submitTicket = async (e) => {
+  const submitTicket = async (e: any) => {
     e.preventDefault();
-    await handleTicketCreation(ticket)
-  }
-
-  useEffect(() => {
-    // ticket created
-    if (status) {
+    try {
+      await handleTicketCreation(ticket);
+      showToast("New Ticket created successfully", "success")
       setShowBriefForm(false)
       setTicket({ email: '', topic: '', problemStatement: '', urgency: '', attachments: [], budgetRange: '' })
-      alert('New Ticket successfully created')
+      setLoading(false)
     }
-  }, [status])
+    catch (err) {
+      showToast("Something went wrong while creating Ticket, Try again later.", "error")
+    }
+  }
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -509,8 +511,8 @@ export default function UserHomePage() {
 
       {/* Brief Form Modal */}
       {showBriefForm && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-md z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4">
-          <div className="bg-white w-full max-w-2xl rounded-t-[2.5rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl animate-in slide-in-from-bottom duration-300">
+        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center p-0 sm:p-4">
+          <div className="bg-white w-full max-w-xl rounded-t-[2.5rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl animate-in slide-in-from-bottom duration-300">
             <div className="p-6 md:p-8 border-b border-gray-100 flex justify-between items-center">
               <div>
                 <h2 className="text-xl md:text-2xl font-bold">Expert Brief</h2>
@@ -519,7 +521,7 @@ export default function UserHomePage() {
               <button onClick={() => setShowBriefForm(false)} className="p-2 hover:bg-gray-100 rounded-full transition-colors"><X size={24} /></button>
             </div>
             <form onSubmit={submitTicket}>
-              <div className="p-6 md:p-8 space-y-6 max-h-[70vh] overflow-y-auto">
+              <div className="p-6 md:p-8 space-y-6 max-h-[50vh] overflow-y-auto">
                 <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
                   <FormField label="Topic" placeholder="e.g. Market Analysis" required={true} value={ticket.topic} onChange={(e) => setTicket({ ...ticket, topic: e.target.value })} />
                 </div>
@@ -575,7 +577,17 @@ export default function UserHomePage() {
               </div>
 
               <div className="p-6 md:p-8 bg-gray-50 border-t border-gray-100 flex flex-col sm:flex-row gap-3">
-                <button className="flex-1 py-4 bg-blue-600 text-white rounded-2xl font-bold text-lg hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-200 transition-all">{loading ? 'Submitting...' : 'Submit Brief'}</button>
+                <button
+                  disabled={loading}
+                  className={`flex-1 py-4 bg-blue-600 text-white rounded-2xl font-bold text-lg hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-200 transition-all
+                      ${loading
+                      ? "bg-gray-400 cursor-not-allowed opacity-70 pointer-events-none"
+                      : ""
+                    }
+                    `}
+                >
+                  {loading ? 'Submitting...' : 'Submit Brief'}
+                </button>
                 <button onClick={() => setShowBriefForm(false)} className="flex-1 py-4 bg-white text-gray-500 rounded-2xl font-bold text-lg border border-gray-200 hover:bg-gray-100 transition-all">Cancel</button>
               </div>
             </form>

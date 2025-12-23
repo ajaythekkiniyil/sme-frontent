@@ -19,7 +19,6 @@ export function useTicketDetails(id: number) {
 }
 
 export const useTicketCreation = () => {
-    const [status, setStatus] = useState(false)
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false)
 
@@ -55,17 +54,16 @@ export const useTicketCreation = () => {
                 body: JSON.stringify(ticketCreationPayload),
             });
 
-            if (!res.ok) {
-                setStatus(false)
+            if (res.status !== 200){
+                throw new Error("something went worng while creating new ticket.")
             }
-            setStatus(true)
-            setLoading(false)
+
+            return res;
         }
         catch (err) {
-            setStatus(false)
-            setLoading(false)
+            throw new Error("something went worng while creating new ticket.")
         }
     };
 
-    return { status, handleTicketCreation, loading }
+    return { handleTicketCreation, loading, setLoading }
 }
