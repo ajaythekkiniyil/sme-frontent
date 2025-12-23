@@ -203,7 +203,10 @@ html {
 .toast-content {
   flex: 1;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.5;
+  max-width: 260px;          
+  white-space: normal;       
+  word-break: break-word;    
 }
 
 /* Close */
@@ -271,4 +274,8 @@ html {
   to {
     transform: scaleX(0);
   }
+}
+
+.toast-card:hover .toast-progress {
+  animation-play-state: paused;
 }

@@ -14,6 +14,9 @@ interface Toast {
     message: string;
     type: ToastType;
     duration: number;
+    createdAt: number;
+    remaining: number;
+    timer?: NodeJS.Timeout;
 }
 
 interface ToastContextType {
@@ -22,7 +25,7 @@ interface ToastContextType {
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
-const ICONS = {
+const ICONS: Record<ToastType, string> = {
     success: "✔",
     error: "✖",
     info: "ℹ",
@@ -31,17 +34,43 @@ const ICONS = {
 export function ToastProvider({ children }: { children: React.ReactNode }) {
     const [toasts, setToasts] = useState<Toast[]>([]);
 
-    const showToast = useCallback(
-        (message: string, type: ToastType = "info", duration = 4000) => {
-            const id = Date.now();
-            setToasts((prev) => [...prev, { id, message, type, duration }]);
+    const removeToast = useCallback((id: number) => {
+        setToasts((prev) => prev.filter((t) => t.id !== id));
+    }, []);
 
-            setTimeout(() => {
-                setToasts((prev) => prev.filter((t) => t.id !== id));
-            }, duration);
+    const showToast = useCallback(
+        (message: string, type: ToastType = "info", duration = 6000) => {
+            const id = Date.now();
+            const createdAt = Date.now();
+
+            const toast: Toast = {
+                id,
+                message,
+                type,
+                duration,
+                createdAt,
+                remaining: duration,
+            };
+
+            toast.timer = setTimeout(() => removeToast(id), duration);
+
+            setToasts((prev) => [...prev, toast]);
         },
-        []
+        [removeToast]
     );
+
+    const pauseToast = (toast: Toast) => {
+        if (toast.timer) {
+            clearTimeout(toast.timer);
+            toast.timer = undefined;
+            toast.remaining -= Date.now() - toast.createdAt;
+        }
+    };
+
+    const resumeToast = (toast: Toast) => {
+        toast.createdAt = Date.now();
+        toast.timer = setTimeout(() => removeToast(toast.id), toast.remaining);
+    };
 
     return (
         <ToastContext.Provider value={{ showToast }}>
@@ -53,6 +82,8 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
                     <div
                         key={toast.id}
                         className={`toast-card toast-${toast.type}`}
+                        onMouseEnter={() => pauseToast(toast)}
+                        onMouseLeave={() => resumeToast(toast)}
                     >
                         <div className="toast-icon">{ICONS[toast.type]}</div>
 
@@ -61,12 +92,9 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
                         </div>
 
                         <button
-                            onClick={() =>
-                                setToasts((prev) =>
-                                    prev.filter((t) => t.id !== toast.id)
-                                )
-                            }
+                            onClick={() => removeToast(toast.id)}
                             className="toast-close"
+                            aria-label="Close notification"
                         >
                             ×
                         </button>
@@ -74,7 +102,9 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
                         {/* Progress Bar */}
                         <div
                             className="toast-progress"
-                            style={{ animationDuration: `${toast.duration}ms` }}
+                            style={{
+                                animationDuration: `${toast.remaining}ms`,
+                            }}
                         />
                     </div>
                 ))}

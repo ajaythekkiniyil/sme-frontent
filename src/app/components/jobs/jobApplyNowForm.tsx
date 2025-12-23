@@ -1,12 +1,20 @@
 import { useSmeApplicationSubmit } from "@/app/hooks/smeApplicationSubmit"
 import { useEffect } from "react"
+import { useToast } from '../ui/toast'
 
 export default function JobApplyNowForm({selectedJob}:any) {
+  const { showToast } = useToast();
   const { smeApplication, message, loading, setSmeApplication, handleResumeChange, handleCoverLetterChange, handleSubmitEnquiry } = useSmeApplicationSubmit()
 
   useEffect(()=>{
     setSmeApplication({ ...smeApplication, jobName: selectedJob })
   },[selectedJob])
+  
+  useEffect(() => {
+    if (message.message) {
+      showToast(message.message, message.status === "success" ? "success" : "error")
+    }
+  }, [message])
 
   return (
     <div className="bg-white rounded-2xl p-15">
@@ -445,10 +453,16 @@ export default function JobApplyNowForm({selectedJob}:any) {
         <div>
           <button
             type="submit"
-            className="cursor-pointer w-full px-6 py-3 bg-[#32A2DC] text-white rounded-full text-lg font-semibold hover:bg-[#2790c7] transition-colors duration-200">
-            {loading ? 'Submiting...' : 'Submit Application'}
+            disabled={loading}
+            className={`w-full px-6 py-3 rounded-full text-lg font-semibold transition-all duration-200
+              ${loading
+                ? "bg-gray-400 cursor-not-allowed opacity-70 pointer-events-none"
+                : "bg-[#32A2DC] hover:bg-[#2790c7] cursor-pointer text-white"
+              }
+              `}
+          >
+            {loading ? "Submitting..." : "Submit Application"}
           </button>
-          <p style={{padding: '20px 0'}}>{message}</p>
         </div>
       </form>
     </div>

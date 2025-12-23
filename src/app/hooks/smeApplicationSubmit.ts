@@ -4,7 +4,7 @@ import { uploadFiles } from "../lib/uploadFiles"
 export const useSmeApplicationSubmit = () => {
     const [resume, setResume] = useState<(File | Blob)[] | null>(null)
     const [coverLetter, setCoverLetter] = useState<(File | Blob)[] | null>(null)
-    const [message, setMessage] = useState("")
+    const [message, setMessage] = useState({ message: '', status: '' })
     const [loading, setLoading] = useState(false)
     const [smeApplication, setSmeApplication] = useState({
         jobName: "",
@@ -75,10 +75,22 @@ export const useSmeApplicationSubmit = () => {
             });
 
             if (!res.ok) {
-                return setMessage('Something went wrong while submitting your enquiry.')
+                const { error } = await res.json()
+                if (error.details.errors[0].message === "This attribute must be unique") {
+                    setMessage({
+                        message:
+                            "It looks like an application has already been submitted with these contact details. If you need help, please contact the administrator.",
+                        status: "error",
+                    });
+
+                }
+                else {
+                    setMessage({ message: 'Something went wrong while submitting your Application.', status: "error" })
+                }
+                return setLoading(false)
             }
 
-            setMessage('Application submitted successfully!')
+            setMessage({ message: 'Application submitted successfully!', status: "success" })
             setLoading(false)
             setSmeApplication({
                 jobName: "",
@@ -106,10 +118,9 @@ export const useSmeApplicationSubmit = () => {
             setCoverLetter(null)
         }
         catch (err) {
-            setMessage('Something went wrong while submitting your enquiry.')
+            setMessage({ message: 'Something went wrong while submitting your Application. Please try again later', status: "error" })
+            setLoading(false)
         }
     };
-
     return { smeApplication, setSmeApplication, message, loading, resume, handleResumeChange, handleCoverLetterChange, handleSubmitEnquiry }
-
 }
