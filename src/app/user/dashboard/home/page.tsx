@@ -233,7 +233,7 @@ export default function UserHomePage() {
               <Bell size={20} />
               <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
             </div> */}
-            <button className="hidden sm:flex items-center space-x-2 px-3 py-1.5 bg-blue-50 text-blue-600 rounded-lg text-sm font-semibold hover:bg-blue-100 transition" onClick={() => setShowBriefForm(true)}>
+            <button className="hidden sm:flex items-center space-x-2 px-3 py-1.5 bg-blue-50 text-blue-600 rounded-lg text-sm font-semibold hover:bg-blue-100 transition" onClick={() => {}}>
               <LogOutIcon size={16} />
               <span>Logout</span>
             </button>
@@ -246,7 +246,7 @@ export default function UserHomePage() {
             <div className="max-w-6xl mx-auto space-y-6 md:space-y-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {[
-                  { label: 'Active Projects', value: '12', icon: LayoutGrid, color: 'text-blue-600', bg: 'bg-blue-50' },
+                  { label: 'Active Ticket', value: '0', icon: LayoutGrid, color: 'text-blue-600', bg: 'bg-blue-50' },
                   { label: 'Upcoming Calls', value: '4', icon: Calendar, color: 'text-purple-600', bg: 'bg-purple-50' },
                   { label: 'Unpaid Invoices', value: '2', icon: CreditCard, color: 'text-orange-600', bg: 'bg-orange-50' },
                 ].map((stat, i) => (
@@ -262,7 +262,7 @@ export default function UserHomePage() {
                 ))}
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+              {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
                 <div className="lg:col-span-2 space-y-4">
                   <div className="flex items-center justify-between">
                     <h2 className="text-lg font-bold">Active Engagements</h2>
@@ -311,7 +311,7 @@ export default function UserHomePage() {
                     </button>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           )}
 
@@ -364,9 +364,9 @@ export default function UserHomePage() {
                       ))}
                     </div>
 
-                    <button className="w-full py-3 bg-gray-900 text-white rounded-xl font-bold hover:bg-gray-800 transition shadow-lg shadow-gray-200">
+                    {/* <button className="w-full py-3 bg-gray-900 text-white rounded-xl font-bold hover:bg-gray-800 transition shadow-lg shadow-gray-200">
                       Request Consultation
-                    </button>
+                    </button> */}
                   </div>
                 ))}
               </div>
