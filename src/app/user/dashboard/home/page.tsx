@@ -75,6 +75,7 @@ const FormField = ({ label, icon: Icon, type = "text", placeholder, value = null
       <input
         type={type}
         multiple={multiple}
+        accept=".png,.jpg,.jpeg,.pdf,.doc"
         {...(type !== 'file' ? { value } : {})}
         onChange={onChange}
         placeholder={placeholder}

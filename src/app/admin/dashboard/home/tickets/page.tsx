@@ -34,40 +34,58 @@ const VerificationBadge = ({ verified }: { verified: boolean }) => {
   );
 };
 
+const StatusBadge = ({ status }: { status: string }) => {
+  let styles = "bg-gray-100 text-gray-600";
+
+  if (status !== "Not Assigned") styles = "bg-green-100 text-green-700 border border-green-200";
+
+  return (
+    <span className={`px-3 py-1 rounded-full text-xs font-semibold capitalize ${styles}`}>
+      {status}
+    </span>
+  );
+};
+
 // --- 2. Columns Definition ---
 export const ticketsColumn: GridColDef[] = [
   {
-    field: "firstName",
-    headerName: "First Name",
+    field: "email",
+    headerName: "Email",
     flex: 1,
     renderCell: (params) => <span className="font-medium text-gray-700">{params.value}</span>
   },
   {
-    field: "lastName",
-    headerName: "Last Name",
+    field: "topic",
+    headerName: "Topic",
     flex: 1
   },
   {
-    field: "businessNumber",
-    headerName: "Phone Number",
+    field: "problemStatement",
+    headerName: "Problem Statement",
     flex: 1,
     renderCell: (params) => <span className="text-gray-500">{params.value || "-"}</span>
   },
   {
-    field: "businessEmail",
-    headerName: "Business Email",
+    field: "urgency",
+    headerName: "Urgency",
     flex: 1.5,
   },
   {
-    field: "adminVerified",
-    headerName: "Status",
+    field: "budgetRange",
+    headerName: "Budget Range",
     flex: 1,
-    renderCell: (params) => <VerificationBadge verified={params.row.adminVerified} />
+  },
+  {
+    field: "assignedSME",
+    headerName: "Assigned SME",
+    flex: 1,
+    renderCell: (params) => <StatusBadge status={params.value} />
   }
 ];
 
 export default function AdminTicketsPage() {
   const { data: tickets, isLoading } = useGetTickets();
+  
   const router = useRouter();
   const pathname = usePathname();
   // State to manage the visibility of the sidebar on mobile

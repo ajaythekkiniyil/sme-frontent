@@ -47,9 +47,11 @@ export async function createSmeAccount({ firstName, email, id }: { firstName: st
 
         const data = await res.json();
 
+        if(data?.error === 'Email or Username are already taken'){
+            throw new Error('Email or Username are already taken');
+        }
         if (!res.ok) {
-            // Throw an error to trigger the onError handler
-            throw new Error(data.message || 'Failed to register SME account');
+            throw new Error('Failed to register SME account');
         }
 
         // Return the full success data (should contain user details if successful)

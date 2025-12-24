@@ -147,8 +147,8 @@ export function GetStepContentSME({ stepIndex, data, handleNext, applicationPend
                 });
             }
         },
-        onError: () => {
-            showToast("An error occurred while creating account. Please try again later.", "error")
+        onError: (error) => {
+            showToast(error.message, "error")
         }
     });
 
