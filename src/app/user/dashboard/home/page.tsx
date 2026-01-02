@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import {
   LayoutGrid,
   Users,
+  MessageCircle,
   FileText,
   Calendar,
   CreditCard,
@@ -29,8 +30,11 @@ import {
   Save,
   LogOutIcon
 } from 'lucide-react';
-import { useTicketCreation } from '@/app/hooks/tickets';
+import { useGetTickets, useTicketCreation } from '@/app/hooks/tickets';
 import { useToast } from '../../../components/ui/toast';
+import { Box } from '@mui/material';
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { usePathname, useRouter } from 'next/navigation';
 
 // --- Mock Data ---
 const MOCK_EXPERTS = [
@@ -87,11 +91,14 @@ const FormField = ({ label, icon: Icon, type = "text", placeholder, value = null
 );
 
 export default function UserHomePage() {
-  const [activeTab, setActiveTab] = useState('dashboard');
+  const [activeTab, setActiveTab] = useState('tickets');
   const [showBriefForm, setShowBriefForm] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { handleTicketCreation, loading, setLoading } = useTicketCreation();
   const { showToast } = useToast();
+  const { data: userTickets, isLoading } = useGetTickets();
+  const router = useRouter();
+  const pathname = usePathname();
 
   // Profile State
   const [profile, setProfile] = useState({
@@ -147,11 +154,12 @@ export default function UserHomePage() {
       </div>
 
       <nav className="flex-1 space-y-2 overflow-auto">
-        <NavItem icon={LayoutGrid} label="Dashboard" active={activeTab === 'dashboard'} onClick={() => setActiveTab('dashboard')} />
-        <NavItem icon={Users} label="Find Experts" active={activeTab === 'experts'} onClick={() => setActiveTab('experts')} />
-        <NavItem icon={FileText} label="My Projects" active={activeTab === 'projects'} onClick={() => setActiveTab('projects')} />
-        <NavItem icon={Calendar} label="Bookings" active={activeTab === 'bookings'} onClick={() => setActiveTab('bookings')} />
-        <NavItem icon={CreditCard} label="Billing" active={activeTab === 'billing'} onClick={() => setActiveTab('billing')} />
+        {/* <NavItem icon={LayoutGrid} label="Dashboard" active={activeTab === 'dashboard'} onClick={() => setActiveTab('dashboard')} /> */}
+        <NavItem icon={FileText} label="My Tickets" active={activeTab === 'tickets'} onClick={() => setActiveTab('tickets')} />
+        {/* <NavItem icon={Users} label="Find Experts" active={activeTab === 'experts'} onClick={() => setActiveTab('experts')} /> */}
+        {/* <NavItem icon={Calendar} label="Bookings" active={activeTab === 'bookings'} onClick={() => setActiveTab('bookings')} /> */}
+        {/* <NavItem icon={CreditCard} label="Billing" active={activeTab === 'billing'} onClick={() => setActiveTab('billing')} /> */}
+        <NavItem icon={MessageCircle} label="Chats" active={activeTab === 'chats'} onClick={() => setActiveTab('chats')} />
         <NavItem icon={User} label="Profile" active={activeTab === 'profile'} onClick={() => setActiveTab('profile')} />
 
         {/* Mobile Actions */}
@@ -198,6 +206,48 @@ export default function UserHomePage() {
     </div>
   );
 
+  const StatusBadge = ({ status }: { status: string }) => {
+    let styles = "bg-gray-100 text-gray-600";
+
+    if (status !== "Not Assigned") styles = "bg-green-100 text-green-700 border border-green-200";
+
+    return (
+      <span className={`px-3 py-1 rounded-full text-xs font-semibold capitalize ${styles}`}>
+        {status}
+      </span>
+    );
+  };
+
+  const ticketsColumn: GridColDef[] = [
+    {
+      field: "topic",
+      headerName: "Topic",
+      flex: 1
+    },
+    {
+      field: "problemStatement",
+      headerName: "Problem Statement",
+      flex: 1,
+      renderCell: (params) => <span className="text-gray-500">{params.value || "-"}</span>
+    },
+    {
+      field: "urgency",
+      headerName: "Urgency",
+      flex: 1.5,
+    },
+    {
+      field: "budgetRange",
+      headerName: "Budget Range",
+      flex: 1,
+    },
+    {
+      field: "assignedSME",
+      headerName: "Assigned SME",
+      flex: 1,
+      renderCell: (params) => <StatusBadge status={params.value} />
+    }
+  ];
+
   return (
     <div className="flex h-screen bg-gray-50 text-gray-900 overflow-hidden">
 
@@ -233,7 +283,7 @@ export default function UserHomePage() {
               <Bell size={20} />
               <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
             </div> */}
-            <button className="hidden sm:flex items-center space-x-2 px-3 py-1.5 bg-blue-50 text-blue-600 rounded-lg text-sm font-semibold hover:bg-blue-100 transition" onClick={() => {}}>
+            <button className="hidden sm:flex items-center space-x-2 px-3 py-1.5 bg-blue-50 text-blue-600 rounded-lg text-sm font-semibold hover:bg-blue-100 transition" onClick={() => { }}>
               <LogOutIcon size={16} />
               <span>Logout</span>
             </button>
@@ -497,13 +547,50 @@ export default function UserHomePage() {
             </div>
           )}
 
-          {['projects', 'bookings', 'billing', 'feedback'].includes(activeTab) && (
-            <div className="h-full flex flex-col items-center justify-center text-center p-8 bg-white rounded-3xl border border-dashed border-gray-200">
-              <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 mb-4">
-                <FileText size={32} />
-              </div>
-              <h3 className="text-xl font-bold mb-2 uppercase tracking-tight">{activeTab} module</h3>
-              <p className="text-gray-500 max-w-xs">The detailed {activeTab} interface is being optimized for your account.</p>
+          {['tickets', 'bookings', 'chats', 'feedback'].includes(activeTab) && (
+            <div className="h-full flex flex-col p-8 bg-white rounded-3xl border border-dashed border-gray-200">
+              {
+                activeTab === 'tickets' &&
+                <Box sx={{ width: '100%' }}>
+                  <DataGrid
+                    rows={userTickets?.data || []}
+                    columns={ticketsColumn}
+                    getRowId={(row) => row.id}
+                    loading={isLoading}
+                    onRowClick={(params) => {
+                      router.push(`${pathname}/ticket/${params.row.documentId}`);
+                    }}
+                    initialState={{
+                      pagination: { paginationModel: { pageSize: 10 } },
+                    }}
+                    pageSizeOptions={[5, 10, 25]}
+                    disableRowSelectionOnClick
+                    // Matching Dashboard Styles
+                    sx={{
+                      border: 0,
+                      "& .MuiDataGrid-columnHeaders": {
+                        backgroundColor: "#f9fafb",
+                        borderBottom: "1px solid #e5e7eb",
+                        color: "#374151",
+                        fontWeight: 600,
+                      },
+                      "& .MuiDataGrid-cell": {
+                        borderBottom: "1px solid #f3f4f6",
+                      },
+                      "& .MuiDataGrid-row:hover": {
+                        backgroundColor: "#f9fafb",
+                        cursor: "pointer",
+                      },
+                      "& .MuiDataGrid-cell:focus": {
+                        outline: "none",
+                      },
+                      "& .MuiDataGrid-columnHeader:focus": {
+                        outline: "none",
+                      },
+                    }}
+                  />
+                </Box>
+              }
             </div>
           )}
 
