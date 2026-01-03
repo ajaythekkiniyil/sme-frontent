@@ -159,7 +159,7 @@ export default function UserHomePage() {
         {/* <NavItem icon={Users} label="Find Experts" active={activeTab === 'experts'} onClick={() => setActiveTab('experts')} /> */}
         {/* <NavItem icon={Calendar} label="Bookings" active={activeTab === 'bookings'} onClick={() => setActiveTab('bookings')} /> */}
         {/* <NavItem icon={CreditCard} label="Billing" active={activeTab === 'billing'} onClick={() => setActiveTab('billing')} /> */}
-        <NavItem icon={MessageCircle} label="Chats" active={activeTab === 'chats'} onClick={() => setActiveTab('chats')} />
+        {/* <NavItem icon={MessageCircle} label="Chats" active={activeTab === 'chats'} onClick={() => setActiveTab('chats')} /> */}
         <NavItem icon={User} label="Profile" active={activeTab === 'profile'} onClick={() => setActiveTab('profile')} />
 
         {/* Mobile Actions */}
