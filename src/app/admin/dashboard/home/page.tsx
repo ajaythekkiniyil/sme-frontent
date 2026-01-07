@@ -14,12 +14,35 @@ import {
     X
 } from "lucide-react";
 import { useSme } from "@/app/hooks/getSme";
+import { useRouter } from "next/navigation";
 
 export default function AdminHomePage() {
     const { data: smeData, isLoading } = useSme();
-    
+     const router = useRouter();
+
     // State to manage the visibility of the sidebar on mobile
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+    const handleLogout = async () => {
+        try {
+            const res = await fetch('/api/auth/logout', {
+                method: 'POST',
+            });
+
+            if (res.ok) {
+                // Optional: Clear client-side cache so old data doesn't flash if they log back in
+                // queryClient.clear(); 
+
+                // Redirect to login page
+                router.push('/admin/login');
+
+                // Force a router refresh to ensure Server Components re-render without the cookie
+                router.refresh();
+            }
+        } catch (error) {
+            console.error('Logout failed', error);
+        }
+    };
 
     return (
         // 1. Main Container: Takes full viewport height, flexible row layout
@@ -61,9 +84,9 @@ export default function AdminHomePage() {
 
                 {/* Bottom Actions */}
                 <div className="p-4 border-t border-slate-800">
-                    <button className="flex items-center gap-3 w-full px-4 py-3 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">
+                    <button className="flex items-center gap-3 w-full px-4 py-3 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors" onClick={handleLogout}>
                         <LogOut size={18} />
-                        <span>Sign Out</span>
+                        <span>Log out</span>
                     </button>
                 </div>
             </aside>
@@ -153,7 +176,7 @@ export default function AdminHomePage() {
                             trend="-5% pending"
                         />
 
-                        </div>
+                    </div>
 
                     {/* Empty State / Content Placeholder below cards */}
                     <div className="bg-white rounded-xl border border-gray-200 p-8 h-96 flex flex-col items-center justify-center text-gray-400">

@@ -63,7 +63,7 @@ export default function TicketDetails({ params }: { params: Promise<{ id: number
   };
 
   // Filtered SME list logic (only active user + search keyword)
-  const filteredSMEs = useMemo(() => {
+  const filteredSMEs = useMemo(() => {    
     if (!smesData?.data) return [];
     return smesData.data.filter((sme: any) => {
       return sme.smeStatus === 'active' &&
@@ -261,7 +261,7 @@ export default function TicketDetails({ params }: { params: Promise<{ id: number
                   filteredSMEs.map((sme: any) => (
                     <button
                       key={sme.id}
-                      onClick={() => handleSelectSME(sme.legalFirstName)}
+                      onClick={() => handleSelectSME(sme.businessEmail)}
                       className="w-full flex items-center p-3 rounded-xl border border-transparent hover:border-indigo-100 hover:bg-indigo-50/50 transition-all text-left group"
                     >
                       <div className="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold mr-3">

@@ -4,6 +4,7 @@ import { useStrapiLogin } from "../hooks/strapiLogin"
 import { sendOtp, verifyOtp } from "../lib/send-email/send-email";
 import { usePathname } from "next/navigation";
 import { useToast } from './ui/toast'
+import Link from "next/link";
 
 type LoginPageTemplateProps = {
   role: string,
@@ -278,6 +279,7 @@ export default function LoginPageTemplate({ role, successUrl }: LoginPageTemplat
             </div> */}
           </div>
         )}
+        <Link href={'/'}><p className="text-center text-sm text-black cursor-pointer">Back to home</p></Link>
       </div>
     </div>
   );

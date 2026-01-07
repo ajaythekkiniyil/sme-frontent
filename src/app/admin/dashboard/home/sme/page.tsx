@@ -44,17 +44,20 @@ const smeColumns: GridColDef[] = [
     field: "firstName",
     headerName: "First Name",
     flex: 1,
+    minWidth: 150,
     renderCell: (params) => <span className="font-medium text-gray-700">{params.value}</span>
   },
   {
     field: "lastName",
     headerName: "Last Name",
-    flex: 1
+    flex: 1,
+    minWidth: 150,
   },
   {
     field: "businessEmail",
     headerName: "Email",
     flex: 1.5,
+    minWidth: 150,
     renderCell: (params) => <span className="text-gray-500">{params.value}</span>
   },
   {
@@ -84,6 +87,27 @@ export default function AdminSMEPage() {
   const pathname = usePathname();
   // State to manage the visibility of the sidebar on mobile
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch('/api/auth/logout', {
+        method: 'POST',
+      });
+
+      if (res.ok) {
+        // Optional: Clear client-side cache so old data doesn't flash if they log back in
+        // queryClient.clear(); 
+
+        // Redirect to login page
+        router.push('/admin/login');
+
+        // Force a router refresh to ensure Server Components re-render without the cookie
+        router.refresh();
+      }
+    } catch (error) {
+      console.error('Logout failed', error);
+    }
+  };
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden font-sans">
@@ -119,9 +143,9 @@ export default function AdminSMEPage() {
         </nav>
 
         <div className="p-4 border-t border-slate-800">
-          <button className="flex items-center gap-3 w-full px-4 py-3 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">
+          <button className="flex items-center gap-3 w-full px-4 py-3 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors" onClick={handleLogout}>
             <LogOut size={18} />
-            <span>Sign Out</span>
+            <span>Log out</span>
           </button>
         </div>
       </aside>

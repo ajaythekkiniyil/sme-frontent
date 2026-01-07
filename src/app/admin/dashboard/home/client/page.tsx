@@ -16,10 +16,33 @@ import {
   Menu,
   X
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function AdminClientPage() {
   // State to manage the visibility of the sidebar on mobile
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch('/api/auth/logout', {
+        method: 'POST',
+      });
+
+      if (res.ok) {
+        // Optional: Clear client-side cache so old data doesn't flash if they log back in
+        // queryClient.clear(); 
+
+        // Redirect to login page
+        router.push('/admin/login');
+
+        // Force a router refresh to ensure Server Components re-render without the cookie
+        router.refresh();
+      }
+    } catch (error) {
+      console.error('Logout failed', error);
+    }
+  };
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden font-sans">
@@ -55,9 +78,9 @@ export default function AdminClientPage() {
         </nav>
 
         <div className="p-4 border-t border-slate-800">
-          <button className="flex items-center gap-3 w-full px-4 py-3 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">
+          <button className="flex items-center gap-3 w-full px-4 py-3 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors" onClick={handleLogout}>
             <LogOut size={18} />
-            <span>Sign Out</span>
+            <span>Log out</span>
           </button>
         </div>
       </aside>
@@ -117,7 +140,7 @@ export default function AdminClientPage() {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
             <div>
               <h2 className="text-2xl font-bold text-gray-900">Client Directory</h2>
-              <p className="text-gray-500 text-sm mt-1">Manage client accounts and subscriptions.</p>
+              <p className="text-gray-500 text-sm mt-1">Manage users accounts.</p>
             </div>
             {/* <div className="flex gap-3 w-full sm:w-auto">
               <button className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-sm">
@@ -141,7 +164,7 @@ export default function AdminClientPage() {
                 <Building2 size={48} className="text-gray-300" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900">No Clients Loaded</h3>
-                {/* <p className="text-sm max-w-xs text-center mt-2">
+              {/* <p className="text-sm max-w-xs text-center mt-2">
                   Connect your data hook to view the client list or add a new client to get started.
                 </p> */}
             </div>

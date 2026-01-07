@@ -26,8 +26,8 @@ import { useGetTickets } from "@/app/hooks/tickets";
 const VerificationBadge = ({ verified }: { verified: boolean }) => {
   return (
     <span className={`px-3 py-1 rounded-full text-xs font-semibold ${verified
-        ? "bg-green-100 text-green-700 border border-green-200"
-        : "bg-gray-100 text-gray-500 border border-gray-200"
+      ? "bg-green-100 text-green-700 border border-green-200"
+      : "bg-gray-100 text-gray-500 border border-gray-200"
       }`}>
       {verified ? 'Verified' : 'Pending'}
     </span>
@@ -84,7 +84,7 @@ export const ticketsColumn: GridColDef[] = [
 
 export default function AdminTicketsPage() {
   const { data: tickets, isLoading } = useGetTickets();
-  
+
   const router = useRouter();
   const pathname = usePathname();
   // State to manage the visibility of the sidebar on mobile
@@ -92,6 +92,27 @@ export default function AdminTicketsPage() {
 
   // Check for empty data
   const isEmpty = !isLoading && tickets?.data?.length === 0;
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch('/api/auth/logout', {
+        method: 'POST',
+      });
+
+      if (res.ok) {
+        // Optional: Clear client-side cache so old data doesn't flash if they log back in
+        // queryClient.clear(); 
+
+        // Redirect to login page
+        router.push('/admin/login');
+
+        // Force a router refresh to ensure Server Components re-render without the cookie
+        router.refresh();
+      }
+    } catch (error) {
+      console.error('Logout failed', error);
+    }
+  };
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden font-sans">
@@ -128,9 +149,9 @@ export default function AdminTicketsPage() {
         </nav>
 
         <div className="p-4 border-t border-slate-800">
-          <button className="flex items-center gap-3 w-full px-4 py-3 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors">
+          <button className="flex items-center gap-3 w-full px-4 py-3 text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-colors" onClick={handleLogout}>
             <LogOut size={18} />
-            <span>Sign Out</span>
+            <span>Log out</span>
           </button>
         </div>
       </aside>
@@ -188,9 +209,9 @@ export default function AdminTicketsPage() {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
             <div>
               <h2 className="text-2xl font-bold text-gray-900">Ticket Requests</h2>
-              <p className="text-gray-500 text-sm mt-1">View and manage incoming registration requests.</p>
+              <p className="text-gray-500 text-sm mt-1">View and manage tickets.</p>
             </div>
-            <div className="flex gap-3 w-full sm:w-auto">
+            {/* <div className="flex gap-3 w-full sm:w-auto">
               <button className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-sm">
                 <Filter size={16} />
                 Filter
@@ -199,7 +220,7 @@ export default function AdminTicketsPage() {
                 <Plus size={16} />
                 New Ticket
               </button>
-            </div>
+            </div> */}
           </div>
 
           {/* Logic: Empty State vs Data Grid */}
@@ -267,8 +288,8 @@ export default function AdminTicketsPage() {
 function NavItem({ href, icon, label, active = false, onClick }: { href: string, icon: any, label: string, active?: boolean, onClick?: () => void }) {
   return (
     <Link href={href} onClick={onClick} className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${active
-        ? "bg-blue-600 text-white shadow-lg shadow-blue-900/20"
-        : "text-slate-400 hover:text-white hover:bg-slate-800"
+      ? "bg-blue-600 text-white shadow-lg shadow-blue-900/20"
+      : "text-slate-400 hover:text-white hover:bg-slate-800"
       }`}>
       {icon}
       <span>{label}</span>
