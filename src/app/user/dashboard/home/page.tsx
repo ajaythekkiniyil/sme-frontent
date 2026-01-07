@@ -117,7 +117,7 @@ export default function UserHomePage() {
 
   // ticket State
   const [ticket, setTicket] = useState({
-    assignedSME: "",
+    assignedSME: "Not Assigned",
     topic: "",
     problemStatement: "",
     budgetRange: "1k - 5k",

@@ -16,12 +16,32 @@ import {
   Menu,
   X
 } from "lucide-react";
+import Box from "@mui/material/Box";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useRouter } from "next/navigation";
+import { useUsers } from "@/app/hooks/getUsers";
+
+const smeColumns: GridColDef[] = [
+  {
+    field: "username",
+    headerName: "Username",
+    flex: 1,
+    minWidth: 150,
+  },
+  {
+    field: "email",
+    headerName: "Email",
+    flex: 1,
+    minWidth: 150,
+  }
+];
 
 export default function AdminClientPage() {
   // State to manage the visibility of the sidebar on mobile
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const router = useRouter();
+  const { data, isLoading } = useUsers();
+  const filteredUsers = data?.filter((user: any) => user.customRole === 'user')  
 
   const handleLogout = async () => {
     try {
@@ -157,17 +177,50 @@ export default function AdminClientPage() {
           {/* Content Area */}
           <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden min-h-[500px] relative">
 
-            {/* TODO: Replace this block with your <DataGrid /> */}
-
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-400 p-4">
-              <div className="bg-gray-50 p-6 rounded-full mb-4">
-                <Building2 size={48} className="text-gray-300" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900">No Clients Loaded</h3>
-              {/* <p className="text-sm max-w-xs text-center mt-2">
-                  Connect your data hook to view the client list or add a new client to get started.
-                </p> */}
-            </div>
+            <Box sx={{ width: '100%' }}>
+              <DataGrid
+                rows={filteredUsers || []}
+                columns={smeColumns}
+                getRowId={(row) => row.id}
+                loading={isLoading}
+                onRowClick={(params) => {
+                  // router.push(`${pathname}/${params.row.documentId}`);
+                }}
+                initialState={{
+                  pagination: { paginationModel: { pageSize: 10 } },
+                }}
+                pageSizeOptions={[5, 10, 25]}
+                disableRowSelectionOnClick
+                // --- CUSTOM MUI STYLING TO MATCH TAILWIND ---
+                sx={{
+                  border: 0,
+                  minHeight: 400,
+                  "& .MuiDataGrid-columnHeaders": {
+                    backgroundColor: "#f9fafb",
+                    borderBottom: "1px solid #e5e7eb",
+                    color: "#374151",
+                    fontWeight: 600,
+                  },
+                  "& .MuiDataGrid-cell": {
+                    borderBottom: "1px solid #f3f4f6",
+                  },
+                  "& .MuiDataGrid-row:hover": {
+                    backgroundColor: "#f9fafb",
+                    cursor: "pointer",
+                  },
+                  "& .MuiDataGrid-footerContainer": {
+                    borderTop: "1px solid #e5e7eb",
+                  },
+                  // Remove the blue focus outline MUI adds by default
+                  "& .MuiDataGrid-cell:focus": {
+                    outline: "none",
+                  },
+                  "& .MuiDataGrid-columnHeader:focus": {
+                    outline: "none",
+                  },
+                }}
+              />
+            </Box>
 
           </div>
         </main>

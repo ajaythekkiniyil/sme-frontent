@@ -137,6 +137,9 @@ export default function TicketDetails({ params }: { params: Promise<{ id: string
                   <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight">
                     {ticketData.topic}
                   </h1>
+                  <p className="text-sm text-slate-900 leading-tight">
+                    Ticket Created By: {ticketData.ticketCreatedBy}
+                  </p>
                   <div className="flex items-center mt-2 text-slate-500 text-sm">
                     <Clock className="w-4 h-4 mr-1.5" />
                     Submitted {new Date(ticketData.createdAt).toLocaleDateString(undefined, {
@@ -206,8 +209,8 @@ export default function TicketDetails({ params }: { params: Promise<{ id: string
                   {/* Chat Header */}
                   <div className="p-4 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
                     <div>
-                      <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wide">Assigned Expert</h3>
-                      <p className="text-indigo-600 font-semibold">{ticketData.assignedSME}</p>
+                      <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wide">Provide solution to user</h3>
+                      {/* <p className="text-indigo-600 font-semibold">{ticketData.ticketCreatedBy}</p> */}
                     </div>
                     <div className="h-8 w-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
                       <MessageSquare className="w-4 h-4" />
@@ -219,7 +222,7 @@ export default function TicketDetails({ params }: { params: Promise<{ id: string
                     {messages.length === 0 ? (
                       <div className="h-full flex flex-col items-center justify-center text-slate-400 text-center px-4">
                         <MessageSquare className="w-10 h-10 mb-2 opacity-20" />
-                        <p className="text-sm">Start the conversation with your assigned expert.</p>
+                        <p className="text-sm">Start the conversation with your user.</p>
                       </div>
                     ) : (
                       messages.map((msg, index) => {

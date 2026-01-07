@@ -15,10 +15,15 @@ import {
 } from "lucide-react";
 import { useSme } from "@/app/hooks/getSme";
 import { useRouter } from "next/navigation";
+import { useGetTickets } from "@/app/hooks/tickets";
+import { useUsers } from "@/app/hooks/getUsers";
 
 export default function AdminHomePage() {
     const { data: smeData, isLoading } = useSme();
-     const router = useRouter();
+    const { data: ticketData } = useGetTickets();
+    const { data: userData } = useUsers();
+    const filteredUsers = userData?.filter((user: any) => user.customRole === 'user')
+    const router = useRouter();
 
     // State to manage the visibility of the sidebar on mobile
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -145,8 +150,8 @@ export default function AdminHomePage() {
 
                         {/* SME Card */}
                         <DashboardCard
-                            title="SME Portal"
-                            value={smeData?.data?.length + ' Active'}
+                            title="Total SME"
+                            value={smeData?.data?.length}
                             desc="Manage subject experts"
                             href="/admin/dashboard/home/sme"
                             icon={<Users className="text-white" size={24} />}
@@ -156,8 +161,8 @@ export default function AdminHomePage() {
 
                         {/* Client Card */}
                         <DashboardCard
-                            title="Clients"
-                            value="0 Accounts"
+                            title="Registered Clients"
+                            value={filteredUsers?.length}
                             desc="Client database access"
                             href="/admin/dashboard/home/client"
                             icon={<Briefcase className="text-white" size={24} />}
@@ -167,8 +172,8 @@ export default function AdminHomePage() {
 
                         {/* Tickets Card */}
                         <DashboardCard
-                            title="Tickets"
-                            value="0 Open"
+                            title="Total Tickets"
+                            value={ticketData?.data?.length}
                             desc="Support requests queue"
                             href="/admin/dashboard/home/tickets"
                             icon={<Ticket className="text-white" size={24} />}

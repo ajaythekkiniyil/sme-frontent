@@ -257,13 +257,13 @@ export default function SmeHomePage() {
       flex: 1,
       minWidth: 250,
     },
-    {
-      field: "assignedSME",
-      headerName: "Assigned SME",
-      flex: 1,
-      minWidth: 250,
-      renderCell: (params) => <StatusBadge status={params.value} />
-    }
+    // {
+    //   field: "assignedSME",
+    //   headerName: "Assigned SME",
+    //   flex: 1,
+    //   minWidth: 250,
+    //   renderCell: (params) => <StatusBadge status={params.value} />
+    // }
   ];
 
   return (
