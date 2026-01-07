@@ -49,36 +49,35 @@ const StatusBadge = ({ status }: { status: string }) => {
 // --- 2. Columns Definition ---
 export const ticketsColumn: GridColDef[] = [
   {
-    field: "email",
-    headerName: "Email",
-    flex: 1,
-    renderCell: (params) => <span className="font-medium text-gray-700">{params.value}</span>
-  },
-  {
     field: "topic",
     headerName: "Topic",
-    flex: 1
+    flex: 1,
+    minWidth: 250,
   },
   {
     field: "problemStatement",
     headerName: "Problem Statement",
     flex: 1,
+    minWidth: 250,
     renderCell: (params) => <span className="text-gray-500">{params.value || "-"}</span>
   },
   {
     field: "urgency",
     headerName: "Urgency",
     flex: 1.5,
+    minWidth: 250,
   },
   {
     field: "budgetRange",
     headerName: "Budget Range",
     flex: 1,
+    minWidth: 250,
   },
   {
     field: "assignedSME",
     headerName: "Assigned SME",
     flex: 1,
+    minWidth: 250,
     renderCell: (params) => <StatusBadge status={params.value} />
   }
 ];

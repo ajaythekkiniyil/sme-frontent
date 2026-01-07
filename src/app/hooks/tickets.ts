@@ -24,9 +24,8 @@ export const useTicketCreation = () => {
 
    useEffect(() => {
       const storedEmail = localStorage.getItem("email");
-      const storedName = localStorage.getItem("username");
-      if (storedEmail && storedName) {
-         setProfile({ username: storedName, email: storedEmail });
+      if (storedEmail) {
+         setProfile({ ticketCreatedBy: storedEmail });
       }
    }, []);
 

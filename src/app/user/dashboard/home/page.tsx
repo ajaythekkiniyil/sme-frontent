@@ -97,24 +97,27 @@ export default function UserHomePage() {
   const { handleTicketCreation, loading, setLoading } = useTicketCreation();
   const { showToast } = useToast();
   const { data: userTickets, isLoading } = useGetTickets();
+
   const router = useRouter();
   const pathname = usePathname();
 
   // Profile State
   const [profile, setProfile] = useState({
-    firstName: "John",
-    lastName: "Doe",
-    email: "john.doe@globalcorp.com",
-    phone: "+1 (555) 000-1234",
-    company: "Global Corp Industries",
-    position: "Senior Strategy Director",
-    region: "North America",
-    website: "www.globalcorp.com"
+    firstName: '',
+    email: '',
   });
+
+  useEffect(() => {
+    const storedEmail = localStorage.getItem("email");
+    const storedName = localStorage.getItem("username");
+    if (storedEmail) {
+      setProfile({ email: storedEmail, firstName: storedName });
+    }
+  }, []);
 
   // ticket State
   const [ticket, setTicket] = useState({
-    email: "",
+    assignedSME: "",
     topic: "",
     problemStatement: "",
     budgetRange: "1k - 5k",
@@ -129,7 +132,7 @@ export default function UserHomePage() {
       await handleTicketCreation(ticket);
       showToast("New Ticket created successfully", "success")
       setShowBriefForm(false)
-      setTicket({ email: '', topic: '', problemStatement: '', urgency: '', attachments: [], budgetRange: '' })
+      setTicket({ assignedSME: '', topic: '', problemStatement: '', urgency: '', attachments: [], budgetRange: '' })
       setLoading(false)
     }
     catch (err) {
@@ -140,6 +143,27 @@ export default function UserHomePage() {
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [activeTab]);
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch('/api/auth/logout', {
+        method: 'POST',
+      });
+
+      if (res.ok) {
+        // Optional: Clear client-side cache so old data doesn't flash if they log back in
+        // queryClient.clear(); 
+
+        // Redirect to login page
+        router.push('/user/login');
+
+        // Force a router refresh to ensure Server Components re-render without the cookie
+        router.refresh();
+      }
+    } catch (error) {
+      console.error('Logout failed', error);
+    }
+  };
 
   const SidebarContent = () => (
     <div className="flex flex-col h-full p-6">
@@ -160,7 +184,7 @@ export default function UserHomePage() {
         {/* <NavItem icon={Calendar} label="Bookings" active={activeTab === 'bookings'} onClick={() => setActiveTab('bookings')} /> */}
         {/* <NavItem icon={CreditCard} label="Billing" active={activeTab === 'billing'} onClick={() => setActiveTab('billing')} /> */}
         {/* <NavItem icon={MessageCircle} label="Chats" active={activeTab === 'chats'} onClick={() => setActiveTab('chats')} /> */}
-        <NavItem icon={User} label="Profile" active={activeTab === 'profile'} onClick={() => setActiveTab('profile')} />
+        {/* <NavItem icon={User} label="Profile" active={activeTab === 'profile'} onClick={() => setActiveTab('profile')} /> */}
 
         {/* Mobile Actions */}
         <div className="md:hidden mt-6 space-y-3">
@@ -177,7 +201,7 @@ export default function UserHomePage() {
 
           <button
             onClick={() => {
-              // add logout logic here
+              handleLogout()
               setIsMobileMenuOpen(false);
             }}
             className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-gray-800 text-white rounded-xl font-bold hover:bg-gray-700 transition"
@@ -192,7 +216,7 @@ export default function UserHomePage() {
 
       <div className="pt-6 border-t border-gray-800">
         <button
-          onClick={() => setActiveTab('profile')}
+          // onClick={() => setActiveTab('profile')}
           className="w-full bg-gray-800 p-3 rounded-lg flex items-center space-x-3 hover:bg-gray-700 transition-colors text-left"
         >
           <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">JD</div>
@@ -222,28 +246,33 @@ export default function UserHomePage() {
     {
       field: "topic",
       headerName: "Topic",
-      flex: 1
+      flex: 1,
+      minWidth: 250,
     },
     {
       field: "problemStatement",
       headerName: "Problem Statement",
       flex: 1,
+      minWidth: 250,
       renderCell: (params) => <span className="text-gray-500">{params.value || "-"}</span>
     },
     {
       field: "urgency",
       headerName: "Urgency",
       flex: 1.5,
+      minWidth: 250,
     },
     {
       field: "budgetRange",
       headerName: "Budget Range",
       flex: 1,
+      minWidth: 250,
     },
     {
       field: "assignedSME",
       headerName: "Assigned SME",
       flex: 1,
+      minWidth: 250,
       renderCell: (params) => <StatusBadge status={params.value} />
     }
   ];
@@ -283,7 +312,7 @@ export default function UserHomePage() {
               <Bell size={20} />
               <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
             </div> */}
-            <button className="hidden sm:flex items-center space-x-2 px-3 py-1.5 bg-blue-50 text-blue-600 rounded-lg text-sm font-semibold hover:bg-blue-100 transition" onClick={() => { }}>
+            <button className="hidden sm:flex items-center space-x-2 px-3 py-1.5 bg-blue-50 text-blue-600 rounded-lg text-sm font-semibold hover:bg-blue-100 transition" onClick={handleLogout}>
               <LogOutIcon size={16} />
               <span>Logout</span>
             </button>
@@ -423,10 +452,9 @@ export default function UserHomePage() {
             </div>
           )}
 
-          {activeTab === 'profile' && (
+          {/* {activeTab === 'profile' && (
             <div className="max-w-4xl mx-auto">
               <div className="bg-white rounded-[2.5rem] border border-gray-100 shadow-sm overflow-hidden">
-                {/* Profile Header */}
                 <div className="h-32 bg-gradient-to-r from-blue-600 to-indigo-700 relative">
                   <div className="absolute -bottom-12 left-8 p-1 bg-white rounded-[2rem] shadow-lg">
                     <div className="relative group">
@@ -455,7 +483,6 @@ export default function UserHomePage() {
 
                 <div className="border-t border-gray-100 p-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {/* Personal Info */}
                     <div className="space-y-6">
                       <h3 className="text-sm font-black uppercase tracking-widest text-gray-400">Personal Information</h3>
                       <div className="grid grid-cols-2 gap-4">
@@ -485,7 +512,6 @@ export default function UserHomePage() {
                       />
                     </div>
 
-                    {/* Corporate Info */}
                     <div className="space-y-6">
                       <h3 className="text-sm font-black uppercase tracking-widest text-gray-400">Corporate Details</h3>
                       <FormField
@@ -507,7 +533,6 @@ export default function UserHomePage() {
                     </div>
                   </div>
 
-                  {/* Security Section */}
                   <div className="mt-12 pt-8 border-t border-gray-100">
                     <div className="flex items-center justify-between mb-6">
                       <div>
@@ -545,7 +570,7 @@ export default function UserHomePage() {
                 </div>
               </div>
             </div>
-          )}
+          )} */}
 
           {['tickets', 'bookings', 'chats', 'feedback'].includes(activeTab) && (
             <div className="h-full flex flex-col p-8 bg-white rounded-3xl border border-dashed border-gray-200">
