@@ -28,7 +28,7 @@ export default function CommonHeader({ headerData }) {
                         </span>
                     </h1>
                     
-                    <p className="mb-8 md:mb-12 text-xl text-white font-regular">{headerData?.description}</p>
+                    <p className="mb-8 md:mb-12 text-2xl text-white font-regular">{headerData?.description}</p>
                     
                     {headerData?.primary_button_link && <Link href={headerData?.primary_button_link} className="cursor-pointer px-6 py-3 bg-[#32A2DC] text-white rounded-full text-lg shadow hover:bg-[#2790c7] transition">
                         {headerData?.primary_button_text}

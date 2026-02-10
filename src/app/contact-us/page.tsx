@@ -71,22 +71,22 @@ export default function SMEs() {
               </p>
 
               <div className="space-y-4 text-gray-700">
-                <p className="flex items-center gap-3">
+                {getInTouch.location && <p className="flex items-center gap-3">
                   <MapPin className="w-6 h-6 text-[#32A2DC]" />
                   {getInTouch.location}
-                </p>
+                </p>}
                 <p className="flex items-center gap-3">
                   <Mail className="w-6 h-6 text-[#32A2DC]" />
                   <a href={`mailto:${getInTouch.email}`} className="hover:underline">
                     {getInTouch.email}
                   </a>
                 </p>
-                <p className="flex items-center gap-3">
+                {getInTouch.phone && <p className="flex items-center gap-3">
                   <Phone className="w-6 h-6 text-[#32A2DC]" />
                   <a href={`tel:${getInTouch.phone}`} className="hover:underline">
                     {getInTouch.phone}
                   </a>
-                </p>
+                </p>}
               </div>
             </div>
 

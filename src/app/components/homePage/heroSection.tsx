@@ -38,7 +38,7 @@ export default function HeroSection({ HeroSection }: any) {
                                         {slide.title}{" "}
                                         <span className="text-[#32A2DC]">{slide.highlighted_text}</span>
                                     </h1>
-                                    <p className="text-gray-600 mb-8 text-base md:text-lg max-w-xl mx-auto lg:mx-0">
+                                    <p className="text-gray-600 mb-8 text-xl md:text-xl max-w-xl mx-auto lg:mx-0">
                                         {slide.description[0].children[0].text}
                                     </p>
                                     <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
