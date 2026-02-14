@@ -1,33 +1,66 @@
+"use client";
+
 import Image from "next/image";
 import Slider from "react-slick";
-import SmeBanner from '../../../../public/sme-banner.jpeg'
-import SmeBannerTwo from '../../../../public/sme-banner-02.jpg'
+import SmeBanner from "../../../../public/sme-banner.jpeg";
+import SmeBannerTwo from "../../../../public/sme-banner-02.jpg";
 import Link from "next/link";
+
+// ✅ Custom Next Arrow
+function NextArrow(props: any) {
+    const { onClick } = props;
+    return (
+        <div
+            className="absolute right-5 top-1/2 -translate-y-1/2 z-20 cursor-pointer bg-white/80 hover:bg-white text-black w-10 h-10 flex items-center justify-center rounded-full shadow-md"
+            onClick={onClick}
+        >
+            ➜
+        </div>
+    );
+}
+
+// ✅ Custom Prev Arrow
+function PrevArrow(props: any) {
+    const { onClick } = props;
+    return (
+        <div
+            className="absolute left-5 top-1/2 -translate-y-1/2 z-20 cursor-pointer bg-white/80 hover:bg-white text-black w-10 h-10 flex items-center justify-center rounded-full shadow-md"
+            onClick={onClick}
+        >
+            ←
+        </div>
+    );
+}
 
 // Hero Slider Settings
 const heroSettings = {
-    dots: true,
-    infinite: true,
+    dots: false, 
+    infinite: false, 
     speed: 900,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
+    autoplaySpeed: 3000,
     cssEase: "ease-in-out",
     arrows: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
 };
 
 export let STRAPI_URL: string | undefined;
-if (process.env.NODE_ENV === 'development') {
-    STRAPI_URL = (process.env.NEXT_PUBLIC_STRAPI_URL === 'http://localhost:1337') ? '' : process.env.NEXT_PUBLIC_STRAPI_URL;
-}
-else {
-    // for production
+
+if (process.env.NODE_ENV === "development") {
+    STRAPI_URL =
+        process.env.NEXT_PUBLIC_STRAPI_URL === "http://localhost:1337"
+            ? ""
+            : process.env.NEXT_PUBLIC_STRAPI_URL;
+} else {
     STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 }
 
 export default function HeroSection({ HeroSection }: any) {
     return (
-        <Slider {...heroSettings} className="pb-10 overflow-hidden" data-aos="fade-up">
+        <Slider {...heroSettings} className="pb-10 overflow-hidden">
             {HeroSection?.map((slide: any, index: number) => (
                 <div key={index}>
                     <section className="relative bg-[#F1F6FF] overflow-hidden">
@@ -36,7 +69,9 @@ export default function HeroSection({ HeroSection }: any) {
                                 <div className="text-center lg:text-left">
                                     <h1 className="text-4xl md:text-4xl lg:text-6xl font-medium mb-6 lg:leading-18 leading-snug">
                                         {slide.title}{" "}
-                                        <span className="text-[#32A2DC]">{slide.highlighted_text}</span>
+                                        <span className="text-[#32A2DC]">
+                                            {slide.highlighted_text}
+                                        </span>
                                     </h1>
                                     <p className="text-gray-600 mb-8 text-xl md:text-xl max-w-xl mx-auto lg:mx-0">
                                         {slide.description[0].children[0].text}
@@ -60,7 +95,11 @@ export default function HeroSection({ HeroSection }: any) {
                                 {/* Mobile image */}
                                 <div className="relative w-full h-64 md:h-96 lg:hidden">
                                     <Image
-                                        src={slide.hero_image.url === "" ? SmeBanner : `${STRAPI_URL + slide.hero_image.url}`}
+                                        src={
+                                            slide.hero_image.url === ""
+                                                ? SmeBanner
+                                                : `${STRAPI_URL + slide.hero_image.url}`
+                                        }
                                         alt="Hero"
                                         fill
                                         className="object-cover rounded-2xl"
@@ -73,7 +112,11 @@ export default function HeroSection({ HeroSection }: any) {
                         {/* Desktop background image */}
                         <div className="absolute top-0 right-0 bottom-0 left-1/2 hidden lg:block">
                             <Image
-                                src={slide.hero_image.url === "" ? SmeBannerTwo : `${STRAPI_URL + slide.hero_image.url}`}
+                                src={
+                                    slide.hero_image.url === ""
+                                        ? SmeBannerTwo
+                                        : `${STRAPI_URL + slide.hero_image.url}`
+                                }
                                 alt="Hero"
                                 fill
                                 className="object-cover"
@@ -84,6 +127,5 @@ export default function HeroSection({ HeroSection }: any) {
                 </div>
             ))}
         </Slider>
-    )
+    );
 }
-
