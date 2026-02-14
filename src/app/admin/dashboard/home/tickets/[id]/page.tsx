@@ -22,9 +22,9 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { useTicketDetails, useUpdateTicketStatus } from '@/app/hooks/tickets';
-import { STRAPI_URL } from '@/app/components/homePage/heroSection';
 import { useSme } from '@/app/hooks/getSme';
 import { useToast } from '../../../../../components/ui/toast'
+import { getStrapiMedia } from '@/app/components/homePage/heroSection';
 
 export default function TicketDetails({ params }: { params: Promise<{ id: number }> }) {
   const { id } = React.use(params)
@@ -160,7 +160,7 @@ export default function TicketDetails({ params }: { params: Promise<{ id: number
                   {ticketData.attachments.map((file: any) => (
                     <a
                       key={file.documentId}
-                      href={STRAPI_URL + file.url}
+                      href={getStrapiMedia(file.url)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group flex items-center justify-between p-4 bg-white border border-slate-200 rounded-lg hover:border-indigo-400 hover:bg-indigo-50/30 transition-all duration-200"

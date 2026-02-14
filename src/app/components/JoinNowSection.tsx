@@ -7,7 +7,7 @@ import CrTeam06 from "../../../public/cr-team-05.jpg";
 import CrTeam01 from "../../../public/cr-team-06.jpg";
 import CrTeam02 from "../../../public/cr-team-02.jpg";
 import { useQuery } from "@tanstack/react-query";
-import { STRAPI_URL } from "./homePage/heroSection";
+import { getStrapiMedia } from "./homePage/heroSection";
 
 const STRAPI_URL_API = process.env.NEXT_PUBLIC_STRAPI_URL
 
@@ -47,7 +47,7 @@ export default function JoinNowSection() {
                         (
                             <div key={index}>
                                 <Image
-                                    src={item.url ? `${STRAPI_URL + item.url}` : item}
+                                    src={getStrapiMedia(item.url) || item}
                                     alt="Clarity"
                                     className="w-full h-[450px] object-cover"
                                     height={500}

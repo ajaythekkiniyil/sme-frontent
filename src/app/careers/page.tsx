@@ -7,7 +7,7 @@ import { defaultCareersHeaderData } from "../lib/careers/defaultCareersHeaderDat
 import { useCareerSectionContent } from "../hooks/useCareerSectionContent";
 import { defaultMainContent } from "../lib/careers/defaultMainContent";
 import JoinNowSection from "../components/JoinNowSection";
-import { STRAPI_URL } from "../components/homePage/heroSection";
+import { getStrapiMedia } from "../components/homePage/heroSection";
 
 export default function SMEs() {
   const { data: careerSectionData, isError } = useCareerSectionContent();
@@ -36,7 +36,7 @@ export default function SMEs() {
           <div className="grid grid-cols-2 gap-10 items-center">
             <div>
               <Image
-                src={mainContent[0]?.image?.url ? `${STRAPI_URL + mainContent[0]?.image?.url}` : JoinNetwork}
+                src={getStrapiMedia(mainContent[0]?.image?.url) || JoinNetwork}
                 alt=""
                 width={800}
                 height={400}
@@ -64,7 +64,7 @@ export default function SMEs() {
           <div className="grid grid-cols-2 gap-10 items-center">
             <div>
               <Image
-                src={mainContent[1]?.image?.url ? `${STRAPI_URL + mainContent[1]?.image?.url}` : CrTeam07}
+                src={getStrapiMedia(mainContent[1]?.image?.url) || CrTeam07}
                 alt=""
                 width={800}
                 height={400}

@@ -4,11 +4,11 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Slider from "react-slick";
 import ServiceGridImage from '../../../../public/project-one.jpg';
-import { STRAPI_URL } from "./heroSection";
 
 // CRITICAL: CSS MUST BE HERE
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { getStrapiMedia } from "./heroSection";
 
 export default function UsecasesSection({ servicesSectionData }: any) {
   // 1. We manually track how many slides to show
@@ -78,7 +78,7 @@ export default function UsecasesSection({ servicesSectionData }: any) {
                   src={
                     !slide.background_image?.url
                       ? ServiceGridImage
-                      : `${STRAPI_URL + slide.background_image.url}`
+                      : getStrapiMedia(slide.background_image.url)
                   }
                   alt={slide.service_title || "Service"}
                   fill

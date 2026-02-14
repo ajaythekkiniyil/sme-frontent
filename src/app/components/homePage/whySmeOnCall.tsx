@@ -1,7 +1,7 @@
 import Image from "next/image";
 import WhySme from '../../../../public/why-sme.png'
 import Link from "next/link";
-import { STRAPI_URL } from "./heroSection";
+import { getStrapiMedia } from "./heroSection";
 
 export default function WhySmeOnCallSection({ WhySmeOnCallSectionData }: any) {
     return (
@@ -37,7 +37,7 @@ export default function WhySmeOnCallSection({ WhySmeOnCallSectionData }: any) {
                 {/* Right: Image */}
                 <div data-aos="fade-up">
                     <Image
-                        src={WhySmeOnCallSectionData.image.url === "" ? WhySme : `${STRAPI_URL + WhySmeOnCallSectionData.image.url}`}
+                        src={WhySmeOnCallSectionData.image.url === "" ? WhySme : getStrapiMedia(WhySmeOnCallSectionData.image.url)}
                         alt="Team working together"
                         width={600}
                         height={400}

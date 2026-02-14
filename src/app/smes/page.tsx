@@ -19,7 +19,7 @@ import { defaultSmeMainContentData } from "../lib/SMEPage/defaultSmeMainContentD
 import { defaultBenefitsofChoosingData } from "../lib/SMEPage/defaultBenefitsofChoosingData";
 import { defaultHowWeWorkTogetherData } from "../lib/SMEPage/defaultHowWeWorkTogetherData";
 import Newsletter from "../components/Newsletter";
-import { STRAPI_URL } from "../components/homePage/heroSection";
+import { getStrapiMedia } from "../components/homePage/heroSection";
 
 const imageSliderSettings = {
   dots: false,
@@ -96,7 +96,7 @@ export default function SMEs() {
                   return (
                     <div key={index} className="px-2">
                       <Image
-                        src={imageSlider?.image_slider?.length > 0 ? `${STRAPI_URL + img.url}` : img}
+                        src={imageSlider?.image_slider?.length > 0 ? getStrapiMedia(img.url) : img}
                         alt={`Gallery Image ${index + 1}`}
                         width={1200}
                         height={600}

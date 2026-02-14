@@ -15,7 +15,7 @@ import { defaultAboutusHeaderData } from "../lib/about-us/defaultAboutusHeaderDa
 import { useAboutUsSectionContent } from "../hooks/useAboutUsSectionContent";
 import { defaultMainContent } from "../lib/about-us/defaultMainContent";
 import { defaultOurValuesData } from "../lib/about-us/defaultOurValuesData";
-import { STRAPI_URL } from "../components/homePage/heroSection";
+import { getStrapiMedia } from "../components/homePage/heroSection";
 
 const imageSliderSettings = {
   dots: false,
@@ -107,7 +107,7 @@ export default function SMEs() {
               (item: any, index: number) => (
                 <div key={index} className="px-1"> {/* px-2 = horizontal margin */}
                   <Image
-                    src={item.url ? `${STRAPI_URL + item.url}` : item}
+                    src={getStrapiMedia(item.url)}
                     alt={`Gallery Image ${index + 1}`}
                     width={1200}
                     height={600}

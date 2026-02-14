@@ -1,14 +1,14 @@
 import Link from "next/link";
 import BannerImage from "../../../public/inner-smes.jpg";
 import Image from "next/image";
-import { STRAPI_URL } from "./homePage/heroSection";
+import { getStrapiMedia } from "./homePage/heroSection";
 
 export default function CommonHeader({ headerData }) {    
     return (
         <section className="relative w-full h-[500px] sm:h-[700px] md:h-[900px] overflow-hidden">
             {/* Background Image */}
             <Image
-                src={(headerData?.background_image?.url === "" || headerData?.background_image === null) ? BannerImage : `${STRAPI_URL + headerData?.background_image?.url}`}
+                src={(headerData?.background_image?.url === "" || headerData?.background_image === null) ? BannerImage : getStrapiMedia(headerData?.background_image?.url)}
                 alt="SME Banner"
                 fill
                 priority

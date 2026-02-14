@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation';
 import { smeStatusType } from '@/app/types/sme';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { createSmeAccount, updateSmeStatus, sendInterviewInvite, sendWelcomeEmail } from '@/app/lib/sme';
-import { STRAPI_URL } from './homePage/heroSection';
 import { CheckCircle, XCircle, FileText, Download, Plus, Link as LinkIcon, Clock, Calendar } from 'lucide-react';
 import { useToast } from './ui/toast';
+import { getStrapiMedia } from "./homePage/heroSection";
 
 // --- Reusable Button Component, InfoBlock, getStatusStyle (UNMODIFIED) ---
 const StyledButton = ({ onClick, children, className, color, disabled, startIcon }: any) => {
@@ -215,7 +215,7 @@ export function GetStepContentSME({ stepIndex, data, handleNext, applicationPend
                         <div className="mt-6 flex flex-wrap gap-4">
                             {data?.resume?.url && (
                                 <a
-                                    href={`${STRAPI_URL}${data?.resume?.url}`}
+                                    href={getStrapiMedia(data?.resume?.url)}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     download={data?.resume.name || 'resume.pdf'}
@@ -227,7 +227,7 @@ export function GetStepContentSME({ stepIndex, data, handleNext, applicationPend
                             )}
                             {data?.coverLetter?.url && (
                                 <a
-                                    href={`${STRAPI_URL}${data?.coverLetter?.url}`}
+                                    href={getStrapiMedia(data?.coverLetter?.url)}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     download={data?.coverLetter?.name || 'cover_letter.pdf'}

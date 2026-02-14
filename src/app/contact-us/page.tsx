@@ -12,7 +12,7 @@ import { defaultContactUsHeaderData } from "../lib/contact-us/defaultContactUsHe
 import { useContactUsSectionContent } from "../hooks/useContactUsSectionContent";
 import BasicEnquiryForm from "../components/basicEnquiryForm";
 import { defaultGetInTouch } from "../lib/contact-us/defaultGetInTouch";
-import { STRAPI_URL } from "../components/homePage/heroSection";
+import { getStrapiMedia } from "../components/homePage/heroSection";
 
 const imageSliderSettings = {
   dots: false,
@@ -93,7 +93,7 @@ export default function SMEs() {
             {/* Right: Image */}
             <div className="lg:col-span-2 rounded-2xl overflow-hidden">
               <Image
-                src={getInTouch?.image?.url ? `${STRAPI_URL + getInTouch.image.url}` : Dubai}
+                src={getInTouch?.image?.url ? getStrapiMedia(getInTouch.image.url) : Dubai}
                 alt="Dubai Office"
                 width={600}
                 height={400}
@@ -123,7 +123,7 @@ export default function SMEs() {
               (item: any, index: number) => (
                 <div key={index} className="px-1">
                   <Image
-                    src={item.url ? `${STRAPI_URL + item.url}` : item}
+                    src={item.url ? getStrapiMedia(item.url) : item}
                     alt={`Gallery Image ${index + 1}`}
                     width={1200}
                     height={600}

@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL
+const STRAPI_API_URL = process.env.NEXT_PUBLIC_STRAPI_URL
 
 export default function Newsletter() {
 
     const fetchNewletter = async () => {
-        const res = await fetch(`${STRAPI_URL}/api/newsletter`);
+        const res = await fetch(`${STRAPI_API_URL}/api/newsletter`);
         if (!res.ok) throw new Error("Failed to fetch newsletter");
         return res.json();
     }
