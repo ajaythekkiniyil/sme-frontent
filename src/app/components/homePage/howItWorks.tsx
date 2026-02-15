@@ -23,7 +23,7 @@ export default function HowItWorksSection({ HowItWorksData }: any) {
               <h2 className="text-6xl text-[#273677]">01</h2>
               {/* <MessageSquare className="w-10 h-10 my-8 text-[#32A2DC]" /> */}
               <h3 className="text-2xl text-black mb-3">{HowItWorksData[0]?.step_title}</h3>
-              <p className="mb-8 text-gray-950 text-lg font-light">
+              <p className="mb-8 text-black text-lg">
                 {HowItWorksData[0]?.step_description[0].children[0].text}
               </p>
               {/* <Link href={HowItWorksData[0]?.primary_button_link} className="text-[#32A2DC] text-lg border-b border-b-[#32A2DC]">
@@ -36,7 +36,7 @@ export default function HowItWorksSection({ HowItWorksData }: any) {
               <h2 className="text-6xl text-[#273677]">02</h2>
               {/* <Users className="w-10 h-10 my-8 text-[#32A2DC]" /> */}
               <h3 className="text-2xl text-black mb-3">{HowItWorksData[1]?.step_title}</h3>
-              <p className="mb-8 text-gray-950 text-lg font-light">
+              <p className="mb-8 text-black text-lg">
                 {HowItWorksData[1]?.step_description[0].children[0].text}
               </p>
               {/* <Link href={HowItWorksData[1]?.primary_button_link ?? "#"} className="text-[#32A2DC] text-lg border-b border-b-[#32A2DC]">
@@ -49,7 +49,7 @@ export default function HowItWorksSection({ HowItWorksData }: any) {
               <h2 className="text-6xl text-[#273677]">03</h2>
               {/* <FileCheck className="w-10 h-10 my-8 text-[#32A2DC]" /> */}
               <h3 className="text-2xl text-black mb-3">{HowItWorksData[2]?.step_title}</h3>
-              <p className="mb-8 text-gray-950 text-lg font-light">
+              <p className="mb-8 text-black text-lg">
                 {HowItWorksData[2]?.step_description[0].children[0].text}
               </p>
               {/* <Link href={HowItWorksData[2]?.primary_button_link ?? "#"} className="text-[#32A2DC] text-lg border-b border-b-[#32A2DC]">

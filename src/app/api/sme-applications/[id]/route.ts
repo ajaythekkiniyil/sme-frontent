@@ -45,7 +45,7 @@ export async function PUT(
     req: NextRequest,
     context: { params: Promise<{ id: string }> }
 ) {
-    
+
     try {
         const { id } = await context.params;
         const body = await req.json();
@@ -88,3 +88,52 @@ export async function PUT(
     }
 }
 
+export async function DELETE(
+    req: NextRequest,
+    context: { params: Promise<{ id: string }> }
+) {
+    try {
+        const { id } = await context.params;
+
+        const cookieStore = cookies();
+        const token = (await cookieStore).get("token")?.value;
+
+        if (!token) {
+            return NextResponse.json(
+                { error: "Unauthorized: No token found" },
+                { status: 401 }
+            );
+        }
+
+        const strapiRes = await fetch(
+            `${STRAPI_URL}/api/sme-applications/${id}`,
+            {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            }
+        );
+
+        const strapiData = await strapiRes.json();
+
+        if (!strapiRes.ok) {
+            return NextResponse.json(
+                {
+                    error:
+                        strapiData.error?.message ||
+                        "Error from Strapi",
+                },
+                { status: strapiRes.status }
+            );
+        }
+
+        return NextResponse.json(strapiData);
+    } catch (error) {
+        return NextResponse.json(
+            { error: "An unexpected error occurred" },
+            { status: 500 }
+        );
+    }
+}
