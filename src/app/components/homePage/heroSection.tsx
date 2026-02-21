@@ -55,8 +55,13 @@ export function getStrapiMedia(url: string) {
     return url;
   }
 
-  // If local
-  return `${process.env.NEXT_PUBLIC_STRAPI_URL}${url}`;
+  // If local, normalize base URL (e.g. avoid ".../api/uploads/...")
+  const rawBase = process.env.NEXT_PUBLIC_STRAPI_URL || "";
+  const baseWithoutTrailingSlash = rawBase.replace(/\/+$/, "");
+  const normalizedBase = baseWithoutTrailingSlash.replace(/\/api$/, "");
+  const normalizedPath = url.startsWith("/") ? url : `/${url}`;
+
+  return `${normalizedBase}${normalizedPath}`;
 }
 
 

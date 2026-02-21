@@ -29,7 +29,7 @@ export async function GET(
         const strapiData = await strapiRes.json();
 
         if (!strapiRes.ok) {
-            return NextResponse.json({ error: strapiData.error?.message || 'Error from Strapi' }, {
+            return NextResponse.json({ error: strapiData.error || { message: 'Error from Strapi' } }, {
                 status: strapiRes.status,
             });
         }
@@ -45,7 +45,7 @@ export async function PUT(
     req: NextRequest,
     context: { params: Promise<{ id: string }> }
 ) {
-
+    
     try {
         const { id } = await context.params;
         const body = await req.json();
@@ -58,10 +58,15 @@ export async function PUT(
             return NextResponse.json({ error: 'Unauthorized: No token found' }, { status: 401 });
         }
 
-        const payload = {
-            "data": {
-                "smeStatus": body
-            }
+        let payload: { data: Record<string, unknown> };
+        if (body && typeof body === 'object' && 'data' in body) {
+            payload = body;
+        } else if (typeof body === 'string') {
+            payload = { data: { smeStatus: body } };
+        } else if (body && typeof body === 'object' && 'smeStatus' in body && Object.keys(body).length === 1) {
+            payload = { data: { smeStatus: body.smeStatus } };
+        } else {
+            payload = { data: body };
         }
 
         const strapiRes = await fetch(`${STRAPI_URL}/api/sme-applications/${id}`, {
@@ -76,7 +81,7 @@ export async function PUT(
         const strapiData = await strapiRes.json();
 
         if (!strapiRes.ok) {
-            return NextResponse.json({ error: strapiData.error?.message || 'Error from Strapi' }, {
+            return NextResponse.json({ error: strapiData.error || { message: 'Error from Strapi' } }, {
                 status: strapiRes.status,
             });
         }
@@ -94,46 +99,43 @@ export async function DELETE(
 ) {
     try {
         const { id } = await context.params;
-
         const cookieStore = cookies();
         const token = (await cookieStore).get("token")?.value;
 
         if (!token) {
-            return NextResponse.json(
-                { error: "Unauthorized: No token found" },
-                { status: 401 }
-            );
+            return NextResponse.json({ error: 'Unauthorized: No token found' }, { status: 401 });
         }
 
-        const strapiRes = await fetch(
-            `${STRAPI_URL}/api/sme-applications/${id}`,
-            {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
+        const strapiRes = await fetch(`${STRAPI_URL}/api/sme-applications/${id}`, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
+        const raw = await strapiRes.text();
+        let strapiData: any = null;
+        if (raw) {
+            try {
+                strapiData = JSON.parse(raw);
+            } catch {
+                strapiData = { message: raw };
             }
-        );
-
-        const strapiData = await strapiRes.json();
+        }
 
         if (!strapiRes.ok) {
-            return NextResponse.json(
-                {
-                    error:
-                        strapiData.error?.message ||
-                        "Error from Strapi",
-                },
-                { status: strapiRes.status }
-            );
+            return NextResponse.json({ error: strapiData?.error || strapiData || { message: 'Error from Strapi' } }, {
+                status: strapiRes.status,
+            });
+        }
+
+        if (strapiData === null) {
+            return NextResponse.json({ success: true });
         }
 
         return NextResponse.json(strapiData);
     } catch (error) {
-        return NextResponse.json(
-            { error: "An unexpected error occurred" },
-            { status: 500 }
-        );
+        return NextResponse.json({ error: 'An unexpected error occurred' }, { status: 500 });
     }
 }
+

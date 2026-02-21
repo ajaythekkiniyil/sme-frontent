@@ -59,7 +59,7 @@ const getStatusStyle = (status: smeStatusType) => {
 
 // --- Main Step Content Component ---
 
-export function GetStepContentSME({ stepIndex, data, handleNext, applicationPending, setApplicationPending }: any) {
+export function GetStepContentSME({ stepIndex, data, handleNext, applicationPending, setApplicationPending }: any) {    
     const queryClient = useQueryClient();
     const router = useRouter();
     const { showToast } = useToast();

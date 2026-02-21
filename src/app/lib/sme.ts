@@ -118,3 +118,16 @@ export async function sendWelcomeEmail(details: any) {
         throw error;
     }
 }
+
+export async function deleteSme(id: string | number) {
+    const res = await fetch(`/api/sme-applications/${id}`, {
+        method: 'DELETE',
+    });
+
+    if (!res.ok) {
+        const failedRes = await res.json().catch(() => ({}));
+        throw new Error(failedRes?.error?.message || failedRes?.error || "Failed to delete SME");
+    }
+
+    return res.json();
+}

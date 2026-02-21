@@ -16,7 +16,7 @@ export const defaultHeroData = [
         secondary_button_text: "Become an SME",
         secondary_button_link: "/smes",
         hero_image: {
-            url: "",
+            url: "https://pub-0ed84691e4844795b5ef9d21b967e7bf.r2.dev/sme_banner_02_fd66438e75_e3d8129061.jpg",
         }
     },
     {
